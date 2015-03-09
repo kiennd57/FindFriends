@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A407EA2C1AADE01D002640A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407EA2B1AADE01D002640A6 /* AppDelegate.swift */; };
+		A407EA2E1AADE01D002640A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407EA2D1AADE01D002640A6 /* ViewController.swift */; };
+		A407EA311AADE01D002640A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A407EA2F1AADE01D002640A6 /* Main.storyboard */; };
+		A407EA331AADE01D002640A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A407EA321AADE01D002640A6 /* Images.xcassets */; };
+		A407EA361AADE01D002640A6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A407EA341AADE01D002640A6 /* LaunchScreen.xib */; };
+		A407EA421AADE01D002640A6 /* Find_My_FriendsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407EA411AADE01D002640A6 /* Find_My_FriendsTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A407EA3C1AADE01D002640A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A407EA1E1AADE01C002640A6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A407EA251AADE01D002640A6;
+			remoteInfo = "Find My Friends";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A407EA261AADE01D002640A6 /* Find My Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find My Friends.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A407EA2A1AADE01D002640A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A407EA2B1AADE01D002640A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A407EA2D1AADE01D002640A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A407EA301AADE01D002640A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A407EA321AADE01D002640A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A407EA351AADE01D002640A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		A407EA3B1AADE01D002640A6 /* Find My FriendsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Find My FriendsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A407EA401AADE01D002640A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A407EA411AADE01D002640A6 /* Find_My_FriendsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Find_My_FriendsTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A407EA231AADE01D002640A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A407EA381AADE01D002640A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A407EA1D1AADE01C002640A6 = {
+			isa = PBXGroup;
+			children = (
+				A407EA281AADE01D002640A6 /* Find My Friends */,
+				A407EA3E1AADE01D002640A6 /* Find My FriendsTests */,
+				A407EA271AADE01D002640A6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A407EA271AADE01D002640A6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A407EA261AADE01D002640A6 /* Find My Friends.app */,
+				A407EA3B1AADE01D002640A6 /* Find My FriendsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A407EA281AADE01D002640A6 /* Find My Friends */ = {
+			isa = PBXGroup;
+			children = (
+				A407EA2B1AADE01D002640A6 /* AppDelegate.swift */,
+				A407EA2D1AADE01D002640A6 /* ViewController.swift */,
+				A407EA2F1AADE01D002640A6 /* Main.storyboard */,
+				A407EA321AADE01D002640A6 /* Images.xcassets */,
+				A407EA341AADE01D002640A6 /* LaunchScreen.xib */,
+				A407EA291AADE01D002640A6 /* Supporting Files */,
+			);
+			path = "Find My Friends";
+			sourceTree = "<group>";
+		};
+		A407EA291AADE01D002640A6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A407EA2A1AADE01D002640A6 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A407EA3E1AADE01D002640A6 /* Find My FriendsTests */ = {
+			isa = PBXGroup;
+			children = (
+				A407EA411AADE01D002640A6 /* Find_My_FriendsTests.swift */,
+				A407EA3F1AADE01D002640A6 /* Supporting Files */,
+			);
+			path = "Find My FriendsTests";
+			sourceTree = "<group>";
+		};
+		A407EA3F1AADE01D002640A6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A407EA401AADE01D002640A6 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A407EA251AADE01D002640A6 /* Find My Friends */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A407EA451AADE01D002640A6 /* Build configuration list for PBXNativeTarget "Find My Friends" */;
+			buildPhases = (
+				A407EA221AADE01D002640A6 /* Sources */,
+				A407EA231AADE01D002640A6 /* Frameworks */,
+				A407EA241AADE01D002640A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Find My Friends";
+			productName = "Find My Friends";
+			productReference = A407EA261AADE01D002640A6 /* Find My Friends.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A407EA3A1AADE01D002640A6 /* Find My FriendsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A407EA481AADE01D002640A6 /* Build configuration list for PBXNativeTarget "Find My FriendsTests" */;
+			buildPhases = (
+				A407EA371AADE01D002640A6 /* Sources */,
+				A407EA381AADE01D002640A6 /* Frameworks */,
+				A407EA391AADE01D002640A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A407EA3D1AADE01D002640A6 /* PBXTargetDependency */,
+			);
+			name = "Find My FriendsTests";
+			productName = "Find My FriendsTests";
+			productReference = A407EA3B1AADE01D002640A6 /* Find My FriendsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A407EA1E1AADE01C002640A6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "Feed Team";
+				TargetAttributes = {
+					A407EA251AADE01D002640A6 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					A407EA3A1AADE01D002640A6 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = A407EA251AADE01D002640A6;
+					};
+				};
+			};
+			buildConfigurationList = A407EA211AADE01C002640A6 /* Build configuration list for PBXProject "Find My Friends" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A407EA1D1AADE01C002640A6;
+			productRefGroup = A407EA271AADE01D002640A6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A407EA251AADE01D002640A6 /* Find My Friends */,
+				A407EA3A1AADE01D002640A6 /* Find My FriendsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A407EA241AADE01D002640A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A407EA311AADE01D002640A6 /* Main.storyboard in Resources */,
+				A407EA361AADE01D002640A6 /* LaunchScreen.xib in Resources */,
+				A407EA331AADE01D002640A6 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A407EA391AADE01D002640A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A407EA221AADE01D002640A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A407EA2E1AADE01D002640A6 /* ViewController.swift in Sources */,
+				A407EA2C1AADE01D002640A6 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A407EA371AADE01D002640A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A407EA421AADE01D002640A6 /* Find_My_FriendsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A407EA3D1AADE01D002640A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A407EA251AADE01D002640A6 /* Find My Friends */;
+			targetProxy = A407EA3C1AADE01D002640A6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A407EA2F1AADE01D002640A6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A407EA301AADE01D002640A6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A407EA341AADE01D002640A6 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A407EA351AADE01D002640A6 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A407EA431AADE01D002640A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A407EA441AADE01D002640A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A407EA461AADE01D002640A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Find My Friends/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A407EA471AADE01D002640A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Find My Friends/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A407EA491AADE01D002640A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Find My FriendsTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Find My Friends.app/Find My Friends";
+			};
+			name = Debug;
+		};
+		A407EA4A1AADE01D002640A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Find My FriendsTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Find My Friends.app/Find My Friends";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A407EA211AADE01C002640A6 /* Build configuration list for PBXProject "Find My Friends" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A407EA431AADE01D002640A6 /* Debug */,
+				A407EA441AADE01D002640A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A407EA451AADE01D002640A6 /* Build configuration list for PBXNativeTarget "Find My Friends" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A407EA461AADE01D002640A6 /* Debug */,
+				A407EA471AADE01D002640A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A407EA481AADE01D002640A6 /* Build configuration list for PBXNativeTarget "Find My FriendsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A407EA491AADE01D002640A6 /* Debug */,
+				A407EA4A1AADE01D002640A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A407EA1E1AADE01C002640A6 /* Project object */;
+}
