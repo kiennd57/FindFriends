@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var imageView: UIImageView!
     
     // VARIABLES
     //let util = Utils()
@@ -21,7 +22,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         currentIndex = 1
         pageControl.currentPage = 0
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "page1.png")!)
+        imageView.image = UIImage(named: "page1.png")
+        
         addGesture()
     }
 
@@ -39,6 +41,8 @@ class ViewController: UIViewController {
         var rightGesture = UISwipeGestureRecognizer(target: self, action: "swipe:")
         rightGesture.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(rightGesture)
+        
+        var rightGesture = UISwipeGestureRecognizer(
     }
     
     func swipe(sender: UISwipeGestureRecognizer) {
@@ -47,8 +51,8 @@ class ViewController: UIViewController {
             if currentIndex == maxIndex {
                 return
             } else {
-                pageControl.currentPage = currentIndex
                 currentIndex++
+                pageControl.currentPage = currentIndex - 1
                 setImageBackgroundWithImage("page\(currentIndex).png")
             }
             println("swipe left")
@@ -56,8 +60,8 @@ class ViewController: UIViewController {
             if currentIndex == 1 {
                 return
             } else {
-                pageControl.currentPage = currentIndex
                 currentIndex--
+                pageControl.currentPage = currentIndex - 1
                 setImageBackgroundWithImage("page\(currentIndex).png")
             }
             println("swipe right")
@@ -65,7 +69,17 @@ class ViewController: UIViewController {
     }
     
     func setImageBackgroundWithImage(imageStr: String) {
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: imageStr)!)
+        imageView.image = UIImage(named: imageStr)
+        
+        var darkBlur = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        // 2
+        var blurView = UIVisualEffectView(effect: darkBlur)
+        blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        blurView.frame = imageView.bounds
+        // 3
+        imageView.addSubview(blurView)
+        
+
     }
 
 }

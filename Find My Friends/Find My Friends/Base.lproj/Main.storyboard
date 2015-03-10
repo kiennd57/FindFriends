@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6750" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,41 +18,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="VBp-ht-SI4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="page1.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ckz-j7-qjH">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </imageView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" currentPage="2" translatesAutoresizingMaskIntoConstraints="NO" id="VBp-ht-SI4">
                                 <rect key="frame" x="-19" y="-18" width="39" height="37"/>
                             </pageControl>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Ckz-j7-qjH" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="1us-C8-B53"/>
+                            <constraint firstItem="Ckz-j7-qjH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="ZjX-cT-k6d"/>
                             <constraint firstAttribute="centerX" secondItem="VBp-ht-SI4" secondAttribute="centerX" id="mOq-I2-ILW"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Ckz-j7-qjH" secondAttribute="bottom" id="pQC-ne-Zii"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ckz-j7-qjH" secondAttribute="trailing" constant="-16" id="ymx-s8-efx"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="VBp-ht-SI4" secondAttribute="bottom" constant="49" id="zlQ-iD-cNx"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="Ckz-j7-qjH"/>
                                 <exclude reference="VBp-ht-SI4"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="pQC-ne-Zii"/>
                                 <exclude reference="zlQ-iD-cNx"/>
                                 <exclude reference="mOq-I2-ILW"/>
+                                <exclude reference="1us-C8-B53"/>
+                                <exclude reference="ZjX-cT-k6d"/>
+                                <exclude reference="ymx-s8-efx"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
+                                <include reference="Ckz-j7-qjH"/>
                                 <include reference="VBp-ht-SI4"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="pQC-ne-Zii"/>
                                 <include reference="zlQ-iD-cNx"/>
                                 <include reference="mOq-I2-ILW"/>
+                                <include reference="1us-C8-B53"/>
+                                <include reference="ZjX-cT-k6d"/>
+                                <include reference="ymx-s8-efx"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="imageView" destination="Ckz-j7-qjH" id="2G3-Gg-0Oa"/>
                         <outlet property="pageControl" destination="VBp-ht-SI4" id="lvy-WO-oaN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="966" y="430.5"/>
+            <point key="canvasLocation" x="-352.5" y="-44.25"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="page1.png" width="320" height="568"/>
+    </resources>
 </document>
