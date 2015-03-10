@@ -16,12 +16,42 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="VBp-ht-SI4">
+                                <rect key="frame" x="-19" y="-18" width="39" height="37"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="VBp-ht-SI4" secondAttribute="centerX" id="mOq-I2-ILW"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="VBp-ht-SI4" secondAttribute="bottom" constant="49" id="zlQ-iD-cNx"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="VBp-ht-SI4"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="zlQ-iD-cNx"/>
+                                <exclude reference="mOq-I2-ILW"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="VBp-ht-SI4"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="zlQ-iD-cNx"/>
+                                <include reference="mOq-I2-ILW"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="pageControl" destination="VBp-ht-SI4" id="lvy-WO-oaN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="608" y="431"/>
+            <point key="canvasLocation" x="966" y="430.5"/>
         </scene>
     </scenes>
 </document>
