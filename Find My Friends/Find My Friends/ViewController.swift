@@ -41,8 +41,6 @@ class ViewController: UIViewController {
         var rightGesture = UISwipeGestureRecognizer(target: self, action: "swipe:")
         rightGesture.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(rightGesture)
-        
-        var rightGesture = UISwipeGestureRecognizer(
     }
     
     func swipe(sender: UISwipeGestureRecognizer) {
