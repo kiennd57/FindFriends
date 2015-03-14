@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A407EA251AADE01D002640A6"
+               BlueprintIdentifier = "A4FAB6F41AB422A3007047A7"
                BuildableName = "Find My Friends.app"
                BlueprintName = "Find My Friends"
                ReferencedContainer = "container:Find My Friends.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A407EA3A1AADE01D002640A6"
+               BlueprintIdentifier = "A4FAB7091AB422A3007047A7"
                BuildableName = "Find My FriendsTests.xctest"
                BlueprintName = "Find My FriendsTests"
                ReferencedContainer = "container:Find My Friends.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A407EA3A1AADE01D002640A6"
+               BlueprintIdentifier = "A4FAB7091AB422A3007047A7"
                BuildableName = "Find My FriendsTests.xctest"
                BlueprintName = "Find My FriendsTests"
                ReferencedContainer = "container:Find My Friends.xcodeproj">
@@ -56,7 +56,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A407EA251AADE01D002640A6"
+            BlueprintIdentifier = "A4FAB6F41AB422A3007047A7"
             BuildableName = "Find My Friends.app"
             BlueprintName = "Find My Friends"
             ReferencedContainer = "container:Find My Friends.xcodeproj">
@@ -76,7 +76,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A407EA251AADE01D002640A6"
+            BlueprintIdentifier = "A4FAB6F41AB422A3007047A7"
             BuildableName = "Find My Friends.app"
             BlueprintName = "Find My Friends"
             ReferencedContainer = "container:Find My Friends.xcodeproj">
@@ -95,7 +95,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A407EA251AADE01D002640A6"
+            BlueprintIdentifier = "A4FAB6F41AB422A3007047A7"
             BuildableName = "Find My Friends.app"
             BlueprintName = "Find My Friends"
             ReferencedContainer = "container:Find My Friends.xcodeproj">

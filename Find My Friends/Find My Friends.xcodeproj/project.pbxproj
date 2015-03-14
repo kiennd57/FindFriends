@@ -7,60 +7,60 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A407EA2C1AADE01D002640A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407EA2B1AADE01D002640A6 /* AppDelegate.swift */; };
-		A407EA2E1AADE01D002640A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407EA2D1AADE01D002640A6 /* ViewController.swift */; };
-		A407EA311AADE01D002640A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A407EA2F1AADE01D002640A6 /* Main.storyboard */; };
-		A407EA331AADE01D002640A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A407EA321AADE01D002640A6 /* Images.xcassets */; };
-		A407EA361AADE01D002640A6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A407EA341AADE01D002640A6 /* LaunchScreen.xib */; };
-		A407EA421AADE01D002640A6 /* Find_My_FriendsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407EA411AADE01D002640A6 /* Find_My_FriendsTests.swift */; };
-		A4CB8E921AAEE15800B4BA7B /* page1.png in Resources */ = {isa = PBXBuildFile; fileRef = A4CB8E8C1AAEE15800B4BA7B /* page1.png */; };
-		A4CB8E931AAEE15800B4BA7B /* page1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4CB8E8D1AAEE15800B4BA7B /* page1@2x.png */; };
-		A4CB8E941AAEE15800B4BA7B /* page2.png in Resources */ = {isa = PBXBuildFile; fileRef = A4CB8E8E1AAEE15800B4BA7B /* page2.png */; };
-		A4CB8E951AAEE15800B4BA7B /* page2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4CB8E8F1AAEE15800B4BA7B /* page2@2x.png */; };
-		A4CB8E961AAEE15800B4BA7B /* page3.png in Resources */ = {isa = PBXBuildFile; fileRef = A4CB8E901AAEE15800B4BA7B /* page3.png */; };
-		A4CB8E971AAEE15800B4BA7B /* page3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4CB8E911AAEE15800B4BA7B /* page3@2x.png */; };
-		A4E9168C1AAEE8B400722C50 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E9168B1AAEE8B400722C50 /* Utils.swift */; };
+		A4FAB6FB1AB422A3007047A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FAB6FA1AB422A3007047A7 /* AppDelegate.swift */; };
+		A4FAB6FD1AB422A3007047A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FAB6FC1AB422A3007047A7 /* ViewController.swift */; };
+		A4FAB7001AB422A3007047A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4FAB6FE1AB422A3007047A7 /* Main.storyboard */; };
+		A4FAB7021AB422A3007047A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4FAB7011AB422A3007047A7 /* Images.xcassets */; };
+		A4FAB7051AB422A3007047A7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4FAB7031AB422A3007047A7 /* LaunchScreen.xib */; };
+		A4FAB7111AB422A3007047A7 /* Find_My_FriendsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FAB7101AB422A3007047A7 /* Find_My_FriendsTests.swift */; };
+		A4FAB71F1AB4237D007047A7 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FAB71E1AB4237D007047A7 /* SWRevealViewController.m */; };
+		A4FAB7211AB4245B007047A7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FAB7201AB4245B007047A7 /* MenuViewController.swift */; };
+		A4FAB7251AB42537007047A7 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A4FAB7241AB42537007047A7 /* menu.png */; };
+		A4FAB7281AB42C10007047A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FAB7271AB42C10007047A7 /* LoginViewController.swift */; };
+		A4FAB7371AB42F4A007047A7 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FAB7361AB42F4A007047A7 /* Util.swift */; };
+		A4FAB7391AB43045007047A7 /* IMG_0064.JPG in Resources */ = {isa = PBXBuildFile; fileRef = A4FAB7381AB43045007047A7 /* IMG_0064.JPG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A407EA3C1AADE01D002640A6 /* PBXContainerItemProxy */ = {
+		A4FAB70B1AB422A3007047A7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A407EA1E1AADE01C002640A6 /* Project object */;
+			containerPortal = A4FAB6ED1AB422A3007047A7 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A407EA251AADE01D002640A6;
+			remoteGlobalIDString = A4FAB6F41AB422A3007047A7;
 			remoteInfo = "Find My Friends";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A407EA261AADE01D002640A6 /* Find My Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find My Friends.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A407EA2A1AADE01D002640A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A407EA2B1AADE01D002640A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A407EA2D1AADE01D002640A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A407EA301AADE01D002640A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A407EA321AADE01D002640A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		A407EA351AADE01D002640A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		A407EA3B1AADE01D002640A6 /* Find My FriendsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Find My FriendsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A407EA401AADE01D002640A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A407EA411AADE01D002640A6 /* Find_My_FriendsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Find_My_FriendsTests.swift; sourceTree = "<group>"; };
-		A4CB8E8C1AAEE15800B4BA7B /* page1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page1.png; sourceTree = "<group>"; };
-		A4CB8E8D1AAEE15800B4BA7B /* page1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "page1@2x.png"; sourceTree = "<group>"; };
-		A4CB8E8E1AAEE15800B4BA7B /* page2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page2.png; sourceTree = "<group>"; };
-		A4CB8E8F1AAEE15800B4BA7B /* page2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "page2@2x.png"; sourceTree = "<group>"; };
-		A4CB8E901AAEE15800B4BA7B /* page3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page3.png; sourceTree = "<group>"; };
-		A4CB8E911AAEE15800B4BA7B /* page3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "page3@2x.png"; sourceTree = "<group>"; };
-		A4E9168B1AAEE8B400722C50 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		A4FAB6F51AB422A3007047A7 /* Find My Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find My Friends.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4FAB6F91AB422A3007047A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4FAB6FA1AB422A3007047A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A4FAB6FC1AB422A3007047A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A4FAB6FF1AB422A3007047A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A4FAB7011AB422A3007047A7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A4FAB7041AB422A3007047A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		A4FAB70A1AB422A3007047A7 /* Find My FriendsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Find My FriendsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4FAB70F1AB422A3007047A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4FAB7101AB422A3007047A7 /* Find_My_FriendsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Find_My_FriendsTests.swift; sourceTree = "<group>"; };
+		A4FAB71C1AB4237C007047A7 /* Find My Friends-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Find My Friends-Bridging-Header.h"; sourceTree = "<group>"; };
+		A4FAB71D1AB4237D007047A7 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		A4FAB71E1AB4237D007047A7 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		A4FAB7201AB4245B007047A7 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		A4FAB7241AB42537007047A7 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		A4FAB7271AB42C10007047A7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A4FAB7361AB42F4A007047A7 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		A4FAB7381AB43045007047A7 /* IMG_0064.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0064.JPG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A407EA231AADE01D002640A6 /* Frameworks */ = {
+		A4FAB6F21AB422A3007047A7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A407EA381AADE01D002640A6 /* Frameworks */ = {
+		A4FAB7071AB422A3007047A7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -70,113 +70,114 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A407EA1D1AADE01C002640A6 = {
+		A4FAB6EC1AB422A3007047A7 = {
 			isa = PBXGroup;
 			children = (
-				A407EA281AADE01D002640A6 /* Find My Friends */,
-				A407EA3E1AADE01D002640A6 /* Find My FriendsTests */,
-				A407EA271AADE01D002640A6 /* Products */,
+				A4FAB7351AB42F28007047A7 /* Util */,
+				A4FAB7261AB42BC5007047A7 /* Class Controller */,
+				A4FAB7221AB4251C007047A7 /* Resources */,
+				A4FAB71A1AB42363007047A7 /* Support */,
+				A4FAB6F71AB422A3007047A7 /* Find My Friends */,
+				A4FAB70D1AB422A3007047A7 /* Find My FriendsTests */,
+				A4FAB6F61AB422A3007047A7 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		A407EA271AADE01D002640A6 /* Products */ = {
+		A4FAB6F61AB422A3007047A7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A407EA261AADE01D002640A6 /* Find My Friends.app */,
-				A407EA3B1AADE01D002640A6 /* Find My FriendsTests.xctest */,
+				A4FAB6F51AB422A3007047A7 /* Find My Friends.app */,
+				A4FAB70A1AB422A3007047A7 /* Find My FriendsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A407EA281AADE01D002640A6 /* Find My Friends */ = {
+		A4FAB6F71AB422A3007047A7 /* Find My Friends */ = {
 			isa = PBXGroup;
 			children = (
-				A4E9168A1AAEE89500722C50 /* Util */,
-				A4E916891AAEE80E00722C50 /* Controller */,
-				A4E916881AAEE80A00722C50 /* View */,
-				A4E916871AAEE80000722C50 /* Model */,
-				A4CB8E8A1AAEE14200B4BA7B /* Resources */,
-				A407EA2F1AADE01D002640A6 /* Main.storyboard */,
-				A407EA321AADE01D002640A6 /* Images.xcassets */,
-				A407EA341AADE01D002640A6 /* LaunchScreen.xib */,
-				A407EA291AADE01D002640A6 /* Supporting Files */,
+				A4FAB6FA1AB422A3007047A7 /* AppDelegate.swift */,
+				A4FAB6FC1AB422A3007047A7 /* ViewController.swift */,
+				A4FAB6FE1AB422A3007047A7 /* Main.storyboard */,
+				A4FAB7011AB422A3007047A7 /* Images.xcassets */,
+				A4FAB7031AB422A3007047A7 /* LaunchScreen.xib */,
+				A4FAB6F81AB422A3007047A7 /* Supporting Files */,
 			);
 			path = "Find My Friends";
 			sourceTree = "<group>";
 		};
-		A407EA291AADE01D002640A6 /* Supporting Files */ = {
+		A4FAB6F81AB422A3007047A7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A407EA2A1AADE01D002640A6 /* Info.plist */,
+				A4FAB6F91AB422A3007047A7 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A407EA3E1AADE01D002640A6 /* Find My FriendsTests */ = {
+		A4FAB70D1AB422A3007047A7 /* Find My FriendsTests */ = {
 			isa = PBXGroup;
 			children = (
-				A407EA411AADE01D002640A6 /* Find_My_FriendsTests.swift */,
-				A407EA3F1AADE01D002640A6 /* Supporting Files */,
+				A4FAB7101AB422A3007047A7 /* Find_My_FriendsTests.swift */,
+				A4FAB70E1AB422A3007047A7 /* Supporting Files */,
 			);
 			path = "Find My FriendsTests";
 			sourceTree = "<group>";
 		};
-		A407EA3F1AADE01D002640A6 /* Supporting Files */ = {
+		A4FAB70E1AB422A3007047A7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A407EA401AADE01D002640A6 /* Info.plist */,
+				A4FAB70F1AB422A3007047A7 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A4CB8E8A1AAEE14200B4BA7B /* Resources */ = {
+		A4FAB71A1AB42363007047A7 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				A4CB8E8B1AAEE14900B4BA7B /* Images */,
+				A4FAB71B1AB42369007047A7 /* MenuView */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		A4FAB71B1AB42369007047A7 /* MenuView */ = {
+			isa = PBXGroup;
+			children = (
+				A4FAB71D1AB4237D007047A7 /* SWRevealViewController.h */,
+				A4FAB71E1AB4237D007047A7 /* SWRevealViewController.m */,
+				A4FAB71C1AB4237C007047A7 /* Find My Friends-Bridging-Header.h */,
+				A4FAB7201AB4245B007047A7 /* MenuViewController.swift */,
+			);
+			name = MenuView;
+			sourceTree = "<group>";
+		};
+		A4FAB7221AB4251C007047A7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A4FAB7231AB42523007047A7 /* Images */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		A4CB8E8B1AAEE14900B4BA7B /* Images */ = {
+		A4FAB7231AB42523007047A7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				A4CB8E8C1AAEE15800B4BA7B /* page1.png */,
-				A4CB8E8D1AAEE15800B4BA7B /* page1@2x.png */,
-				A4CB8E8E1AAEE15800B4BA7B /* page2.png */,
-				A4CB8E8F1AAEE15800B4BA7B /* page2@2x.png */,
-				A4CB8E901AAEE15800B4BA7B /* page3.png */,
-				A4CB8E911AAEE15800B4BA7B /* page3@2x.png */,
+				A4FAB7381AB43045007047A7 /* IMG_0064.JPG */,
+				A4FAB7241AB42537007047A7 /* menu.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
 		};
-		A4E916871AAEE80000722C50 /* Model */ = {
+		A4FAB7261AB42BC5007047A7 /* Class Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A4FAB7271AB42C10007047A7 /* LoginViewController.swift */,
 			);
-			name = Model;
+			name = "Class Controller";
 			sourceTree = "<group>";
 		};
-		A4E916881AAEE80A00722C50 /* View */ = {
+		A4FAB7351AB42F28007047A7 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		A4E916891AAEE80E00722C50 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				A407EA2D1AADE01D002640A6 /* ViewController.swift */,
-				A407EA2B1AADE01D002640A6 /* AppDelegate.swift */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
-		A4E9168A1AAEE89500722C50 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				A4E9168B1AAEE8B400722C50 /* Utils.swift */,
+				A4FAB7361AB42F4A007047A7 /* Util.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -184,13 +185,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A407EA251AADE01D002640A6 /* Find My Friends */ = {
+		A4FAB6F41AB422A3007047A7 /* Find My Friends */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A407EA451AADE01D002640A6 /* Build configuration list for PBXNativeTarget "Find My Friends" */;
+			buildConfigurationList = A4FAB7141AB422A3007047A7 /* Build configuration list for PBXNativeTarget "Find My Friends" */;
 			buildPhases = (
-				A407EA221AADE01D002640A6 /* Sources */,
-				A407EA231AADE01D002640A6 /* Frameworks */,
-				A407EA241AADE01D002640A6 /* Resources */,
+				A4FAB6F11AB422A3007047A7 /* Sources */,
+				A4FAB6F21AB422A3007047A7 /* Frameworks */,
+				A4FAB6F31AB422A3007047A7 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -198,46 +199,46 @@
 			);
 			name = "Find My Friends";
 			productName = "Find My Friends";
-			productReference = A407EA261AADE01D002640A6 /* Find My Friends.app */;
+			productReference = A4FAB6F51AB422A3007047A7 /* Find My Friends.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A407EA3A1AADE01D002640A6 /* Find My FriendsTests */ = {
+		A4FAB7091AB422A3007047A7 /* Find My FriendsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A407EA481AADE01D002640A6 /* Build configuration list for PBXNativeTarget "Find My FriendsTests" */;
+			buildConfigurationList = A4FAB7171AB422A3007047A7 /* Build configuration list for PBXNativeTarget "Find My FriendsTests" */;
 			buildPhases = (
-				A407EA371AADE01D002640A6 /* Sources */,
-				A407EA381AADE01D002640A6 /* Frameworks */,
-				A407EA391AADE01D002640A6 /* Resources */,
+				A4FAB7061AB422A3007047A7 /* Sources */,
+				A4FAB7071AB422A3007047A7 /* Frameworks */,
+				A4FAB7081AB422A3007047A7 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A407EA3D1AADE01D002640A6 /* PBXTargetDependency */,
+				A4FAB70C1AB422A3007047A7 /* PBXTargetDependency */,
 			);
 			name = "Find My FriendsTests";
 			productName = "Find My FriendsTests";
-			productReference = A407EA3B1AADE01D002640A6 /* Find My FriendsTests.xctest */;
+			productReference = A4FAB70A1AB422A3007047A7 /* Find My FriendsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A407EA1E1AADE01C002640A6 /* Project object */ = {
+		A4FAB6ED1AB422A3007047A7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0620;
-				ORGANIZATIONNAME = "Feed Team";
+				ORGANIZATIONNAME = "Nam Phong Nguyen";
 				TargetAttributes = {
-					A407EA251AADE01D002640A6 = {
+					A4FAB6F41AB422A3007047A7 = {
 						CreatedOnToolsVersion = 6.2;
 					};
-					A407EA3A1AADE01D002640A6 = {
+					A4FAB7091AB422A3007047A7 = {
 						CreatedOnToolsVersion = 6.2;
-						TestTargetID = A407EA251AADE01D002640A6;
+						TestTargetID = A4FAB6F41AB422A3007047A7;
 					};
 				};
 			};
-			buildConfigurationList = A407EA211AADE01C002640A6 /* Build configuration list for PBXProject "Find My Friends" */;
+			buildConfigurationList = A4FAB6F01AB422A3007047A7 /* Build configuration list for PBXProject "Find My Friends" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -245,35 +246,31 @@
 				en,
 				Base,
 			);
-			mainGroup = A407EA1D1AADE01C002640A6;
-			productRefGroup = A407EA271AADE01D002640A6 /* Products */;
+			mainGroup = A4FAB6EC1AB422A3007047A7;
+			productRefGroup = A4FAB6F61AB422A3007047A7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A407EA251AADE01D002640A6 /* Find My Friends */,
-				A407EA3A1AADE01D002640A6 /* Find My FriendsTests */,
+				A4FAB6F41AB422A3007047A7 /* Find My Friends */,
+				A4FAB7091AB422A3007047A7 /* Find My FriendsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A407EA241AADE01D002640A6 /* Resources */ = {
+		A4FAB6F31AB422A3007047A7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4CB8E931AAEE15800B4BA7B /* page1@2x.png in Resources */,
-				A407EA311AADE01D002640A6 /* Main.storyboard in Resources */,
-				A407EA361AADE01D002640A6 /* LaunchScreen.xib in Resources */,
-				A4CB8E971AAEE15800B4BA7B /* page3@2x.png in Resources */,
-				A4CB8E921AAEE15800B4BA7B /* page1.png in Resources */,
-				A4CB8E961AAEE15800B4BA7B /* page3.png in Resources */,
-				A407EA331AADE01D002640A6 /* Images.xcassets in Resources */,
-				A4CB8E951AAEE15800B4BA7B /* page2@2x.png in Resources */,
-				A4CB8E941AAEE15800B4BA7B /* page2.png in Resources */,
+				A4FAB7251AB42537007047A7 /* menu.png in Resources */,
+				A4FAB7001AB422A3007047A7 /* Main.storyboard in Resources */,
+				A4FAB7051AB422A3007047A7 /* LaunchScreen.xib in Resources */,
+				A4FAB7391AB43045007047A7 /* IMG_0064.JPG in Resources */,
+				A4FAB7021AB422A3007047A7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A407EA391AADE01D002640A6 /* Resources */ = {
+		A4FAB7081AB422A3007047A7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -283,47 +280,50 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A407EA221AADE01D002640A6 /* Sources */ = {
+		A4FAB6F11AB422A3007047A7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A407EA2E1AADE01D002640A6 /* ViewController.swift in Sources */,
-				A407EA2C1AADE01D002640A6 /* AppDelegate.swift in Sources */,
-				A4E9168C1AAEE8B400722C50 /* Utils.swift in Sources */,
+				A4FAB6FD1AB422A3007047A7 /* ViewController.swift in Sources */,
+				A4FAB7371AB42F4A007047A7 /* Util.swift in Sources */,
+				A4FAB7211AB4245B007047A7 /* MenuViewController.swift in Sources */,
+				A4FAB6FB1AB422A3007047A7 /* AppDelegate.swift in Sources */,
+				A4FAB7281AB42C10007047A7 /* LoginViewController.swift in Sources */,
+				A4FAB71F1AB4237D007047A7 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A407EA371AADE01D002640A6 /* Sources */ = {
+		A4FAB7061AB422A3007047A7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A407EA421AADE01D002640A6 /* Find_My_FriendsTests.swift in Sources */,
+				A4FAB7111AB422A3007047A7 /* Find_My_FriendsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A407EA3D1AADE01D002640A6 /* PBXTargetDependency */ = {
+		A4FAB70C1AB422A3007047A7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A407EA251AADE01D002640A6 /* Find My Friends */;
-			targetProxy = A407EA3C1AADE01D002640A6 /* PBXContainerItemProxy */;
+			target = A4FAB6F41AB422A3007047A7 /* Find My Friends */;
+			targetProxy = A4FAB70B1AB422A3007047A7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A407EA2F1AADE01D002640A6 /* Main.storyboard */ = {
+		A4FAB6FE1AB422A3007047A7 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A407EA301AADE01D002640A6 /* Base */,
+				A4FAB6FF1AB422A3007047A7 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		A407EA341AADE01D002640A6 /* LaunchScreen.xib */ = {
+		A4FAB7031AB422A3007047A7 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A407EA351AADE01D002640A6 /* Base */,
+				A4FAB7041AB422A3007047A7 /* Base */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -331,7 +331,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		A407EA431AADE01D002640A6 /* Debug */ = {
+		A4FAB7121AB422A3007047A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -373,7 +373,7 @@
 			};
 			name = Debug;
 		};
-		A407EA441AADE01D002640A6 /* Release */ = {
+		A4FAB7131AB422A3007047A7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -408,31 +408,32 @@
 			};
 			name = Release;
 		};
-		A407EA461AADE01D002640A6 /* Debug */ = {
+		A4FAB7151AB422A3007047A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "Find My Friends/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				SWIFT_OBJC_BRIDGING_HEADER = "Find My Friends-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		A407EA471AADE01D002640A6 /* Release */ = {
+		A4FAB7161AB422A3007047A7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "Find My Friends/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				SWIFT_OBJC_BRIDGING_HEADER = "Find My Friends-Bridging-Header.h";
 			};
 			name = Release;
 		};
-		A407EA491AADE01D002640A6 /* Debug */ = {
+		A4FAB7181AB422A3007047A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -451,7 +452,7 @@
 			};
 			name = Debug;
 		};
-		A407EA4A1AADE01D002640A6 /* Release */ = {
+		A4FAB7191AB422A3007047A7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -469,34 +470,32 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A407EA211AADE01C002640A6 /* Build configuration list for PBXProject "Find My Friends" */ = {
+		A4FAB6F01AB422A3007047A7 /* Build configuration list for PBXProject "Find My Friends" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A407EA431AADE01D002640A6 /* Debug */,
-				A407EA441AADE01D002640A6 /* Release */,
+				A4FAB7121AB422A3007047A7 /* Debug */,
+				A4FAB7131AB422A3007047A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A407EA451AADE01D002640A6 /* Build configuration list for PBXNativeTarget "Find My Friends" */ = {
+		A4FAB7141AB422A3007047A7 /* Build configuration list for PBXNativeTarget "Find My Friends" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A407EA461AADE01D002640A6 /* Debug */,
-				A407EA471AADE01D002640A6 /* Release */,
+				A4FAB7151AB422A3007047A7 /* Debug */,
+				A4FAB7161AB422A3007047A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
-		A407EA481AADE01D002640A6 /* Build configuration list for PBXNativeTarget "Find My FriendsTests" */ = {
+		A4FAB7171AB422A3007047A7 /* Build configuration list for PBXNativeTarget "Find My FriendsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A407EA491AADE01D002640A6 /* Debug */,
-				A407EA4A1AADE01D002640A6 /* Release */,
+				A4FAB7181AB422A3007047A7 /* Debug */,
+				A4FAB7191AB422A3007047A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A407EA1E1AADE01C002640A6 /* Project object */;
+	rootObject = A4FAB6ED1AB422A3007047A7 /* Project object */;
 }
