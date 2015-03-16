@@ -1041,10 +1041,10 @@
                                                     <exclude reference="Ifs-e7-Jwh"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="SEA-lU-Ew3"/>
-                                                    <exclude reference="Zoj-b7-bkh"/>
                                                     <exclude reference="9NO-dF-yDd"/>
                                                     <exclude reference="hs6-gK-sc4"/>
+                                                    <exclude reference="SEA-lU-Ew3"/>
+                                                    <exclude reference="Zoj-b7-bkh"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -1053,10 +1053,10 @@
                                                     <include reference="Ifs-e7-Jwh"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="SEA-lU-Ew3"/>
-                                                    <include reference="Zoj-b7-bkh"/>
                                                     <include reference="9NO-dF-yDd"/>
                                                     <include reference="hs6-gK-sc4"/>
+                                                    <include reference="SEA-lU-Ew3"/>
+                                                    <include reference="Zoj-b7-bkh"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -1077,10 +1077,10 @@
                                 <exclude reference="Bum-hX-SBE"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="v6B-Rg-gh4"/>
                                 <exclude reference="DMp-bu-k4J"/>
                                 <exclude reference="JhT-h5-Av6"/>
                                 <exclude reference="YHg-Yb-tdj"/>
-                                <exclude reference="v6B-Rg-gh4"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1088,10 +1088,10 @@
                                 <include reference="Bum-hX-SBE"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="v6B-Rg-gh4"/>
                                 <include reference="DMp-bu-k4J"/>
                                 <include reference="JhT-h5-Av6"/>
                                 <include reference="YHg-Yb-tdj"/>
-                                <include reference="v6B-Rg-gh4"/>
                             </mask>
                         </variation>
                     </view>
