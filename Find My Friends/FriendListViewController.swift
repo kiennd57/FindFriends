@@ -26,12 +26,18 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        paginator = UsersPaginator
+        paginator = UsersPaginator(pageSize: 10, delegate: self)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        paginator.fetchFirstPage()
     }
     
 
@@ -44,6 +50,18 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         
         return UITableViewCell()
+    }
+    
+    
+    
+    /////
+    func fetchNextPage() {
+        
+    }
+    
+    
+    func paginator(paginator: AnyObject!, didReceiveResults results: [AnyObject]!) {
+        
     }
 
 }
