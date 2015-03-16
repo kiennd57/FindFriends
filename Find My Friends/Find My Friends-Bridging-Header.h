@@ -7,3 +7,5 @@
 #import "MBProgressHUD.h"
 #import "LocalStorageService.h"
 #import "SSLMapPin.h"
+#import "NMPaginator.h"
+#import "UsersPaginator.h"
