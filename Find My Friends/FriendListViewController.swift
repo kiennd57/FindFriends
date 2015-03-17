@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FriendListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NMPaginatorDelegate {
+class FriendListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NMPaginatorDelegate, QBActionStatusDelegate {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var usersTableView: UITableView!
@@ -26,12 +26,15 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        users = NSMutableArray()
         paginator = UsersPaginator(pageSize: 10, delegate: self)
+        
+        usersTableView.delegate = self
+        usersTableView.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -42,26 +45,44 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
     
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return users.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("cellUserIdentifier") as UITableViewCell
         
+        var user = users[indexPath.row] as QBUUser
+        cell.tag = indexPath.row
+        cell.textLabel?.text = user.login
         
-        
-        return UITableViewCell()
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.1
     }
     
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 80
+    }
     
     /////
     func fetchNextPage() {
         
     }
     
+//    func completedWithResult(result: QBResult!) {
+//        if result.success && result.isKindOfClass(QBChatDialogResult) {
+//            var dialogResult = result as QBChatDialogResult
+//            
+//        }
+//    }
     
     func paginator(paginator: AnyObject!, didReceiveResults results: [AnyObject]!) {
-        
+        users.addObjectsFromArray(results)
+        println("NUMBER USER: \(users.count)")
+        usersTableView.reloadData()
     }
 
 }

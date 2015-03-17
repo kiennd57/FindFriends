@@ -38,6 +38,7 @@
 		A48888261AB73936008EBF92 /* userIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A48888241AB73936008EBF92 /* userIcon@2x.png */; };
 		A488882D1AB73BB8008EBF92 /* NMPaginator.m in Sources */ = {isa = PBXBuildFile; fileRef = A488882C1AB73BB8008EBF92 /* NMPaginator.m */; };
 		A48888341AB73FD4008EBF92 /* UsersPaginator.m in Sources */ = {isa = PBXBuildFile; fileRef = A48888321AB73FD4008EBF92 /* UsersPaginator.m */; };
+		A48888361AB75660008EBF92 /* FriendListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48888351AB75660008EBF92 /* FriendListTableViewController.swift */; };
 		A4FAB6FB1AB422A3007047A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FAB6FA1AB422A3007047A7 /* AppDelegate.swift */; };
 		A4FAB6FD1AB422A3007047A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FAB6FC1AB422A3007047A7 /* ViewController.swift */; };
 		A4FAB7001AB422A3007047A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4FAB6FE1AB422A3007047A7 /* Main.storyboard */; };
@@ -97,9 +98,9 @@
 		A48888241AB73936008EBF92 /* userIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userIcon@2x.png"; sourceTree = "<group>"; };
 		A488882B1AB73BB8008EBF92 /* NMPaginator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMPaginator.h; sourceTree = "<group>"; };
 		A488882C1AB73BB8008EBF92 /* NMPaginator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMPaginator.m; sourceTree = "<group>"; };
-		A48888301AB73FD4008EBF92 /* UsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersViewController.m; sourceTree = "<group>"; };
 		A48888311AB73FD4008EBF92 /* UsersPaginator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersPaginator.h; sourceTree = "<group>"; };
 		A48888321AB73FD4008EBF92 /* UsersPaginator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersPaginator.m; sourceTree = "<group>"; };
+		A48888351AB75660008EBF92 /* FriendListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListTableViewController.swift; sourceTree = "<group>"; };
 		A4FAB6F51AB422A3007047A7 /* Find My Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find My Friends.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4FAB6F91AB422A3007047A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4FAB6FA1AB422A3007047A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				A43CD78C1AB6CCF600554A23 /* FriendListViewController.swift */,
+				A48888351AB75660008EBF92 /* FriendListTableViewController.swift */,
 			);
 			name = "Friend List";
 			sourceTree = "<group>";
@@ -323,7 +325,6 @@
 				A4FAB71D1AB4237D007047A7 /* SWRevealViewController.h */,
 				A4FAB71E1AB4237D007047A7 /* SWRevealViewController.m */,
 				A488882B1AB73BB8008EBF92 /* NMPaginator.h */,
-				A48888301AB73FD4008EBF92 /* UsersViewController.m */,
 				A48888311AB73FD4008EBF92 /* UsersPaginator.h */,
 				A48888321AB73FD4008EBF92 /* UsersPaginator.m */,
 				A488882C1AB73BB8008EBF92 /* NMPaginator.m */,
@@ -476,6 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A43CD78D1AB6CCF600554A23 /* FriendListViewController.swift in Sources */,
+				A48888361AB75660008EBF92 /* FriendListTableViewController.swift in Sources */,
 				A4606B951AB6ED3200AD74B4 /* MapPin.swift in Sources */,
 				A48888341AB73FD4008EBF92 /* UsersPaginator.m in Sources */,
 				A488882D1AB73BB8008EBF92 /* NMPaginator.m in Sources */,
