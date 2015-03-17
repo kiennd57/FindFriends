@@ -10,6 +10,11 @@ import UIKit
 
 class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate, MBProgressHUDDelegate {
     
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var appHeader: UITextView!
+    @IBOutlet weak var createAnAccount: UITextView!
+    @IBOutlet weak var fillInField: UITextView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var fullname: UITextField!
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -19,7 +24,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         // Do any additional setup after loading the view.
         
         fullname.delegate = self
@@ -27,6 +33,13 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
         password.delegate = self
         confirmPassword.delegate = self
         email.delegate = self
+        
+        imageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
+        var lightBlur = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        var blurView = UIVisualEffectView(effect: lightBlur)
+        blurView.frame = imageView.bounds
+        imageView.addSubview(blurView)
+        signUpButton.layer.cornerRadius = 15
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +47,46 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
         // Dispose of any resources that can be recreated.
     }
 
+    var kbHeight: CGFloat!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func keyboardWillShow(notification: NSNotification){
+        if let userInfo = notification.userInfo {
+            if let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                if (fullname.editing == true) || (username.editing == true) || (password.editing == true) {
+                    kbHeight = 0;
+                } else {
+                    kbHeight = keyboardSize.height
+                }
+                self.animateTextField(true)
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification){
+        self.animateTextField(false)
+    }
+    
+    func animateTextField(up: Bool){
+        var movement = (up ? -kbHeight :kbHeight)
+        
+        UIView.animateWithDuration(0.3, animations: {
+            self.view.frame = CGRectOffset(self.view.frame, 0, movement)
+        })
+    }
+    
     @IBAction func signUpAction(sender: AnyObject) {
         if checkUsernameFilling() == true {
             if(checkPasswordLength() == true) {
@@ -110,4 +163,15 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
             }
         }
     }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        println("1")
+        return true
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        println("2")
+    }
+    
+
 }
