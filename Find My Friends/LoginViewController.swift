@@ -19,21 +19,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
     
     let util = Util()
     var userDefault = NSUserDefaults.standardUserDefaults()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         username.delegate = self
         password.delegate = self
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     @IBAction func doLoginWithFacebook(sender: AnyObject) {
         var username = self.username.text
         var password = self.password.text
@@ -52,23 +52,65 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
                 println("FAILT")
         })
         
-//        QBRequest.createSessionWithSuccessBlock({ (response: QBResponse!, session: QBASession!) -> Void in
-//            
-//            
-//
-//            }, errorBlock: { (response: QBResponse!) -> Void in
-//            println("SESSION FAIL")
-//        })
+        //        QBRequest.createSessionWithSuccessBlock({ (response: QBResponse!, session: QBASession!) -> Void in
+        //
+        //
+        //
+        //            }, errorBlock: { (response: QBResponse!) -> Void in
+        //            println("SESSION FAIL")
+        //        })
     }
     
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        if string == "\n" {
-            textField.resignFirstResponder()
-            return false
-        }
+    
+    //    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    //        if string == "\n" {
+    //            textField.resignFirstResponder()
+    //            return false
+    //        }
+    //        return true
+    //    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
         return true
     }
-
-
+    
+    var kbHeight: CGFloat!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            if let keyboardSize =  (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                kbHeight = keyboardSize.height
+                self.animateTextField(true)
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        self.animateTextField(false)
+    }
+    
+    func animateTextField(up: Bool) {
+        var movement = (up ? -kbHeight : kbHeight)
+        
+        UIView.animateWithDuration(0.3, animations: {
+            self.view.frame = CGRectOffset(self.view.frame, 0, movement)
+        })
+    }
+    
 }
