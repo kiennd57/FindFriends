@@ -35,7 +35,19 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
     }
 
     @IBAction func signUpAction(sender: AnyObject) {
-        doSignupWith(username.text, senderPass: password.text, senderEmail: email.text, senderFullname: fullname.text)
+        if checkUsernameFilling() == true {
+            if(checkPasswordLength() == true) {
+                if checkPasswordMatch() == true {
+                    doSignupWith(username.text, senderPass: password.text, senderEmail: email.text, senderFullname: fullname.text)
+                } else {
+                    var alert = UIAlertView(title: "ERROR", message: "Confirm password do not match", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
+                }
+            } else {
+                var alert = UIAlertView(title: "ERROR", message: "Password's length must be at least 8 characters", delegate: self, cancelButtonTitle: "OK")
+                alert.show()
+            }
+        }
     }
     
     func doSignupWith(senderUsername: NSString, senderPass: NSString, senderEmail: NSString, senderFullname: NSString) {
@@ -53,15 +65,31 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
             }) { (response: QBResponse!) -> Void in
                 println("\(response.error.description)")
         }
-        
-//        QBRequest.createSessionWithSuccessBlock({ (response: QBResponse!, session: QBASession!) -> Void in
-//            
-//            }, errorBlock: { (response: QBResponse!) -> Void in
-//            println("FAIL TO CREATE SESSION")
-//        })
 
     }
     
+    func checkUsernameFilling() -> Bool {
+        if username.text == "" {
+            var alert = UIAlertView(title: "ERROR", message: "You must enter an username", delegate: self, cancelButtonTitle: "OK")
+            alert.show()
+            return false
+        }
+        return true
+    }
+    
+    func checkPasswordMatch() -> Bool {
+        if password.text == confirmPassword.text {
+            return true
+        }
+        return false
+    }
+    
+    func checkPasswordLength() -> Bool {
+        if countElements(password.text) < 8 {
+            return false
+        }
+        return true
+    }
 //    func checkPasswordMatch() -> Bool {
 //        
 //    }
