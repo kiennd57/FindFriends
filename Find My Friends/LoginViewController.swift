@@ -106,7 +106,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
     }
     
     func animateTextField(up: Bool) {
-        var movement = (up ? -kbHeight : kbHeight)
+        var movement = (up ? -kbHeight/3 : kbHeight/3)
         
         UIView.animateWithDuration(0.3, animations: {
             self.view.frame = CGRectOffset(self.view.frame, 0, movement)
