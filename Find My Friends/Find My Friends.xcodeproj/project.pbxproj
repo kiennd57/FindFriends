@@ -477,10 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A43CD78D1AB6CCF600554A23 /* FriendListViewController.swift in Sources */,
-<<<<<<< HEAD
-=======
 				A48888361AB75660008EBF92 /* FriendListTableViewController.swift in Sources */,
->>>>>>> f1014eef010c9ba0cccadab1ca0a794fa74930b5
 				A4606B951AB6ED3200AD74B4 /* MapPin.swift in Sources */,
 				A48888341AB73FD4008EBF92 /* UsersPaginator.m in Sources */,
 				A488882D1AB73BB8008EBF92 /* NMPaginator.m in Sources */,
