@@ -9,3 +9,5 @@
 #import "SSLMapPin.h"
 #import "NMPaginator.h"
 #import "UsersPaginator.h"
+#import "ChatService.h"
+#import "ChatMessageTableViewCell.h"

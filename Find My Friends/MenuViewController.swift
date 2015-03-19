@@ -12,6 +12,8 @@ class MenuViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        println("MENUVIEW CONTROLLER")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -23,6 +25,26 @@ class MenuViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 44
+        }
+        return 30
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header:UITableViewHeaderFooterView = view as UITableViewHeaderFooterView
+        
+//        header.textLabel.textColor = UIColor.lightGrayColor()
+        header.textLabel.font = UIFont.boldSystemFontOfSize(18)
+        header.textLabel.frame = header.frame
+        header.textLabel.textAlignment = NSTextAlignment.Left
     }
 
     // MARK: - Table view data source

@@ -26,6 +26,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
         // Do any additional setup after loading the view.
         username.delegate = self
         password.delegate = self
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,7 +48,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
             //save to singeton
             LocalStorageService.sharedInstance().saveCurrentUser(currentUser)
             
-            self.userDefault.setBool(true, forKey: self.util.KEY_AUTHORIZED)
+//            self.userDefault.setBool(true, forKey: self.util.KEY_AUTHORIZED)
             self.dismissViewControllerAnimated(true, completion: nil)
             }, errorBlock: { (response: QBResponse!) -> Void in
                 println("FAILT")
@@ -71,13 +73,43 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
     //        return true
     //    }
     
+    
+    var kbHeight: CGFloat!
+    
+//
+//    func resign() {
+//        self.resignFirstResponder()
+//    }
+//    
+//    
+//    
+//    func endEditingNow(){
+//        self.view.endEditing(true)
+//    }
+//    
+//    func textFieldDidEndEditing(textField: UITextField) {
+//        
+//        //nothing fancy here, just trigger the resign() method to close the keyboard.
+//        resign()
+//    }
+//    
+//    override func touchesBegan(touches: (NSSet!), withEvent event: (UIEvent!)) {
+//        self.view.endEditing(true)
+//    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        if(username.isFirstResponder()){
+            username.resignFirstResponder()
+            password.becomeFirstResponder()
+        } else if(password.isFirstResponder()){
+            password.resignFirstResponder()
+            doLoginWithFacebook(self)
+        }
         
         return true
     }
     
-    var kbHeight: CGFloat!
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -106,11 +138,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
     }
     
     func animateTextField(up: Bool) {
-        var movement = (up ? -kbHeight : kbHeight)
+        var movement = (up ? -kbHeight/6 : kbHeight/6)
+        
         
         UIView.animateWithDuration(0.3, animations: {
             self.view.frame = CGRectOffset(self.view.frame, 0, movement)
         })
+        
     }
-    
 }
