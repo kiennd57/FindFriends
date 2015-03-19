@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="phh-ro-rwH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="phh-ro-rwH">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -952,18 +952,18 @@
                                 <exclude reference="cs2-Dz-yun"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="9BI-MX-UK5"/>
-                                <exclude reference="aho-K5-Bah"/>
-                                <exclude reference="zEd-4f-nlD"/>
                                 <exclude reference="46E-VT-ez2"/>
                                 <exclude reference="HWY-lK-srv"/>
+                                <exclude reference="KNK-OM-u82"/>
                                 <exclude reference="Wp2-TB-3cq"/>
                                 <exclude reference="fcZ-Y2-jYz"/>
                                 <exclude reference="EgO-zb-bft"/>
                                 <exclude reference="vPq-Mf-Ar2"/>
                                 <exclude reference="5Pf-AW-aCM"/>
                                 <exclude reference="dGj-XB-8sf"/>
-                                <exclude reference="KNK-OM-u82"/>
+                                <exclude reference="9BI-MX-UK5"/>
+                                <exclude reference="aho-K5-Bah"/>
+                                <exclude reference="zEd-4f-nlD"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -975,18 +975,18 @@
                                 <include reference="cs2-Dz-yun"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="9BI-MX-UK5"/>
-                                <include reference="aho-K5-Bah"/>
-                                <include reference="zEd-4f-nlD"/>
                                 <include reference="46E-VT-ez2"/>
                                 <include reference="HWY-lK-srv"/>
+                                <include reference="KNK-OM-u82"/>
                                 <include reference="Wp2-TB-3cq"/>
                                 <include reference="fcZ-Y2-jYz"/>
                                 <include reference="EgO-zb-bft"/>
                                 <include reference="vPq-Mf-Ar2"/>
                                 <include reference="5Pf-AW-aCM"/>
                                 <include reference="dGj-XB-8sf"/>
-                                <include reference="KNK-OM-u82"/>
+                                <include reference="9BI-MX-UK5"/>
+                                <include reference="aho-K5-Bah"/>
+                                <include reference="zEd-4f-nlD"/>
                             </mask>
                         </variation>
                     </view>

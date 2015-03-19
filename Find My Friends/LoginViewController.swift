@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
     
     
     @IBAction func doLoginWithFacebook(sender: AnyObject) {
-        
+        hideKeyboard()
         var alert = UIAlertView()
         
         if doCheckAllTextField() {
@@ -69,7 +69,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
             alert = UIAlertView(title: "ERROR", message: "USERNAME/PASSWORD CAN NOT BE BLANK", delegate: self, cancelButtonTitle: "OK")
             alert.show()
         }
-
+    }
+    
+    func hideKeyboard() {
+        username.resignFirstResponder()
+        password.resignFirstResponder()
+        resetView()
     }
     
     func doCheckAllTextField() -> Bool {
