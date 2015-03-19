@@ -12,10 +12,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
     
     
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var loginFacebook: UIButton!
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
+    
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signupButton: UIButton!
     
     let util = Util()
     var userDefault = NSUserDefaults.standardUserDefaults()
@@ -27,8 +29,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
         // Do any additional setup after loading the view.
         username.delegate = self
         password.delegate = self
-        
-        
+        initialize()
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,6 +37,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
         // Dispose of any resources that can be recreated.
     }
     
+    func initialize() {
+        loginButton.layer.cornerRadius = 8
+        signupButton.layer.cornerRadius = 8
+        imageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
+//        util.setImageBlur(imageView)
+        imageView.image = util.blurImage(UIImage(named: "kien.jpg")!)
+        util.setupTextField(username)
+        util.setupTextField(password)
+    }
+        
     
     @IBAction func doLoginWithFacebook(sender: AnyObject) {
         hideKeyboard()

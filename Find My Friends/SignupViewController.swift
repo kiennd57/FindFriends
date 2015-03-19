@@ -10,30 +10,96 @@ import UIKit
 
 class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate, MBProgressHUDDelegate {
     
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var fullname: UITextField!
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var confirmPassword: UITextField!
     @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var signUpButton: UIButton!
 
+    
+    let util = Util()
+    var keyboardStatus = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
+        
+        // Do any additional setup after loading the view.
+        initialize()
+        underlineBackButton()
+    }
+    
+    func initialize() {
         fullname.delegate = self
         username.delegate = self
         password.delegate = self
         confirmPassword.delegate = self
         email.delegate = self
+        
+        util.setupTextField(fullname)
+        util.setupTextField(username)
+        util.setupTextField(password)
+        util.setupTextField(confirmPassword)
+        util.setupTextField(email)
+        
+        signUpButton.layer.cornerRadius = 8
+        
+        imageView.image = util.blurImage(UIImage(named: "kien.jpg")!)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    func underlineBackButton(){
+        var titleString : NSMutableAttributedString = NSMutableAttributedString(string: backButton.titleLabel!.text!)
+        titleString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.StyleSingle.rawValue, range: NSMakeRange(0, backButton.titleLabel!.text!.utf16Count))
+        backButton.setAttributedTitle(titleString, forState: .Normal)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        if (fullname.isFirstResponder()){
+            fullname.resignFirstResponder()
+            username.becomeFirstResponder()
+        } else if(username.isFirstResponder()) {
+            username.resignFirstResponder()
+            password.becomeFirstResponder()
+        } else if (password.isFirstResponder()){
+            password.resignFirstResponder()
+            confirmPassword.becomeFirstResponder()
+        } else if(confirmPassword.isFirstResponder()){
+            confirmPassword.resignFirstResponder()
+            email.becomeFirstResponder()
+        } else if(email.isFirstResponder()){
+            animatedSignupView()
+            email.resignFirstResponder()
+        }
+        
+        return true
+    }
+    
+    func animatedSignupViewWithHeight(height: CGFloat) {
+        UIView.animateWithDuration(0.3, animations: {
+            self.view.frame = CGRectOffset(self.view.frame, 0, height)
+        })
+        keyboardStatus = false
+    }
+    
+    func animatedSignupView() {
+        UIView.animateWithDuration(0.3, animations: {
+            self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
+        })
+        keyboardStatus = true
+    }
+    
+    @IBAction func backToLogin(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func signUpAction(sender: AnyObject) {
         if checkUsernameFilling() == true {
             if(checkPasswordLength() == true) {
@@ -65,7 +131,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
             }) { (response: QBResponse!) -> Void in
                 println("\(response.error.description)")
         }
-
+        
     }
     
     func checkUsernameFilling() -> Bool {
@@ -90,10 +156,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
         }
         return true
     }
-//    func checkPasswordMatch() -> Bool {
-//        
-//    }
-    
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         if string == "\n" {
@@ -109,5 +171,16 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
+    }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        if textField.isEqual(fullname) || textField.isEqual(username) || textField.isEqual(password) {
+            animatedSignupView()
+        } else {
+            if keyboardStatus {
+                animatedSignupViewWithHeight(-100)
+            }
+        }
+        return true
     }
 }

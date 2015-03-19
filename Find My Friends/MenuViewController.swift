@@ -10,16 +10,11 @@ import UIKit
 
 class MenuViewController: UITableViewController {
 
+    let util = Util()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        println("MENUVIEW CONTROLLER")
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.view.backgroundColor = UIColor(patternImage: util.blurImage(UIImage(named: "bg.jpg")!))
     }
 
     override func didReceiveMemoryWarning() {

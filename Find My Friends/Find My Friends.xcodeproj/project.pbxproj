@@ -58,6 +58,7 @@
 		A4E2E5B21ABA9E7800A1A745 /* feedback@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E2E5B01ABA9E7800A1A745 /* feedback@1x.png */; };
 		A4E2E5B31ABA9E7800A1A745 /* feedback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E2E5B11ABA9E7800A1A745 /* feedback@2x.png */; };
 		A4E2E5B51ABAC08500A1A745 /* CheckinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2E5B41ABAC08500A1A745 /* CheckinViewController.swift */; };
+		A4E2E5B71ABAF36B00A1A745 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A4E2E5B61ABAF36B00A1A745 /* bg.jpg */; };
 		A4ECECB41ABA792100E52BB1 /* addMessage@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4ECECAE1ABA792100E52BB1 /* addMessage@1x.png */; };
 		A4ECECB51ABA792100E52BB1 /* addMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4ECECAF1ABA792100E52BB1 /* addMessage@2x.png */; };
 		A4ECECB61ABA792100E52BB1 /* home@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4ECECB01ABA792100E52BB1 /* home@1x.png */; };
@@ -80,7 +81,7 @@
 		A4FAB7251AB42537007047A7 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A4FAB7241AB42537007047A7 /* menu.png */; };
 		A4FAB7281AB42C10007047A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FAB7271AB42C10007047A7 /* LoginViewController.swift */; };
 		A4FAB7371AB42F4A007047A7 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FAB7361AB42F4A007047A7 /* Util.swift */; };
-		A4FAB7391AB43045007047A7 /* IMG_0064.JPG in Resources */ = {isa = PBXBuildFile; fileRef = A4FAB7381AB43045007047A7 /* IMG_0064.JPG */; };
+		A4FAB7391AB43045007047A7 /* 1.JPG in Resources */ = {isa = PBXBuildFile; fileRef = A4FAB7381AB43045007047A7 /* 1.JPG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +153,7 @@
 		A4E2E5B01ABA9E7800A1A745 /* feedback@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback@1x.png"; sourceTree = "<group>"; };
 		A4E2E5B11ABA9E7800A1A745 /* feedback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback@2x.png"; sourceTree = "<group>"; };
 		A4E2E5B41ABAC08500A1A745 /* CheckinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinViewController.swift; sourceTree = "<group>"; };
+		A4E2E5B61ABAF36B00A1A745 /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 		A4ECECAE1ABA792100E52BB1 /* addMessage@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addMessage@1x.png"; sourceTree = "<group>"; };
 		A4ECECAF1ABA792100E52BB1 /* addMessage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addMessage@2x.png"; sourceTree = "<group>"; };
 		A4ECECB01ABA792100E52BB1 /* home@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@1x.png"; sourceTree = "<group>"; };
@@ -180,7 +182,7 @@
 		A4FAB7241AB42537007047A7 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		A4FAB7271AB42C10007047A7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A4FAB7361AB42F4A007047A7 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
-		A4FAB7381AB43045007047A7 /* IMG_0064.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0064.JPG; sourceTree = "<group>"; };
+		A4FAB7381AB43045007047A7 /* 1.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.JPG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -417,6 +419,7 @@
 		A4FAB7231AB42523007047A7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A4E2E5B61ABAF36B00A1A745 /* bg.jpg */,
 				9D3B71BD1ABAD529001DAA86 /* icon-180.png */,
 				9D3B71BB1ABAD486001DAA86 /* kien.jpg */,
 				A4E2E5B01ABA9E7800A1A745 /* feedback@1x.png */,
@@ -441,7 +444,7 @@
 				A4ECECB31ABA792100E52BB1 /* message@2x.png */,
 				A48888231AB73936008EBF92 /* userIcon.png */,
 				A48888241AB73936008EBF92 /* userIcon@2x.png */,
-				A4FAB7381AB43045007047A7 /* IMG_0064.JPG */,
+				A4FAB7381AB43045007047A7 /* 1.JPG */,
 				A4FAB7241AB42537007047A7 /* menu.png */,
 			);
 			name = Images;
@@ -550,7 +553,7 @@
 				A4FAB7251AB42537007047A7 /* menu.png in Resources */,
 				A4FAB7001AB422A3007047A7 /* Main.storyboard in Resources */,
 				A48888251AB73936008EBF92 /* userIcon.png in Resources */,
-				A4FAB7391AB43045007047A7 /* IMG_0064.JPG in Resources */,
+				A4FAB7391AB43045007047A7 /* 1.JPG in Resources */,
 				A4ECECC51ABA7D8E00E52BB1 /* profile@2x.png in Resources */,
 				A4ECECB51ABA792100E52BB1 /* addMessage@2x.png in Resources */,
 				A4ECECB71ABA792100E52BB1 /* home@2x.png in Resources */,
@@ -573,6 +576,7 @@
 				A4FAB7021AB422A3007047A7 /* Images.xcassets in Resources */,
 				A4E2E5A61ABA980100A1A745 /* logout@1x.png in Resources */,
 				A4E2E5AA1ABA98A800A1A745 /* support@1x.png in Resources */,
+				A4E2E5B71ABAF36B00A1A745 /* bg.jpg in Resources */,
 				A48888261AB73936008EBF92 /* userIcon@2x.png in Resources */,
 				A4ECECBE1ABA7C6500E52BB1 /* notification@1x.png in Resources */,
 				A4ECECC11ABA7C6500E52BB1 /* setting@2x.png in Resources */,
