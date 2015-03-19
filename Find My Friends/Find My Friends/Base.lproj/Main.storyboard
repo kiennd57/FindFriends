@@ -620,9 +620,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signUpBackground.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="6qd-Rc-HYO">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pass" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xn0-Hk-xLm">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <constraints>
@@ -850,6 +847,9 @@
                                     <segue destination="YQx-x4-DDS" kind="show" id="iOQ-dp-VdU"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signUpBackground.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="6qd-Rc-HYO">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="rqv-bq-dS8" secondAttribute="centerX" id="1TH-rL-32x"/>
@@ -893,7 +893,6 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="6qd-Rc-HYO"/>
                                 <exclude reference="Xn0-Hk-xLm"/>
                                 <exclude reference="wrx-9d-AbZ"/>
                                 <exclude reference="rqv-bq-dS8"/>
@@ -904,6 +903,7 @@
                                 <exclude reference="Cuk-hR-3wd"/>
                                 <exclude reference="NQ3-Ed-tAJ"/>
                                 <exclude reference="HDP-bn-ppJ"/>
+                                <exclude reference="6qd-Rc-HYO"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Coy-BT-jFM"/>
@@ -934,7 +934,6 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="6qd-Rc-HYO"/>
                                 <include reference="Xn0-Hk-xLm"/>
                                 <include reference="wrx-9d-AbZ"/>
                                 <include reference="rqv-bq-dS8"/>
@@ -945,6 +944,7 @@
                                 <include reference="Cuk-hR-3wd"/>
                                 <include reference="NQ3-Ed-tAJ"/>
                                 <include reference="HDP-bn-ppJ"/>
+                                <include reference="6qd-Rc-HYO"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Coy-BT-jFM"/>
