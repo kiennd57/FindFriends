@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Quickblox/Quickblox.h>
+#import "LocalStorageService.h"
 
 @interface ChatMessageTableViewCell : UITableViewCell
 

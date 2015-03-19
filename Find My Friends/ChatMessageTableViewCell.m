@@ -87,7 +87,7 @@ static UIImage *aquaBubble;
     NSString *time = [messageDateFormatter stringFromDate:message.datetime];
     
     // Left/Right bubble
-    if ([LocalStorageService shared].currentUser.ID == message.senderID) {
+    if ([LocalStorageService sharedInstance].currentUser.ID == message.senderID) {
         [self.messageTextView setFrame:CGRectMake(padding, padding+5, size.width, size.height+padding)];
         [self.messageTextView sizeToFit];
         
@@ -96,7 +96,7 @@ static UIImage *aquaBubble;
         self.backgroundImageView.image = orangeBubble;
         
         self.dateLabel.textAlignment = NSTextAlignmentLeft;
-        self.dateLabel.text = [NSString stringWithFormat:@"%@, %@", [[LocalStorageService shared].currentUser login], time];
+        self.dateLabel.text = [NSString stringWithFormat:@"%@, %@", [[LocalStorageService sharedInstance].currentUser login], time];
         
     } else {
         [self.messageTextView setFrame:CGRectMake(320-size.width-padding/2, padding+5, size.width, size.height+padding)];

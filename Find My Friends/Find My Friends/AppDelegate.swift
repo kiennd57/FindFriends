@@ -12,6 +12,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var spalshView: RootViewController!
+    var rootController: SWRevealViewController!
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -21,15 +23,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         QBConnection.registerServiceSecret("yT2QaB9h5HpsSYm");
         QBSettings.setAccountKey("XTa7eHtDykX4D3kWe5ga");
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        QBRequest.createSessionWithSuccessBlock({ (response: QBResponse!, session: QBASession!) -> Void in
-            println("CREATE SESSION SUCCESSFULLY!")
-            }, errorBlock: { (response: QBResponse!) -> Void in
-            var alertView = UIAlertView(title: "SESSION CREATED FAILT", message: "DINH MENH", delegate: self, cancelButtonTitle: "OK")
-                alertView.show()
-        })
+        // instantiate your desired ViewController
+        rootController = storyboard.instantiateViewControllerWithIdentifier("rootView") as SWRevealViewController
         
+        // Because self.window is an optional you should check it's value first and assign your rootViewController
+//        if self.window != nil {
+//            self.window!.rootViewController = rootController
+//        }
+
         
+        self.spalshView = RootViewController()
+        self.window?.rootViewController = self.spalshView
+
         return true
     }
 
