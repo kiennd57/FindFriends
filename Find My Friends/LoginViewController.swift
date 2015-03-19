@@ -19,6 +19,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
     
     let util = Util()
     var userDefault = NSUserDefaults.standardUserDefaults()
+    var keyboardStatus = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,65 +38,46 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
     
     
     @IBAction func doLoginWithFacebook(sender: AnyObject) {
-        var username = self.username.text
-        var password = self.password.text
         
-        QBRequest.logInWithUserLogin(username, password: password, successBlock: { (response: QBResponse!, user: QBUUser!) -> Void in
-            println("OK")
-            var currentUser: QBUUser = QBUUser()
-            currentUser.login = username
-            currentUser.password = username
-            //save to singeton
-            LocalStorageService.sharedInstance().saveCurrentUser(currentUser)
+        var alert = UIAlertView()
+        
+        if doCheckAllTextField() {
+            var hud = MBProgressHUD(view: self.view)
+            self.view.addSubview(hud)
+            hud.labelText = "LOGGING IN"
+            hud.show(true)
             
-//            self.userDefault.setBool(true, forKey: self.util.KEY_AUTHORIZED)
-            self.dismissViewControllerAnimated(true, completion: nil)
-            }, errorBlock: { (response: QBResponse!) -> Void in
-                println("FAILT")
-        })
-        
-        //        QBRequest.createSessionWithSuccessBlock({ (response: QBResponse!, session: QBASession!) -> Void in
-        //
-        //
-        //
-        //            }, errorBlock: { (response: QBResponse!) -> Void in
-        //            println("SESSION FAIL")
-        //        })
+            var username = self.username.text
+            var password = self.password.text
+            
+            QBRequest.logInWithUserLogin(username, password: password, successBlock: { (response: QBResponse!, user: QBUUser!) -> Void in
+                hud.hide(true)
+                var currentUser: QBUUser = QBUUser()
+                currentUser.login = username
+                currentUser.password = username
+                //save to singeton
+                LocalStorageService.sharedInstance().saveCurrentUser(currentUser)
+                
+                self.userDefault.setBool(true, forKey: self.util.KEY_AUTHORIZED)
+                self.dismissViewControllerAnimated(true, completion: nil)
+                }, errorBlock: { (response: QBResponse!) -> Void in
+                    hud.hide(true)
+                    alert = UIAlertView(title: "LOGIN FAILT", message: "PLEASE CHECK YOUR ACCOUNT", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
+            })
+        } else {
+            alert = UIAlertView(title: "ERROR", message: "USERNAME/PASSWORD CAN NOT BE BLANK", delegate: self, cancelButtonTitle: "OK")
+            alert.show()
+        }
+
     }
     
-    
-    
-    //    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-    //        if string == "\n" {
-    //            textField.resignFirstResponder()
-    //            return false
-    //        }
-    //        return true
-    //    }
-    
-    
-    var kbHeight: CGFloat!
-    
-//
-//    func resign() {
-//        self.resignFirstResponder()
-//    }
-//    
-//    
-//    
-//    func endEditingNow(){
-//        self.view.endEditing(true)
-//    }
-//    
-//    func textFieldDidEndEditing(textField: UITextField) {
-//        
-//        //nothing fancy here, just trigger the resign() method to close the keyboard.
-//        resign()
-//    }
-//    
-//    override func touchesBegan(touches: (NSSet!), withEvent event: (UIEvent!)) {
-//        self.view.endEditing(true)
-//    }
+    func doCheckAllTextField() -> Bool {
+        if username.text.isEmpty || password.text.isEmpty {
+            return false
+        }
+        return true
+    }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if(username.isFirstResponder()){
@@ -103,6 +85,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
             password.becomeFirstResponder()
         } else if(password.isFirstResponder()){
             password.resignFirstResponder()
+            resetView()
             doLoginWithFacebook(self)
         }
         
@@ -110,12 +93,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
     }
     
     
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -123,27 +103,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
         
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
+
     
-    func keyboardWillShow(notification: NSNotification) {
-        if let userInfo = notification.userInfo {
-            if let keyboardSize =  (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-                kbHeight = keyboardSize.height
-                self.animateTextField(true)
-            }
-        }
-    }
-    
-    func keyboardWillHide(notification: NSNotification) {
-        self.animateTextField(false)
-    }
-    
-    func animateTextField(up: Bool) {
-        var movement = (up ? -kbHeight/6 : kbHeight/6)
-        
-        
+    func resetView() {
         UIView.animateWithDuration(0.3, animations: {
-            self.view.frame = CGRectOffset(self.view.frame, 0, movement)
+            self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
         })
-        
+        keyboardStatus = true
+    }
+    
+    func animateSignIn() {
+        keyboardStatus = false
+        UIView.animateWithDuration(0.3, animations: {
+            self.view.frame = CGRectOffset(self.view.frame, 0, -100)
+        })
+    }
+    
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        if keyboardStatus {
+            animateSignIn()
+        } else {
+//            resetView()
+        }
+        return true
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D3B71BC1ABAD486001DAA86 /* kien.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D3B71BB1ABAD486001DAA86 /* kien.jpg */; };
+		9D3B71BE1ABAD529001DAA86 /* icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3B71BD1ABAD529001DAA86 /* icon-180.png */; };
 		A43CD78A1AB6C9AF00554A23 /* LocalStorageService.m in Sources */ = {isa = PBXBuildFile; fileRef = A43CD7891AB6C9AF00554A23 /* LocalStorageService.m */; };
 		A43CD78D1AB6CCF600554A23 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43CD78C1AB6CCF600554A23 /* FriendListViewController.swift */; };
 		A4606B8D1AB6E4A200AD74B4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A4606B8B1AB6E48800AD74B4 /* libz.dylib */; };
@@ -92,6 +94,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D3B71BB1ABAD486001DAA86 /* kien.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kien.jpg; sourceTree = "<group>"; };
+		9D3B71BD1ABAD529001DAA86 /* icon-180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-180.png"; path = "Find My Friends/Images.xcassets/AppIcon.appiconset/icon-180.png"; sourceTree = "<group>"; };
 		A43CD7881AB6C9AF00554A23 /* LocalStorageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalStorageService.h; sourceTree = "<group>"; };
 		A43CD7891AB6C9AF00554A23 /* LocalStorageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalStorageService.m; sourceTree = "<group>"; };
 		A43CD78C1AB6CCF600554A23 /* FriendListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
@@ -413,6 +417,8 @@
 		A4FAB7231AB42523007047A7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9D3B71BD1ABAD529001DAA86 /* icon-180.png */,
+				9D3B71BB1ABAD486001DAA86 /* kien.jpg */,
 				A4E2E5B01ABA9E7800A1A745 /* feedback@1x.png */,
 				A4E2E5B11ABA9E7800A1A745 /* feedback@2x.png */,
 				A4E2E5AC1ABA9C6500A1A745 /* event@1x.png */,
@@ -554,6 +560,8 @@
 				A4E2E5B21ABA9E7800A1A745 /* feedback@1x.png in Resources */,
 				A4ECECC41ABA7D8E00E52BB1 /* profile@1x.png in Resources */,
 				A49BD5491AB9664A00E23A38 /* LaunchScreen.xib in Resources */,
+				9D3B71BE1ABAD529001DAA86 /* icon-180.png in Resources */,
+				9D3B71BC1ABAD486001DAA86 /* kien.jpg in Resources */,
 				A4ECECB41ABA792100E52BB1 /* addMessage@1x.png in Resources */,
 				A4ECECB61ABA792100E52BB1 /* home@1x.png in Resources */,
 				A4E2E5AF1ABA9C6500A1A745 /* event@2x.png in Resources */,
