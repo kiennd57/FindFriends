@@ -48,7 +48,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
             //save to singeton
             LocalStorageService.sharedInstance().saveCurrentUser(currentUser)
             
-            self.userDefault.setBool(true, forKey: self.util.KEY_AUTHORIZED)
+//            self.userDefault.setBool(true, forKey: self.util.KEY_AUTHORIZED)
             self.dismissViewControllerAnimated(true, completion: nil)
             }, errorBlock: { (response: QBResponse!) -> Void in
                 println("FAILT")
@@ -72,59 +72,44 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
     //        }
     //        return true
     //    }
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        // Create a button bar for the number pad
-        let keyboardDoneButtonView = UIToolbar()
-        //        let keyboardNextButtonView = UIToolbar()
-        keyboardDoneButtonView.sizeToFit()
-        //        keyboardNextButtonView.sizeToFit()
-        
-        // Setup the buttons to be put in the system.
-        let item = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Bordered, target: self, action: Selector("endEditingNow") )
-        let item1 = UIBarButtonItem(title: "Next>                ", style: UIBarButtonItemStyle.Bordered, target: self, action: Selector())
-        var toolbarButtons = [item1, item]
-        
-        
-        //        var toolbarButtons1 = [item1]
-        
-        //Put the buttons into the ToolBar and display the tool bar
-        keyboardDoneButtonView.setItems(toolbarButtons, animated: false)
-        //        keyboardNextButtonView.setItems(toolbarButtons1, animated: false)
-        
-        textField.inputAccessoryView = keyboardDoneButtonView
-        //        textField.inputAccessoryView = keyboardNextButtonView
-        
-        return true
-    }
-    
-    func resign() {
-        self.resignFirstResponder()
-    }
-    
-    
-    
-    func endEditingNow(){
-        self.view.endEditing(true)
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        
-        //nothing fancy here, just trigger the resign() method to close the keyboard.
-        resign()
-    }
-    
-    override func touchesBegan(touches: (NSSet!), withEvent event: (UIEvent!)) {
-        self.view.endEditing(true)
-    }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        
-        return true
-    }
     
     
     var kbHeight: CGFloat!
+    
+//
+//    func resign() {
+//        self.resignFirstResponder()
+//    }
+//    
+//    
+//    
+//    func endEditingNow(){
+//        self.view.endEditing(true)
+//    }
+//    
+//    func textFieldDidEndEditing(textField: UITextField) {
+//        
+//        //nothing fancy here, just trigger the resign() method to close the keyboard.
+//        resign()
+//    }
+//    
+//    override func touchesBegan(touches: (NSSet!), withEvent event: (UIEvent!)) {
+//        self.view.endEditing(true)
+//    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if(username.isFirstResponder()){
+            username.resignFirstResponder()
+            password.becomeFirstResponder()
+        } else if(password.isFirstResponder()){
+            password.resignFirstResponder()
+            doLoginWithFacebook(self)
+        }
+        
+        return true
+    }
+    
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -153,7 +138,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
     }
     
     func animateTextField(up: Bool) {
-        var movement = (up ? -kbHeight/3 : kbHeight/3)
+        var movement = (up ? -kbHeight/6 : kbHeight/6)
         
         
         UIView.animateWithDuration(0.3, animations: {
