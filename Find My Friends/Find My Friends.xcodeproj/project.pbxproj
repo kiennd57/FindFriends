@@ -51,7 +51,7 @@
 		A4FAB7281AB42C10007047A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FAB7271AB42C10007047A7 /* LoginViewController.swift */; };
 		A4FAB7371AB42F4A007047A7 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FAB7361AB42F4A007047A7 /* Util.swift */; };
 		A4FAB7391AB43045007047A7 /* IMG_0064.JPG in Resources */ = {isa = PBXBuildFile; fileRef = A4FAB7381AB43045007047A7 /* IMG_0064.JPG */; };
-		D227E9451AB8952700D19C65 /* signUpBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D227E9441AB8952700D19C65 /* signUpBackground.jpg */; };
+		D240C4851ABABC4200CD7977 /* signUpBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D240C4841ABABC4200CD7977 /* signUpBackground.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,7 +120,7 @@
 		A4FAB7271AB42C10007047A7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A4FAB7361AB42F4A007047A7 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		A4FAB7381AB43045007047A7 /* IMG_0064.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0064.JPG; sourceTree = "<group>"; };
-		D227E9441AB8952700D19C65 /* signUpBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = signUpBackground.jpg; path = ../../../../../../Users/khoa/Desktop/signUpBackground.jpg; sourceTree = "<group>"; };
+		D240C4841ABABC4200CD7977 /* signUpBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = signUpBackground.jpg; path = ../../../../../../Users/khoa/Desktop/signUpBackground.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,7 +347,7 @@
 		A4FAB7231AB42523007047A7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				D227E9441AB8952700D19C65 /* signUpBackground.jpg */,
+				D240C4841ABABC4200CD7977 /* signUpBackground.jpg */,
 				A48888231AB73936008EBF92 /* userIcon.png */,
 				A48888241AB73936008EBF92 /* userIcon@2x.png */,
 				A4FAB7381AB43045007047A7 /* IMG_0064.JPG */,
@@ -456,7 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4FAB7251AB42537007047A7 /* menu.png in Resources */,
-				D227E9451AB8952700D19C65 /* signUpBackground.jpg in Resources */,
+				D240C4851ABABC4200CD7977 /* signUpBackground.jpg in Resources */,
 				A4FAB7001AB422A3007047A7 /* Main.storyboard in Resources */,
 				A4FAB7051AB422A3007047A7 /* LaunchScreen.xib in Resources */,
 				A48888251AB73936008EBF92 /* userIcon.png in Resources */,

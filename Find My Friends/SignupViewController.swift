@@ -10,6 +10,7 @@ import UIKit
 
 class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate, MBProgressHUDDelegate {
     
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var appHeader: UITextView!
     @IBOutlet weak var createAnAccount: UITextView!
@@ -21,6 +22,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
     @IBOutlet weak var confirmPassword: UITextField!
     @IBOutlet weak var email: UITextField!
 
+    var keyboardStatus = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +36,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
         confirmPassword.delegate = self
         email.delegate = self
         
-        imageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
-        var lightBlur = UIBlurEffect(style: UIBlurEffectStyle.Light)
-        var blurView = UIVisualEffectView(effect: lightBlur)
-        blurView.frame = imageView.bounds
-        imageView.addSubview(blurView)
-        signUpButton.layer.cornerRadius = 15
+        blurBackground()
+        underlineBackButton()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,44 +46,54 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
         // Dispose of any resources that can be recreated.
     }
 
-    var kbHeight: CGFloat!
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+    func blurBackground(){
+        imageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
+        var lightBlur = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        var blurView = UIVisualEffectView(effect: lightBlur)
+        blurView.frame = imageView.bounds
+        imageView.addSubview(blurView)
+        signUpButton.layer.cornerRadius = 15
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+    func underlineBackButton(){
+        var titleString : NSMutableAttributedString = NSMutableAttributedString(string: backButton.titleLabel!.text!)
+        titleString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.StyleSingle.rawValue, range: NSMakeRange(0, backButton.titleLabel!.text!.utf16Count))
+        backButton.setAttributedTitle(titleString, forState: .Normal)
     }
     
-    func keyboardWillShow(notification: NSNotification){
-        if let userInfo = notification.userInfo {
-            if let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-                if (fullname.editing == true) || (username.editing == true) || (password.editing == true) {
-                    kbHeight = 0;
-                } else {
-                    kbHeight = keyboardSize.height
-                }
-                self.animateTextField(true)
-            }
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        if (fullname.isFirstResponder()){
+            fullname.resignFirstResponder()
+            username.becomeFirstResponder()
+        } else if(username.isFirstResponder()) {
+            username.resignFirstResponder()
+            password.becomeFirstResponder()
+        } else if (password.isFirstResponder()){
+            password.resignFirstResponder()
+            confirmPassword.becomeFirstResponder()
+        } else if(confirmPassword.isFirstResponder()){
+            confirmPassword.resignFirstResponder()
+            email.becomeFirstResponder()
+        } else if(email.isFirstResponder()){
+            animatedSignupView()
+            email.resignFirstResponder()
         }
-    }
-    
-    func keyboardWillHide(notification: NSNotification){
-        self.animateTextField(false)
-    }
-    
-    func animateTextField(up: Bool){
-        var movement = (up ? -kbHeight :kbHeight)
         
+        return true
+    }
+//    var kbHeight: CGFloat!
+//    var liftKeyboard: Bool!
+    
+    func animatedSignupViewWithHeight(height: CGFloat) {
         UIView.animateWithDuration(0.3, animations: {
-            self.view.frame = CGRectOffset(self.view.frame, 0, movement)
+            self.view.frame = CGRectOffset(self.view.frame, 0, height)
         })
+        keyboardStatus = false
+    }
+    
+    func animatedSignupView() {
+        self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
+        keyboardStatus = true
     }
     
     @IBAction func signUpAction(sender: AnyObject) {
@@ -165,13 +174,13 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
     }
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        println("1")
+        if textField.isEqual(fullname) || textField.isEqual(username) || textField.isEqual(password) {
+            animatedSignupView()
+        } else {
+            if keyboardStatus {
+                animatedSignupViewWithHeight(-150)
+            }
+        }
         return true
     }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        println("2")
-    }
-    
-
 }

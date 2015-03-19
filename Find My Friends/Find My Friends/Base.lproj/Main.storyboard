@@ -627,10 +627,12 @@
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="ONv-aO-VD8"/>
-                                    <constraint firstAttribute="height" constant="30" id="hcu-Tb-UhQ"/>
+                                    <constraint firstAttribute="height" constant="30" id="hcu-Tb-UhQ">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="35"/>
+                                    </constraint>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="ONv-aO-VD8"/>
@@ -648,10 +650,12 @@
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="1EO-sp-ySj"/>
-                                    <constraint firstAttribute="height" constant="30" id="unO-sn-W4h"/>
+                                    <constraint firstAttribute="height" constant="30" id="unO-sn-W4h">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="35"/>
+                                    </constraint>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="1EO-sp-ySj"/>
@@ -669,10 +673,12 @@
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="lM6-4Y-4a0"/>
-                                    <constraint firstAttribute="height" constant="30" id="zMW-qn-Sor"/>
+                                    <constraint firstAttribute="height" constant="30" id="zMW-qn-Sor">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="35"/>
+                                    </constraint>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="lM6-4Y-4a0"/>
@@ -693,7 +699,7 @@
                                     <constraint firstAttribute="width" constant="200" id="gsj-uD-UBr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="IQt-wG-pxW"/>
@@ -783,7 +789,7 @@
                                     <constraint firstAttribute="height" constant="35" id="tOm-IP-qtb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="n59-dy-Ga7"/>
@@ -821,9 +827,33 @@
                                     <action selector="signUpAction:" destination="xL6-uQ-0x9" eventType="touchUpInside" id="kNc-Lm-QCo"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDP-bn-ppJ" userLabel="backButton">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7h4-4g-bV3"/>
+                                    <constraint firstAttribute="width" constant="57" id="wMd-li-CRb"/>
+                                </constraints>
+                                <state key="normal" title="Back"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7h4-4g-bV3"/>
+                                        <exclude reference="wMd-li-CRb"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="7h4-4g-bV3"/>
+                                        <include reference="wMd-li-CRb"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="YQx-x4-DDS" kind="show" id="iOQ-dp-VdU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="rqv-bq-dS8" secondAttribute="centerX" id="1TH-rL-32x"/>
+                            <constraint firstAttribute="centerX" secondItem="HDP-bn-ppJ" secondAttribute="centerX" id="3M7-Uy-xUC"/>
                             <constraint firstAttribute="centerX" secondItem="Xn0-Hk-xLm" secondAttribute="centerX" id="6e0-Fb-lUY"/>
                             <constraint firstAttribute="centerX" secondItem="wrx-9d-AbZ" secondAttribute="centerX" id="CQn-tL-4qG"/>
                             <constraint firstAttribute="centerX" secondItem="Cuk-hR-3wd" secondAttribute="centerX" id="Coy-BT-jFM"/>
@@ -850,6 +880,7 @@
                             <constraint firstItem="wrx-9d-AbZ" firstAttribute="top" secondItem="Xn0-Hk-xLm" secondAttribute="bottom" constant="10" id="kPF-pP-BIl"/>
                             <constraint firstItem="6qd-Rc-HYO" firstAttribute="leading" secondItem="NYr-Em-7yc" secondAttribute="leadingMargin" constant="-16" id="kmY-vr-24d"/>
                             <constraint firstItem="6qd-Rc-HYO" firstAttribute="top" secondItem="NYr-Em-7yc" secondAttribute="topMargin" id="mKi-uj-c4J"/>
+                            <constraint firstItem="HDP-bn-ppJ" firstAttribute="top" secondItem="NQ3-Ed-tAJ" secondAttribute="bottom" constant="26" id="qui-uu-rmK"/>
                             <constraint firstItem="kSD-Lw-kn6" firstAttribute="top" secondItem="RH8-5s-Ok7" secondAttribute="bottom" constant="10" id="uXj-65-FV4">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-10"/>
                             </constraint>
@@ -872,6 +903,7 @@
                                 <exclude reference="kSD-Lw-kn6"/>
                                 <exclude reference="Cuk-hR-3wd"/>
                                 <exclude reference="NQ3-Ed-tAJ"/>
+                                <exclude reference="HDP-bn-ppJ"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Coy-BT-jFM"/>
@@ -885,6 +917,8 @@
                                 <exclude reference="zIj-aj-rOj"/>
                                 <exclude reference="CQn-tL-4qG"/>
                                 <exclude reference="kPF-pP-BIl"/>
+                                <exclude reference="3M7-Uy-xUC"/>
+                                <exclude reference="qui-uu-rmK"/>
                                 <exclude reference="LuP-7O-mh3"/>
                                 <exclude reference="wOk-Sb-8lS"/>
                                 <exclude reference="SiY-0h-l3b"/>
@@ -910,6 +944,7 @@
                                 <include reference="kSD-Lw-kn6"/>
                                 <include reference="Cuk-hR-3wd"/>
                                 <include reference="NQ3-Ed-tAJ"/>
+                                <include reference="HDP-bn-ppJ"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Coy-BT-jFM"/>
@@ -923,6 +958,8 @@
                                 <include reference="zIj-aj-rOj"/>
                                 <include reference="CQn-tL-4qG"/>
                                 <include reference="kPF-pP-BIl"/>
+                                <include reference="3M7-Uy-xUC"/>
+                                <include reference="qui-uu-rmK"/>
                                 <include reference="LuP-7O-mh3"/>
                                 <include reference="wOk-Sb-8lS"/>
                                 <include reference="SiY-0h-l3b"/>
@@ -939,6 +976,7 @@
                     </view>
                     <connections>
                         <outlet property="appHeader" destination="QZM-TG-Slc" id="uYe-yL-440"/>
+                        <outlet property="backButton" destination="HDP-bn-ppJ" id="0qw-8h-Utm"/>
                         <outlet property="confirmPassword" destination="wrx-9d-AbZ" id="HqK-cl-1kL"/>
                         <outlet property="createAnAccount" destination="RH8-5s-Ok7" id="1UA-Od-RgH"/>
                         <outlet property="email" destination="rqv-bq-dS8" id="11t-ho-rYP"/>
@@ -1200,5 +1238,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="oTK-QI-tMe"/>
+        <segue reference="iOQ-dp-VdU"/>
     </inferredMetricsTieBreakers>
 </document>
