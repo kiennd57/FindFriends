@@ -8,12 +8,60 @@
 
 import UIKit
 
-class CheckinViewController: UIViewController {
+class CheckinViewController: UIViewController, MKMapViewDelegate,  CLLocationManagerDelegate {
+    
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var accuracy: UILabel!
+    
+    var locationManager: CLLocationManager!
+    var status: NSString!
+    var longtitude: CLLocationDegrees!
+    var lattitude: CLLocationDegrees!
+    var theAddress: NSString!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        mapView.delegate = self
+        locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        mapView.showsPointsOfInterest = true
+        mapView.showsBuildings = true
+        println("ADDress: \(theAddress)")
+        theAddress = NSUserDefaults.standardUserDefaults().objectForKey("checkinAddress") as NSString
+        address.text = theAddress
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        var region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate, 800, 800)
+        mapView.setRegion(mapView.regionThatFits(region), animated: true)
+        
+        // ADD AN ANNOTATION
+        var point = MKPointAnnotation()
+        point.coordinate = self.mapView.userLocation.coordinate
+        point.title = status
+        point.subtitle = "This is subtitle"
+        
+        mapView.addAnnotation(point)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        var region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate, 800, 800)
+        mapView.setRegion(mapView.regionThatFits(region), animated: true)
+        
+        // ADD AN ANNOTATION
+        var point = MKPointAnnotation()
+        point.coordinate = self.mapView.userLocation.coordinate
+        point.title = status
+        point.subtitle = "This is subtitle"
+        
+        mapView.addAnnotation(point)
     }
     
     override func prefersStatusBarHidden() -> Bool {

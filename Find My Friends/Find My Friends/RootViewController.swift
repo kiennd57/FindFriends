@@ -8,15 +8,21 @@
 
 import UIKit
 
-class RootViewController: UIViewController {
+class RootViewController: UIViewController, MBProgressHUDDelegate {
 
+    let util = Util()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        println("TEST")
-        self.view.backgroundColor = UIColor.redColor()
-
+        self.view.backgroundColor = UIColor(patternImage: util.blurImage(UIImage(named: "kien.jpg")!))
+        
+        var hud = MBProgressHUD(view:self.view)
+        hud.labelText = "LOADING"
+        hud.delegate = self
+        hud.show(true)
+        self.view.addSubview(hud)
+        
                     QBRequest.createSessionWithSuccessBlock({ (response: QBResponse!, session: QBASession!) -> Void in
                         println("CREATE SESSION SUCCESSFULLY!")
                         var filter = QBLGeoDataFilter()
@@ -25,6 +31,7 @@ class RootViewController: UIViewController {
                         QBRequest.geoDataWithFilter(filter, page: QBGeneralResponsePage(currentPage: 1, perPage: 6), successBlock: { (response: QBResponse!, objects: [AnyObject]!, responsePage: QBGeneralResponsePage!) -> Void in
         
                             dispatch_after(dispatch_time(DISPATCH_TIME_NOW,Int64(2*NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
+                                hud.hide(true)
                                 let appdelegate = UIApplication.sharedApplication().delegate as AppDelegate
                                 self.presentViewController(appdelegate.rootController, animated: true, completion: nil)
                             })
@@ -39,15 +46,6 @@ class RootViewController: UIViewController {
                             var alertView = UIAlertView(title: "SESSION CREATED FAILT", message: "DINH MENH", delegate: self, cancelButtonTitle: "OK")
                             alertView.show()
                     })
-        
-
-        
-        
-        
-        
-        
-        
-
     }
 
     override func didReceiveMemoryWarning() {

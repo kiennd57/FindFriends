@@ -1,68 +1,43 @@
 //
-//  MenuViewControllerTableViewController.swift
+//  EventDetailTableViewController.swift
 //  Find My Friends
 //
-//  Created by Phong Nguyen Nam on 3/14/15.
+//  Created by Phong Nguyen Nam on 3/22/15.
 //  Copyright (c) 2015 Nam Phong Nguyen. All rights reserved.
 //
 
 import UIKit
 
-class MenuViewController: UITableViewController {
+class EventDetailTableViewController: UITableViewController {
 
-    let util = Util()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.view.backgroundColor = UIColor(patternImage: util.blurImage(UIImage(named: "bg.jpg")!))
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 44
-        }
-        return 30
-    }
-    
-    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let header:UITableViewHeaderFooterView = view as UITableViewHeaderFooterView
-        
-//        header.textLabel.textColor = UIColor.lightGrayColor()
-        header.textLabel.font = UIFont.boldSystemFontOfSize(18)
-        header.textLabel.frame = header.frame
-        header.textLabel.textAlignment = NSTextAlignment.Left
-    }
-    
-    
-    @IBAction func doLogout(sender: AnyObject) {
-        var userDefault = NSUserDefaults.standardUserDefaults()
-        userDefault.removeObjectForKey(util.KEY_AUTHORIZED)
-    }
-    
+
     // MARK: - Table view data source
 
-    /*
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
-    }
-    */
+//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        // #warning Potentially incomplete method implementation.
+//        // Return the number of sections.
+//        return 0
+//    }
+//
+//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete method implementation.
+//        // Return the number of rows in the section.
+//        return 0
+//    }
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

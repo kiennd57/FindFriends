@@ -24,16 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         QBSettings.setAccountKey("XTa7eHtDykX4D3kWe5ga");
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         // instantiate your desired ViewController
         rootController = storyboard.instantiateViewControllerWithIdentifier("rootView") as SWRevealViewController
-        
-        // Because self.window is an optional you should check it's value first and assign your rootViewController
-//        if self.window != nil {
-//            self.window!.rootViewController = rootController
-//        }
-
-        
         self.spalshView = RootViewController()
         self.window?.rootViewController = self.spalshView
 

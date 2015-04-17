@@ -11,25 +11,28 @@ import MapKit
 
 class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDelegate, MKMapViewDelegate , MBProgressHUDDelegate {
     @IBOutlet weak var menuButton: UIBarButtonItem!
-
     var locationManager: CLLocationManager!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var checkinButton: UIButton!
+    @IBOutlet weak var mapType: UISegmentedControl!
     
     var userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     let util = Util()
+    var status: NSString!
+    var address: NSString!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        
-
         // Menu Bar Button Action
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
+        initialize()
+        
         mapView.delegate = self
         locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
@@ -38,12 +41,18 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
         locationManager.startUpdatingLocation()
         mapView.showsPointsOfInterest = true
         mapView.showsBuildings = true
-        
+    }
+    
+    func initialize() {
+        checkinButton.layer.cornerRadius = 4.0
+        checkinButton.layer.borderWidth = 0.1
+        checkinButton.layer.borderColor = UIColor.greenColor().CGColor
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if userDefaults.boolForKey(util.KEY_AUTHORIZED) {
+            
         } else {
             self.performSegueWithIdentifier("goto_login", sender: self)
         }
@@ -83,6 +92,15 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
 //        mapView.addAnnotation(point)
 //    }
     
+    @IBAction func changeMaptype(sender: AnyObject) {
+        if mapType.selectedSegmentIndex == 0 {
+            mapView.mapType = MKMapType.Standard
+        } else if mapType.selectedSegmentIndex == 1 {
+            mapView.mapType = MKMapType.Hybrid
+        } else if mapType.selectedSegmentIndex == 2 {
+            mapView.mapType = MKMapType.Satellite
+        }
+    }
     
     @IBAction func getLocation(sender: AnyObject) {
                 var region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate, 800, 800)
@@ -109,8 +127,6 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
             statusAlert.tag = 2
             statusAlert.delegate = self
             statusAlert.show()
-            
-
         }
     }
     
@@ -122,11 +138,26 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
         hud.labelText = "CHECKING IN"
         hud.show(true)
         
+        let ceo = CLGeocoder()
+        let loc = CLLocation(latitude: self.mapView.userLocation.coordinate.latitude, longitude: self.mapView.userLocation.coordinate.longitude)
+        
+        ceo.reverseGeocodeLocation(loc, completionHandler: { (placemarks: [AnyObject]!, error: NSError!) -> Void in
+            let placeMark = placemarks[0] as CLPlacemark
+            println("PLACE MARK: \(placeMark)")
+            println("City: \(placeMark.locality)")
+            println("name: \(placeMark.name)")
+            println("ocean: \(placeMark.ocean)")
+            println("postal code: \(placeMark.postalCode)")
+            println("sublocal: \(placeMark.subLocality)")
+            self.address = "\(placeMark.subLocality), \(placeMark.locality)"
+            self.userDefaults.setObject(self.address, forKey: "checkinAddress")
+        })
         
         var geoData:QBLGeoData = QBLGeoData()
         geoData.latitude = self.mapView.userLocation.coordinate.latitude
         geoData.longitude = self.mapView.userLocation.coordinate.longitude
-        geoData.status = "THIS IS STATUS"
+        geoData.status = status
+        self.status = geoData.status
         QBRequest.createGeoData(geoData, successBlock: { (response: QBResponse!, geoData: QBLGeoData!) -> Void in
             hud.hide(true)
             self.performSegueWithIdentifier("goto_checkin", sender: self)
@@ -152,6 +183,16 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
             }
         }
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "goto_checkin" {
+            var destinationViewController = segue.destinationViewController as CheckinViewController
+            destinationViewController.mapView = self.mapView
+//            destinationViewController.longtitude = self.mapView.userLocation.coordinate.longitude
+//            destinationViewController.lattitude = self.mapView.userLocation.coordinate.latitude
+            destinationViewController.status = self.status
+            destinationViewController.theAddress = self.address
+        }
+    }
 }
 
