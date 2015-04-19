@@ -11,6 +11,7 @@ import UIKit
 class RootViewController: UIViewController, MBProgressHUDDelegate {
 
     let util = Util()
+    let userDefault = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class RootViewController: UIViewController, MBProgressHUDDelegate {
         hud.delegate = self
         hud.show(true)
         self.view.addSubview(hud)
+        
         
                     QBRequest.createSessionWithSuccessBlock({ (response: QBResponse!, session: QBASession!) -> Void in
                         println("CREATE SESSION SUCCESSFULLY!")

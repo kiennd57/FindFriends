@@ -11,3 +11,4 @@
 #import "UsersPaginator.h"
 #import "ChatService.h"
 #import "ChatMessageTableViewCell.h"
+#import "StaticDataTableViewController.h"

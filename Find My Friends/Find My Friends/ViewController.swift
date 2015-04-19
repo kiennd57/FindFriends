@@ -9,27 +9,31 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDelegate, MKMapViewDelegate , MBProgressHUDDelegate {
+class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDelegate, MKMapViewDelegate , MBProgressHUDDelegate, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var menuButton: UIBarButtonItem!
     var locationManager: CLLocationManager!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var checkinButton: UIButton!
     @IBOutlet weak var mapType: UISegmentedControl!
+    @IBOutlet weak var userTable: UITableView!
     
     var userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     let util = Util()
     var status: NSString!
     var address: NSString!
+    var users: NSArray!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        users = NSArray()
+        retrieveUsers()
         // Menu Bar Button Action
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
         
         initialize()
         
@@ -44,6 +48,8 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
     }
     
     func initialize() {
+        userTable.delegate = self
+        userTable.dataSource = self
         checkinButton.layer.cornerRadius = 4.0
         checkinButton.layer.borderWidth = 0.1
         checkinButton.layer.borderColor = UIColor.greenColor().CGColor
@@ -193,6 +199,28 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
             destinationViewController.status = self.status
             destinationViewController.theAddress = self.address
         }
+    }
+    
+    /////////////////////////////////////
+    func retrieveUsers() {
+        QBRequest.usersForPage(QBGeneralResponsePage(currentPage: 0, perPage: 100, totalEntries: 100), successBlock: { (response: QBResponse!, responsePage: QBGeneralResponsePage!, userList: [AnyObject]!) -> Void in
+            self.users = userList as NSArray
+            self.userTable.reloadData()
+            println("Count: \(self.users.count)")
+            }) { (response: QBResponse!) -> Void in
+            // FAIL
+        }
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.users.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("userCell") as UITableViewCell
+        let user = users[indexPath.row] as QBUUser
+        cell.textLabel?.text = user.login
+        return cell
     }
 }
 

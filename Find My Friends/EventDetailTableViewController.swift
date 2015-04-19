@@ -8,90 +8,72 @@
 
 import UIKit
 
-class EventDetailTableViewController: UITableViewController {
+class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate {
+    
+    @IBOutlet weak var eventImage: UIImageView!
+    @IBOutlet weak var eventTitle: UILabel!
+    @IBOutlet weak var eventPlace: UILabel!
+    @IBOutlet weak var eventTime: UILabel!
+    
+    @IBOutlet weak var days: UILabel!
+    @IBOutlet weak var hours: UILabel!
+    @IBOutlet weak var minutes: UILabel!
+    @IBOutlet weak var seconds: UILabel!
+    
+    @IBOutlet weak var eventDescription: UITextView!
+    
+    var event: QBCOCustomObject!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        initialize()
+        showAllInformation()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
-//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        // #warning Potentially incomplete method implementation.
-//        // Return the number of sections.
-//        return 0
-//    }
-//
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete method implementation.
-//        // Return the number of rows in the section.
-//        return 0
-//    }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
-
-        return cell
+    
+    func initialize() {
+        eventDescription.layer.borderWidth = 0.5
+        eventDescription.layer.cornerRadius = 4.0
+        eventDescription.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        let editBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "goToEditEvent")
+        self.navigationItem.rightBarButtonItem = editBtn
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
+    
+    func showAllInformation() {
+        eventTitle.text = event.fields["eventName"] as NSString
+        if event.fields["eventPlace"] != nil {
+            eventPlace.text = event.fields["eventPlace"] as NSString
+        }
+        if event.fields["eventTime"] != nil {
+            eventTime.text = event.fields["eventTime"] as NSString
+        }
+        if event.fields["eventDescription"] != nil {
+            eventDescription.text = event.fields["eventDescription"] as NSString
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    /////////////////////////////////////////////////////////////////////////
+    func goToEditEvent() {
+        println(__FUNCTION__)
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    
+    @IBAction func deleteEvent(sender: AnyObject) {
+        println(__FUNCTION__)
+        let deleteAlert = UIAlertView(title: "Delete Event", message: "Are you sure?", delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "Yes")
+        deleteAlert.tag = 1
+        deleteAlert.delegate = self
+        deleteAlert.show()
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
+    ////////////////////////////////////////////////////////////////////////
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if alertView.tag == 1 {
+            if buttonIndex == 1 {
+                println(__FUNCTION__)
+            }
+        }
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

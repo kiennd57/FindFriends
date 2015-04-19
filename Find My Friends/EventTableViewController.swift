@@ -8,19 +8,18 @@
 
 import UIKit
 
-class EventTableViewController: UITableViewController {
-
-    let images = ["birthday.png", "graduation.png", "dinner.png", "coffee.png", "cinema.png"]
-    let eventtitle = ["Khoa's birthday", "Khoa's graduation", "Dinner with Khoa & Kien", "Coffee with Khoa & Kien", "Watch movie with A"]
-    let eventtime = ["18:00 Monday, April 6", "8:00 Friday, April 10", "19:00 Sunday, April 12", "20:30 Sunday, April 12", "15:15 Sunday, April 19"]
-    let places = ["Khoa's house", "144, Xuan Thuy, Cau Giay", "ABC Restaurant", "XYZ Coffee shop", "Lotte Cinema"]
+class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
+    var eventList: NSArray = NSArray()
+    var selectedRow = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        retrieveAllEvents()
+        
         // Menu Bar Button Action
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -45,69 +44,72 @@ class EventTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 5
+        return eventList.count
     }
-    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as EventTableViewCell
+        
+        let event = eventList[indexPath.row] as QBCOCustomObject
+        
+        println(event.fields["eventName"])
+        cell.eventTitle.text = event.fields["eventName"] as NSString
+        if event.fields["eventPlace"] != nil {
+            cell.eventPlace.text = event.fields["eventPlace"] as NSString
+        }
+        if event.fields["eventTime"] != nil {
+            cell.dateTime.text = event.fields["eventTime"] as NSString
+        }
 
-        cell.imageEvent.image = UIImage(named: images[indexPath.row])
-        cell.eventTitle.text = eventtitle[indexPath.row]
-        cell.eventTime.text = eventtime[indexPath.row]
-        cell.eventPlace.text = places[indexPath.row]
+        
+//        cell.imageEvent.image = UIImage(named: images[indexPath.row])
+//        cell.eventTitle.text = eventtitle[indexPath.row]
+//        cell.eventPlace.text = places[indexPath.row]
+//        cell.timeRemaining.text = "30"
+//        cell.date.text = "Days"
+//        cell.dateTime.text = "April, 20 @ 15 : 00"
         
         return cell
     }
 
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
+        return 80
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedRow = indexPath.row
+        self.performSegueWithIdentifier("goto_eventDetail", sender: self)
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
+    /////////////////////////////////
+    func retrieveAllEvents() {
+        
+        let hud = MBProgressHUD(view: self.view)
+        hud.delegate = self
+        hud.labelText = "Loading"
+        self.view.addSubview(hud)
+        
+        self.view.bringSubviewToFront(hud)
+        hud.show(true)
+        
+        QBRequest.objectsWithClassName("Event", successBlock: { (response: QBResponse!, object: [AnyObject]!) -> Void in
+            self.eventList = object as NSArray
+            self.tableView.reloadData()
+            hud.hide(true)
+            }) { (response: QBResponse!) -> Void in
+            let alertView = UIAlertView(title: "ERROR!", message: "Fail to load events", delegate: self, cancelButtonTitle: "OK")
+            alertView.show()
+            hud.hide(true)
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    ////////////////////////////////////////////////////////
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "goto_eventDetail" {
+            let desController = segue.destinationViewController as EventDetailTableViewController
+            let selectedEvent = eventList.objectAtIndex(selectedRow) as QBCOCustomObject
+            desController.event = selectedEvent
+        }
     }
-    */
-
 }

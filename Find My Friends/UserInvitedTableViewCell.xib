@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellUserInvited" rowHeight="76" id="KGk-i7-Jjw" customClass="UserInvitedTableViewCell" customModule="Find_My_Friends" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="userIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="BKF-Ad-W10">
+                        <rect key="frame" x="8" y="8" width="45" height="45"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="vaW-OB-1te"/>
+                            <constraint firstAttribute="width" constant="45" id="yhz-2S-eXX"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itd-pm-4l5">
+                        <rect key="frame" x="61" y="10" width="251" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Gna-SV-kMN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="itd-pm-4l5" firstAttribute="leading" secondItem="BKF-Ad-W10" secondAttribute="trailing" constant="8" id="8cf-NB-sp1"/>
+                    <constraint firstAttribute="centerY" secondItem="itd-pm-4l5" secondAttribute="centerY" id="LZ6-Hx-U9A"/>
+                    <constraint firstItem="itd-pm-4l5" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="P3D-TO-fm9"/>
+                    <constraint firstItem="BKF-Ad-W10" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="mkw-HH-UvT"/>
+                    <constraint firstAttribute="centerY" secondItem="BKF-Ad-W10" secondAttribute="centerY" id="s8I-gm-Nbw"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="avatar" destination="BKF-Ad-W10" id="xBt-vN-41h"/>
+                <outlet property="userName" destination="itd-pm-4l5" id="Y63-9D-qKQ"/>
+            </connections>
+            <point key="canvasLocation" x="535" y="320"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="userIcon.png" width="128" height="128"/>
+    </resources>
+</document>
