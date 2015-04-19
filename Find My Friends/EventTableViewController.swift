@@ -17,8 +17,6 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        retrieveAllEvents()
         
         // Menu Bar Button Action
         if self.revealViewController() != nil {
@@ -26,6 +24,11 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        retrieveAllEvents()
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,19 +63,38 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
         if event.fields["eventTime"] != nil {
             cell.dateTime.text = event.fields["eventTime"] as NSString
         }
-
         
-//        cell.imageEvent.image = UIImage(named: images[indexPath.row])
-//        cell.eventTitle.text = eventtitle[indexPath.row]
-//        cell.eventPlace.text = places[indexPath.row]
-//        cell.timeRemaining.text = "30"
-//        cell.date.text = "Days"
-//        cell.dateTime.text = "April, 20 @ 15 : 00"
+        ////
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        let currentDate = NSDate()
+        let str = event.fields["eventTime"] as String
+        let eventDateStr = "\(str):00"
+        let eventDate = dateFormatter.dateFromString(eventDateStr)
+        let theSecond = eventDate?.timeIntervalSinceDate(currentDate)
+        let dayRemain = Int(theSecond!/(24 * 3600)) as Int
+        let hourRemain = Int((theSecond!%(24*3600))/3600) as Int
+        let minuteRemain = Int(((theSecond!%(24*3600))%3600)/60) as Int
+        let secondRemain = Int((((theSecond!%(24*3600))%3600)%60)%60) as Int
+        
+        if dayRemain > 0 {
+            cell.date.text = "Days"
+            cell.timeRemaining.text = "\(dayRemain)"
+        } else if hourRemain > 0 {
+            cell.date.text = "Hours"
+            cell.timeRemaining.text = "\(hourRemain)"
+        } else if minuteRemain > 0 {
+            cell.date.text = "Minutes"
+            cell.timeRemaining.text = "\(minuteRemain)"
+        } else {
+            cell.date.text = ""
+        }
+        
+        cell.imageEvent.image = UIImage(named: event.fields["eventImage"] as String)
         
         return cell
     }
 
-    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
     }

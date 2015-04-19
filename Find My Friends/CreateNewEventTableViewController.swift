@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateNewEventTableViewController: StaticDataTableViewController, UITextFieldDelegate, UITextViewDelegate {
+class CreateNewEventTableViewController: StaticDataTableViewController, UITextFieldDelegate, UITextViewDelegate, MBProgressHUDDelegate {
     
     @IBOutlet weak var eventImage: UIImageView!
     @IBOutlet weak var eventTitle: UITextField!
@@ -47,6 +47,12 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
             imageName = "e_birthday.png"
         }
         eventImage.image = UIImage(named: imageName)
+        
+        if userDefaults.objectForKey("participant") != nil {
+            participant = userDefaults.objectForKey("participant") as NSMutableArray
+            self.tableView.reloadData()
+            userDefaults.removeObjectForKey("participant")
+        }
     }
     
     func initialize() {
@@ -75,6 +81,14 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
         println(__FUNCTION__)
         
         if canBeSave() {
+            
+            let hud = MBProgressHUD(view: self.view)
+            hud.delegate = self
+            hud.labelText = "Creating"
+            self.view.addSubview(hud)
+            self.view.bringSubviewToFront(hud)
+            hud.show(true)
+            
             let event = QBCOCustomObject()
             event.className = "Event"
             event.fields["eventName"] = self.eventTitle.text
@@ -87,9 +101,11 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
             QBRequest.createObject(event, successBlock: { (response: QBResponse!, object: QBCOCustomObject!) -> Void in
                 let successAlert = UIAlertView(title: "SUCCESS!", message: "Your event was created and sent to your friend", delegate: self, cancelButtonTitle: "GOT IT")
                 successAlert.show()
+                hud.hide(true)
                 }) { (response: QBResponse!) -> Void in
                     let failAlert = UIAlertView(title: "OOPS!", message: "Something happen! Try again later", delegate: self, cancelButtonTitle: "OK")
                     failAlert.show()
+                    hud.hide(true)
             }
         } else {
             let alert = UIAlertView(title: "ERROR!", message: "Please fill all informations", delegate: self, cancelButtonTitle: "OK")
@@ -146,7 +162,7 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
                 let cellIdentifier = "cellUserInvited"
                 tableView.registerNib(UINib(nibName: "UserInvitedTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
                 let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UserInvitedTableViewCell
-                cell.userName.text = "TEST USER"
+                cell.userName.text = participant.objectAtIndex(indexPath.row) as NSString
                 return cell
             }
         }
@@ -252,6 +268,6 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
         eventTime.text = dateStr
         eventTime.resignFirstResponder()
     }
+    
     ////////////////////////////////////////////////
-
 }

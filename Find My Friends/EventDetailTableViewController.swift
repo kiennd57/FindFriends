@@ -23,11 +23,16 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
     @IBOutlet weak var eventDescription: UITextView!
     
     var event: QBCOCustomObject!
+    var eventDate: NSDate!
+    var dateFormatter: NSDateFormatter!
+    var timer: NSTimer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
         showAllInformation()
+        calculateTimeRemaining()
+        countDownTimeRemaining()
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,6 +46,13 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
         
         let editBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "goToEditEvent")
         self.navigationItem.rightBarButtonItem = editBtn
+        
+        dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        let str = event.fields["eventTime"] as String
+        let eventDateStr = "\(str):00"
+        println("\(eventDateStr)")
+        eventDate = dateFormatter.dateFromString(eventDateStr)
     }
     
     func showAllInformation() {
@@ -54,6 +66,7 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
         if event.fields["eventDescription"] != nil {
             eventDescription.text = event.fields["eventDescription"] as NSString
         }
+        eventImage.image = UIImage(named: event.fields["eventImage"] as String)
     }
     
     /////////////////////////////////////////////////////////////////////////
@@ -75,5 +88,39 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
                 println(__FUNCTION__)
             }
         }
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////
+    func calculateTimeRemaining() {
+        println(__FUNCTION__)
+        
+        let currentDate = NSDate()
+        let theSeconds = eventDate.timeIntervalSinceDate(currentDate)
+        
+        let dayRemain = Int(theSeconds/(24 * 3600)) as Int
+        let hourRemain = Int((theSeconds%(24*3600))/3600) as Int
+        let minuteRemain = Int(((theSeconds%(24*3600))%3600)/60) as Int
+        let secondRemain = Int((((theSeconds%(24*3600))%3600)%60)%60) as Int
+        
+        if theSeconds > 0 {
+            days.text = "\(dayRemain)"
+            hours.text = "\(hourRemain)"
+            minutes.text = "\(minuteRemain)"
+            seconds.text = "\(secondRemain)"
+        } else {
+//            timer.invalidate()
+            days.text = "0"
+            hours.text = "0"
+            minutes.text = "0"
+            seconds.text = "0"
+        }
+    }
+    
+    func countDownTimeRemaining() {
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "calculateTimeRemaining", userInfo: nil, repeats: true) as NSTimer
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        timer.invalidate()
     }
 }

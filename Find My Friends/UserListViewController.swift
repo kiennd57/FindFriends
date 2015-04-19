@@ -13,11 +13,11 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var friendTableView: UITableView!
     
     var friendList: NSArray = NSArray()
-    
+    var participantList: NSMutableArray = NSMutableArray()
+    var userDefault: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         retrieveUsers()
         
         // Do any additional setup after loading the view.
@@ -31,7 +31,7 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func backToCreateEvent(sender: AnyObject) {
         println(__FUNCTION__)
-        
+        userDefault.setObject(participantList, forKey: "participant")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
@@ -47,6 +47,12 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
         let user = friendList[indexPath.row] as QBUUser
         cell.userName.text = user.login
         cell.selectionStyle = UITableViewCellSelectionStyle.None
+        
+        if participantList.containsObject(user.login) {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.None
+        }
         return cell
     }
     
@@ -58,9 +64,12 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.cellForRowAtIndexPath(indexPath) as UserTableViewCell
         if cell.accessoryType == UITableViewCellAccessoryType.None {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            participantList.addObject(cell.userName.text!)
         } else {
             cell.accessoryType = UITableViewCellAccessoryType.None
+            participantList.removeObject(cell.userName.text!)
         }
+        println("NUMBER OBJ: \(participantList.count)")
     }
     
     /////////////////////////////////////
