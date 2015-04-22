@@ -64,8 +64,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
             QBRequest.logInWithUserLogin(username, password: password, successBlock: { (response: QBResponse!, user: QBUUser!) -> Void in
                 hud.hide(true)
                 var currentUser: QBUUser = QBUUser()
-                currentUser.login = username
-                currentUser.password = password
+                currentUser = user
                 //save to singeton
                 LocalStorageService.sharedInstance().saveCurrentUser(currentUser)
                 

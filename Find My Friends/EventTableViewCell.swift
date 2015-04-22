@@ -17,6 +17,7 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var timeRemaining: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var dateTime: UILabel!
+    @IBOutlet weak var statusView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

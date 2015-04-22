@@ -27,6 +27,27 @@ class RootViewController: UIViewController, MBProgressHUDDelegate {
         
                     QBRequest.createSessionWithSuccessBlock({ (response: QBResponse!, session: QBASession!) -> Void in
                         println("CREATE SESSION SUCCESSFULLY!")
+                        
+                        let userName = self.userDefault.objectForKey("currentUserName") as NSString!
+                        let password = self.userDefault.objectForKey("currentPassword") as NSString!
+                        
+                        if self.userDefault.boolForKey(self.util.KEY_AUTHORIZED) {
+                            QBRequest.logInWithUserLogin(userName, password: password, successBlock: { (response: QBResponse!, user: QBUUser!) -> Void in
+                                var currentUser: QBUUser = QBUUser()
+                                currentUser = user
+                                //save to singeton
+                                LocalStorageService.sharedInstance().saveCurrentUser(currentUser)
+                                
+                                self.userDefault.setBool(true, forKey: self.util.KEY_AUTHORIZED)
+                                self.userDefault.setObject(userName, forKey: "currentUserName")
+                                self.userDefault.setObject(password, forKey: "currentPassword")
+                                }, errorBlock: { (response: QBResponse!) -> Void in
+                                    let alert = UIAlertView(title: "LOGIN FAIL!", message: "Can not login", delegate: self, cancelButtonTitle: "OK")
+                                    alert.show()
+                            })
+                        }
+                        
+                        
                         var filter = QBLGeoDataFilter()
                         filter.lastOnly = true
                         filter.sortBy = GeoDataSortByKindLatitude

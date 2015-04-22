@@ -88,6 +88,8 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
             cell.timeRemaining.text = "\(minuteRemain)"
         } else {
             cell.date.text = ""
+            cell.timeRemaining.text = "Over!"
+            cell.statusView.backgroundColor = UIColor.redColor()
         }
         
         cell.imageEvent.image = UIImage(named: event.fields["eventImage"] as String)
@@ -117,6 +119,7 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
         
         QBRequest.objectsWithClassName("Event", successBlock: { (response: QBResponse!, object: [AnyObject]!) -> Void in
             self.eventList = object as NSArray
+//            self.eventList = self.sortEventsByTimeRemaining(self.eventList)
             self.tableView.reloadData()
             hud.hide(true)
             }) { (response: QBResponse!) -> Void in
@@ -133,5 +136,35 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
             let selectedEvent = eventList.objectAtIndex(selectedRow) as QBCOCustomObject
             desController.event = selectedEvent
         }
+    }
+    
+    ///////////////////////////////////////////////////////////////////////
+    func sortEventsByTimeRemaining(inputEvents: NSArray!) -> NSArray {
+        var tempList = NSMutableArray()
+        tempList = NSMutableArray(array: inputEvents)
+        for var i = 0; i < inputEvents.count - 1; i++ {
+            var event = inputEvents.objectAtIndex(i) as QBCOCustomObject
+            for var j = 1; j < inputEvents.count; j++ {
+                var compareEvent = inputEvents.objectAtIndex(j) as QBCOCustomObject
+                if timeRemaining(event) > timeRemaining(compareEvent) {
+                    var tmp = QBCOCustomObject()
+                    tempList.replaceObjectAtIndex(i, withObject: compareEvent)
+                    tempList.replaceObjectAtIndex(j, withObject: event)
+                }
+            }
+        }
+        return tempList
+    }
+    
+    func timeRemaining(event: QBCOCustomObject!) -> Int {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        let currentDate = NSDate()
+        let str = event.fields["eventTime"] as String
+        let eventDateStr = "\(str):00"
+        let eventDate = dateFormatter.dateFromString(eventDateStr)
+        let theSecond = eventDate?.timeIntervalSinceDate(currentDate)
+        
+        return Int(theSecond!)
     }
 }

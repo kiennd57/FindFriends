@@ -10,6 +10,10 @@ import UIKit
 
 class ChatDialogTableViewController: UITableViewController, QBActionStatusDelegate {
     
+    var createdDialog: QBChatDialog!
+    var dialogs: NSMutableArray!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -18,74 +22,90 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //get dialog
+        if LocalStorageService.sharedInstance().currentUser != nil {
+            QBChat.dialogsWithExtendedRequest(nil, delegate: self)
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if self.createdDialog != nil {
+            self.performSegueWithIdentifier("ShowSplashViewControllerSegue", sender: nil)
+        }
+        
+    }
+
+    
+    @IBAction func createDialog(sender: AnyObject) {
+        self.performSegueWithIdentifier("ShowUsersViewControllerSegue", sender: nil)
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.destinationViewController.isKindOfClass(ChatViewController) {
+            let desController = segue.destinationViewController as ChatViewController
+            if self.createdDialog != nil {
+                desController.dialog = self.createdDialog
+                self.createdDialog = nil
+            } else {
+                //to be added
+//                let dialog = self.dialogs.objectAtIndex(<#index: Int#>)
+//                desController.dialog = dialog
+            }
+
+        }
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return self.dialogs.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("chatDialogTableViewCell") as ChatDialogTableViewCell
 
-        // Configure the cell...
+        let chatDialog = self.dialogs.objectAtIndex(indexPath.row) as QBChatDialog
+        cell.tag = indexPath.row
+        
+        cell.userName.text = chatDialog.name
 
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    /////////////////////quickbloxAPI
+    func completedWithResult(result: QBResult!) {
+        if result.success && result.isKindOfClass(QBDialogsPagedResult) {
+            let pagedResult = result as QBDialogsPagedResult
+            var dialogs = pagedResult.dialogs as NSArray
+            self.dialogs = dialogs.mutableCopy() as NSMutableArray
+            let pagedRequest = QBGeneralResponsePage(currentPage: 0, perPage: 100, totalEntries: 100)as QBGeneralResponsePage
+            let dislogsUsersIDs = pagedResult.dialogsUsersIDs as NSSet
+            QBRequest.usersWithIDs(dislogsUsersIDs.allObjects, page: pagedRequest, successBlock: { (response: QBResponse!, responsePage: QBGeneralResponsePage!, users: [AnyObject]!) -> Void in
+                LocalStorageService.sharedInstance().users = users
+                self.tableView.reloadData()
+                }, errorBlock: { (response: QBResponse!) -> Void in
+                
+            })
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

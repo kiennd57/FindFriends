@@ -108,7 +108,9 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
             minutes.text = "\(minuteRemain)"
             seconds.text = "\(secondRemain)"
         } else {
-//            timer.invalidate()
+            if timer != nil {
+                timer.invalidate()
+            }
             days.text = "0"
             hours.text = "0"
             minutes.text = "0"

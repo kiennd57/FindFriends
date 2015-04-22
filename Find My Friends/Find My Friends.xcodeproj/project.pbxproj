@@ -116,6 +116,8 @@
 		A4F1F8D31AE3A793007167D2 /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = A4F1F8D21AE3A793007167D2 /* line.png */; };
 		A4F1F8D71AE3B2A9007167D2 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F1F8D61AE3B2A9007167D2 /* UserListViewController.swift */; };
 		A4F1F8D91AE3B364007167D2 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F1F8D81AE3B364007167D2 /* UserTableViewCell.swift */; };
+		A4FA40D11AE6589D009FC257 /* ChatUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FA40D01AE6589D009FC257 /* ChatUserViewController.swift */; };
+		A4FA40D31AE660F1009FC257 /* UserChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FA40D21AE660F1009FC257 /* UserChatCell.swift */; };
 		A4FAB6FB1AB422A3007047A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FAB6FA1AB422A3007047A7 /* AppDelegate.swift */; };
 		A4FAB6FD1AB422A3007047A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FAB6FC1AB422A3007047A7 /* ViewController.swift */; };
 		A4FAB7001AB422A3007047A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4FAB6FE1AB422A3007047A7 /* Main.storyboard */; };
@@ -257,6 +259,8 @@
 		A4F1F8D21AE3A793007167D2 /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line.png; sourceTree = "<group>"; };
 		A4F1F8D61AE3B2A9007167D2 /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		A4F1F8D81AE3B364007167D2 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		A4FA40D01AE6589D009FC257 /* ChatUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUserViewController.swift; sourceTree = "<group>"; };
+		A4FA40D21AE660F1009FC257 /* UserChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserChatCell.swift; sourceTree = "<group>"; };
 		A4FAB6F51AB422A3007047A7 /* Find My Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find My Friends.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4FAB6F91AB422A3007047A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4FAB6FA1AB422A3007047A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -356,6 +360,8 @@
 				A43CD7891AB6C9AF00554A23 /* LocalStorageService.m */,
 				A41EB1181ABBF59D001BB355 /* ChatDialogTableViewCell.swift */,
 				A41EB11A1ABBF5C0001BB355 /* ChatDialogTableViewController.swift */,
+				A4FA40D01AE6589D009FC257 /* ChatUserViewController.swift */,
+				A4FA40D21AE660F1009FC257 /* UserChatCell.swift */,
 			);
 			name = CHAT;
 			sourceTree = "<group>";
@@ -848,6 +854,7 @@
 				A4FAB7371AB42F4A007047A7 /* Util.swift in Sources */,
 				A4FAB7211AB4245B007047A7 /* MenuViewController.swift in Sources */,
 				A4EDB5DB1ABE748400CDEB7C /* EventDetailTableViewController.swift in Sources */,
+				A4FA40D11AE6589D009FC257 /* ChatUserViewController.swift in Sources */,
 				A4F1F8C81AE3832C007167D2 /* AddParticipantTableViewCell.swift in Sources */,
 				A41EB1191ABBF59D001BB355 /* ChatDialogTableViewCell.swift in Sources */,
 				A4FAB6FB1AB422A3007047A7 /* AppDelegate.swift in Sources */,
@@ -861,6 +868,7 @@
 				A4FAB71F1AB4237D007047A7 /* SWRevealViewController.m in Sources */,
 				A4E2E5B51ABAC08500A1A745 /* CheckinViewController.swift in Sources */,
 				A4606B9D1AB70EFB00AD74B4 /* MyCustomAnnotation.swift in Sources */,
+				A4FA40D31AE660F1009FC257 /* UserChatCell.swift in Sources */,
 				A4606B981AB6EFBD00AD74B4 /* SSLMapPin.m in Sources */,
 				A46E91BD1AB6B62A00A7BDD9 /* MBProgressHUD.m in Sources */,
 				A43CD78A1AB6C9AF00554A23 /* LocalStorageService.m in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileTableViewController: UITableViewController {
+class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MBProgressHUDDelegate {
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var imageProfile: UIImageView!
@@ -16,6 +16,16 @@ class ProfileTableViewController: UITableViewController {
     @IBOutlet weak var fullName: UILabel!
     @IBOutlet weak var email: UILabel!
     
+    
+    @IBOutlet weak var tfFullName: UITextField!
+    @IBOutlet weak var tfPhoneNumber: UITextField!
+    @IBOutlet weak var tfPassword: UITextField!
+    @IBOutlet weak var tfConfirmPass: UITextField!
+    
+    
+    
+    
+    var currentUser: QBUUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +37,7 @@ class ProfileTableViewController: UITableViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         initialize()
+        getAllInformations()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,78 +50,82 @@ class ProfileTableViewController: UITableViewController {
         imageProfile.layer.cornerRadius = 40
         imageProfile.layer.borderWidth = 1
         imageProfile.layer.borderColor = UIColor.lightGrayColor().CGColor
+        
+        tfFullName.delegate = self
+        tfPhoneNumber.delegate = self
+        tfPassword.delegate = self
+        tfConfirmPass.delegate = self
     }
     
-//    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 0
-//    }
-    // MARK: - Table view data source
-
-//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        // #warning Potentially incomplete method implementation.
-//        // Return the number of sections.
-//        return 0
-//    }
-//
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete method implementation.
-//        // Return the number of rows in the section.
-//        return 0
-//    }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
-
-        return cell
+    func getAllInformations() {
+        currentUser = LocalStorageService.sharedInstance().currentUser
+        if currentUser != nil {
+            userName.text = currentUser.login
+            fullName.text = currentUser.fullName
+            email.text = currentUser.email
+            
+            tfFullName.text = currentUser.fullName
+            tfPhoneNumber.text = currentUser.phone
+            tfPassword.text = currentUser.password
+            tfConfirmPass.text = currentUser.password
+        }
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
+    /////////////////////////////////////////////////////////////////////////
+    
+    
+    @IBAction func saveChange(sender: AnyObject) {
+        println(__FUNCTION__)
+        if canSubmit() {
+            if currentUser != nil {
+                let hud = MBProgressHUD(view: self.view)
+                hud.labelText = "Updating"
+                hud.delegate = self
+                self.view.addSubview(hud)
+                self.view.bringSubviewToFront(hud)
+                hud.show(true)
+                
+                currentUser.fullName = tfFullName.text
+                currentUser.phone = tfPhoneNumber.text
+                currentUser.password = tfPassword.text
+                QBRequest.updateUser(currentUser, successBlock: { (response: QBResponse!, user: QBUUser!) -> Void in
+                    let alert = UIAlertView(title: "Success", message: "Update informations success", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
+                    self.getAllInformations()
+                    hud.hide(true)
+                    }, errorBlock: { (response: QBResponse!) -> Void in
+                    let alert = UIAlertView(title: "ERROR!", message: "Fail to update informations", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
+                    hud.hide(true)
+                        println("ERROR: \(response.error)")
+                })
+            }
+        } else {
+            let alert = UIAlertView(title: "ERROR", message: "All field can not be empty. Password must atleast 8 characters", delegate: self, cancelButtonTitle: "OK")
+            alert.show()
+        }
+    }
+    
+    
+    //////////////////////////////////////////////////////////
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if string == "\n" {
+            textField.resignFirstResponder()
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        textField.resignFirstResponder()
+    }
+    
+    /////////////////////////////////////////////
+    func canSubmit() -> Bool {
+        if tfFullName.text.isEmpty {return false}
+        if tfPhoneNumber.text.isEmpty {return false}
+        if tfPassword.text != tfConfirmPass.text {return false}
+        if countElements(tfPassword.text) < 8 {return false}
         return true
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
