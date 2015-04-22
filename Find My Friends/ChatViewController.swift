@@ -16,7 +16,7 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
     @IBOutlet weak var messageTextField: UITextField!
     
     var messages: NSMutableArray!
-    var chatRoom: QBChatRoom!
+    var chatRoom: QBChatRoom! = QBChatRoom()
     var dialog: QBChatDialog!
 
     override func viewDidLoad() {
@@ -24,7 +24,9 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         
         messages = NSMutableArray()
         chatTableView.separatorStyle = UITableViewCellSeparatorStyle.None
-
+        chatTableView.delegate = self
+        chatTableView.dataSource = self
+        messageTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,7 +45,7 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "chatRoomDidReceiveMessageNotification:", name: kNotificationDidReceiveNewMessageFromRoom, object: nil)
         
         
-
+/*
 //        if dialog.type == QBChatDialogTypePrivate {
 //            var recipent: QBUUser = LocalStorageService.sharedInstance().usersAsDictionary[]
 //            self.title = recipent.login
@@ -61,6 +63,7 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         
         // GET MESSAGES HISTORY
         QBChat.messagesWithDialogID(dialog.ID, extendedRequest: nil, delegate: self)
+*/
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -75,12 +78,12 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
     }
     
     @IBAction func sendMessage(sender: AnyObject) {
-        if messageTextField.text.isEmpty {
-            return
-        }
+//        if messageTextField.text {
+//            return
+//        }
         
         var message: QBChatMessage = QBChatMessage()
-        message.text = messageTextField.text
+        message.text = "Hi"
         var params = NSMutableDictionary()
         params["save_to_history"] = true
         message.customParameters = params
@@ -173,8 +176,8 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
     
     func keyboardWillShow(note: NSNotification) {
         UIView.animateWithDuration(0.3, animations: { () -> Void in
-            self.messageTextField.transform = CGAffineTransformMakeTranslation(0, -250)
-            self.btnSendMsg.transform = CGAffineTransformMakeTranslation(0, -250)
+            self.messageTextField.transform = CGAffineTransformMakeTranslation(0, -300)
+            self.btnSendMsg.transform = CGAffineTransformMakeTranslation(0, -300)
             self.chatTableView.frame = CGRectMake(self.chatTableView.frame.origin.x, self.chatTableView.frame.origin.y, self.chatTableView.frame.size.width, self.chatTableView.frame.size.height - 252)
         })
     }

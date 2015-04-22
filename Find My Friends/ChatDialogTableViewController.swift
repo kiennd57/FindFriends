@@ -10,8 +10,8 @@ import UIKit
 
 class ChatDialogTableViewController: UITableViewController, QBActionStatusDelegate {
     
-    var createdDialog: QBChatDialog!
-    var dialogs: NSMutableArray!
+    var createdDialog: QBChatDialog! = QBChatDialog()
+    var dialogs: NSMutableArray! = NSMutableArray()
     
     
     override func viewDidLoad() {
@@ -35,9 +35,9 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if self.createdDialog != nil {
-            self.performSegueWithIdentifier("ShowSplashViewControllerSegue", sender: nil)
-        }
+//        if self.createdDialog != nil {
+//            self.performSegueWithIdentifier("ShowSplashViewControllerSegue", sender: nil)
+//        }
         
     }
 
@@ -54,11 +54,10 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
                 desController.dialog = self.createdDialog
                 self.createdDialog = nil
             } else {
-                //to be added
-//                let dialog = self.dialogs.objectAtIndex(<#index: Int#>)
-//                desController.dialog = dialog
+                let cell = sender as ChatDialogTableViewCell
+                let dialog = self.dialogs.objectAtIndex(cell.tag) as QBChatDialog
+                desController.dialog = dialog
             }
-
         }
     }
 

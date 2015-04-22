@@ -99,15 +99,12 @@ class ChatUserViewController: UIViewController, NMPaginatorDelegate, UITableView
     func completedWithResult(result: QBResult!) {
         if result.success && result.isKindOfClass(QBChatDialogResult) {
             var dialogRes = result as QBChatDialogResult
-            for var i = 0; i < self.navigationController?.viewControllers.count; i++ {
-                if (self.navigationController?.viewControllers[i].isKindOfClass(ChatDialogTableViewController) != nil) {
-                    let dialogsViewController = self.navigationController?.viewControllers[i] as ChatDialogTableViewController
-                    dialogsViewController.createdDialog = dialogRes.dialog
-                    self.navigationController?.popViewControllerAnimated(true)
-                }
-            }
+            
+            let dialogsViewController = self.navigationController?.viewControllers[1] as ChatDialogTableViewController
+            dialogsViewController.createdDialog = dialogRes.dialog
+            self.navigationController?.popViewControllerAnimated(true)
         } else {
-            let alert = UIAlertView(title: "ERROR", message: "\(result.errors)", delegate: nil, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: "ERROR", message: "\(result.description)", delegate: nil, cancelButtonTitle: "OK")
             alert.show()
         }
     }
