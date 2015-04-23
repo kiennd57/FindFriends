@@ -25,8 +25,8 @@ static UIImage *aquaBubble;
     [messageDateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];
     
     // init bubbles
-    orangeBubble = [[UIImage imageNamed:@"orangeBubble"] stretchableImageWithLeftCapWidth:24  topCapHeight:15];
-    aquaBubble = [[UIImage imageNamed:@"aquaBubble"] stretchableImageWithLeftCapWidth:24  topCapHeight:15];
+    orangeBubble = [[UIImage imageNamed:@"orange"] stretchableImageWithLeftCapWidth:24  topCapHeight:15];
+    aquaBubble = [[UIImage imageNamed:@"aqua"] stretchableImageWithLeftCapWidth:24  topCapHeight:15];
 }
 
 + (CGFloat)heightForCellWithMessage:(QBChatAbstractMessage *)message
@@ -39,7 +39,6 @@ static UIImage *aquaBubble;
                    constrainedToSize:textSize
                        lineBreakMode:NSLineBreakByWordWrapping];
     
-	
 	size.height += 45.0;
 	return size.height;
 
@@ -87,7 +86,7 @@ static UIImage *aquaBubble;
     NSString *time = [messageDateFormatter stringFromDate:message.datetime];
     
     // Left/Right bubble
-    if ([LocalStorageService sharedInstance].currentUser.ID == message.senderID) {
+    if ([LocalStorageService sharedInstance].currentUser.ID != message.senderID) {
         [self.messageTextView setFrame:CGRectMake(padding, padding+5, size.width, size.height+padding)];
         [self.messageTextView sizeToFit];
         
@@ -96,7 +95,8 @@ static UIImage *aquaBubble;
         self.backgroundImageView.image = orangeBubble;
         
         self.dateLabel.textAlignment = NSTextAlignmentLeft;
-        self.dateLabel.text = [NSString stringWithFormat:@"%@, %@", [[LocalStorageService sharedInstance].currentUser login], time];
+//        self.dateLabel.text = [NSString stringWithFormat:@"%@, %@", [[LocalStorageService sharedInstance].currentUser login], time];
+        self.dateLabel.text = [NSString stringWithFormat:@"%@", [[LocalStorageService sharedInstance].currentUser login]];
         
     } else {
         [self.messageTextView setFrame:CGRectMake(320-size.width-padding/2, padding+5, size.width, size.height+padding)];
@@ -107,7 +107,8 @@ static UIImage *aquaBubble;
         self.backgroundImageView.image = aquaBubble;
         
         self.dateLabel.textAlignment = NSTextAlignmentRight;
-        self.dateLabel.text = [NSString stringWithFormat:@"%lu, %@", (unsigned long)message.senderID, time];
+//        self.dateLabel.text = [NSString stringWithFormat:@"%lu, %@", (unsigned long)message.senderID, time];
+        self.dateLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)message.senderID];
     }
 }
 

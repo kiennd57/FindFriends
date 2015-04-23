@@ -1984,7 +1984,6 @@
                                     <outlet property="lastMessage" destination="mXi-tn-QBw" id="lYv-ch-Sn4"/>
                                     <outlet property="userImage" destination="XTV-Vk-CvK" id="Uhn-iG-W66"/>
                                     <outlet property="userName" destination="8o9-ua-8du" id="ocy-cV-ayw"/>
-                                    <segue destination="qyG-Up-Dmt" kind="show" identifier="ShowChatViewControllerSegue" id="b0p-rO-6lX"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1994,6 +1993,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="wgU-L2-3bs">
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="w7i-j3-MQS"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DKR-1B-RQe">
                             <connections>
                                 <action selector="createDialog:" destination="faR-x5-zty" id="VJF-a5-wDI"/>
@@ -2001,8 +2001,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="menuButton" destination="w7i-j3-MQS" id="Hwk-mr-cm4"/>
                         <segue destination="27r-uW-O7a" kind="show" identifier="ShowUsersViewControllerSegue" id="XFz-XD-qn8"/>
-                        <segue destination="qyG-Up-Dmt" kind="show" identifier="ShowNewChatViewControllerSegue" id="AxA-Zw-eOA"/>
+                        <segue destination="qyG-Up-Dmt" kind="show" identifier="ShowChatViewControllerSegue" id="8TA-za-zmv"/>
+                        <segue destination="qyG-Up-Dmt" kind="showDetail" identifier="" id="3H7-Lx-B07"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jEI-gz-c70" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2038,6 +2040,9 @@
                                         <include reference="WyE-vR-OBk"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="qyG-Up-Dmt" id="JMe-ch-Cs4"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IyD-yG-5Id">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -2063,12 +2068,16 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="sendMessage:" destination="qyG-Up-Dmt" eventType="touchUpInside" id="FlQ-YO-nhz"/>
+                                    <action selector="sendMessage:" destination="qyG-Up-Dmt" eventType="touchUpInside" id="soU-JO-WIj"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GcT-cV-oLH">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="qyG-Up-Dmt" id="ofA-20-M3w"/>
+                                    <outlet property="delegate" destination="qyG-Up-Dmt" id="k0d-jB-vb3"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2090,15 +2099,15 @@
                                 <exclude reference="GcT-cV-oLH"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Gym-Ha-0ys"/>
-                                <exclude reference="gFN-Vq-cji"/>
-                                <exclude reference="mtp-st-nL0"/>
                                 <exclude reference="4Eg-ut-Xzy"/>
                                 <exclude reference="Rap-Pw-8cw"/>
                                 <exclude reference="l0L-JV-mcQ"/>
                                 <exclude reference="S7Y-kR-KnH"/>
                                 <exclude reference="Zje-Ya-9qR"/>
                                 <exclude reference="hp7-0Q-KY7"/>
+                                <exclude reference="Gym-Ha-0ys"/>
+                                <exclude reference="gFN-Vq-cji"/>
+                                <exclude reference="mtp-st-nL0"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -2108,22 +2117,22 @@
                                 <include reference="GcT-cV-oLH"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Gym-Ha-0ys"/>
-                                <include reference="gFN-Vq-cji"/>
-                                <include reference="mtp-st-nL0"/>
                                 <include reference="4Eg-ut-Xzy"/>
                                 <include reference="Rap-Pw-8cw"/>
                                 <include reference="l0L-JV-mcQ"/>
                                 <include reference="S7Y-kR-KnH"/>
                                 <include reference="Zje-Ya-9qR"/>
                                 <include reference="hp7-0Q-KY7"/>
+                                <include reference="Gym-Ha-0ys"/>
+                                <include reference="gFN-Vq-cji"/>
+                                <include reference="mtp-st-nL0"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="btnSendMsg" destination="IyD-yG-5Id" id="Srj-pN-NVs"/>
-                        <outlet property="chatTableView" destination="GcT-cV-oLH" id="53l-aI-gpu"/>
-                        <outlet property="messageTextField" destination="FRL-3j-WrU" id="Psd-xC-8aV"/>
+                        <outlet property="messageTextField" destination="FRL-3j-WrU" id="VGZ-9o-ISB"/>
+                        <outlet property="messagesTableView" destination="GcT-cV-oLH" id="WG8-fv-q45"/>
+                        <outlet property="sendMessageButton" destination="IyD-yG-5Id" id="iUN-cn-URH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pht-Bp-2nx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2207,7 +2216,8 @@
                                                             <exclude reference="fa4-ry-t3R"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="61" y="10" width="251" height="40"/>
                                                         <mask key="constraints">
                                                             <include reference="fa4-ry-t3R"/>
                                                         </mask>
@@ -2272,13 +2282,13 @@
                                 <exclude reference="5mD-I8-fYE"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="5PD-bx-3uM"/>
-                                <exclude reference="Aqj-Qa-SX4"/>
-                                <exclude reference="IRS-7c-tDu"/>
+                                <exclude reference="dK9-QI-0eE"/>
                                 <exclude reference="52H-eD-6um"/>
                                 <exclude reference="aIA-uq-Asn"/>
                                 <exclude reference="rcL-a5-u3D"/>
-                                <exclude reference="dK9-QI-0eE"/>
+                                <exclude reference="5PD-bx-3uM"/>
+                                <exclude reference="Aqj-Qa-SX4"/>
+                                <exclude reference="IRS-7c-tDu"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -2287,13 +2297,13 @@
                                 <include reference="5mD-I8-fYE"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="5PD-bx-3uM"/>
-                                <include reference="Aqj-Qa-SX4"/>
-                                <include reference="IRS-7c-tDu"/>
+                                <include reference="dK9-QI-0eE"/>
                                 <include reference="52H-eD-6um"/>
                                 <include reference="aIA-uq-Asn"/>
                                 <include reference="rcL-a5-u3D"/>
-                                <include reference="dK9-QI-0eE"/>
+                                <include reference="5PD-bx-3uM"/>
+                                <include reference="Aqj-Qa-SX4"/>
+                                <include reference="IRS-7c-tDu"/>
                             </mask>
                         </variation>
                     </view>
@@ -4860,6 +4870,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="3Nb-cz-SkR"/>
-        <segue reference="AxA-Zw-eOA"/>
+        <segue reference="8TA-za-zmv"/>
     </inferredMetricsTieBreakers>
 </document>

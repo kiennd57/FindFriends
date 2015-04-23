@@ -22,7 +22,6 @@
 		A468208A1AB863B6006EAD74 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46820891AB863B6006EAD74 /* ChatViewController.swift */; };
 		A468208D1AB8666A006EAD74 /* ChatService.m in Sources */ = {isa = PBXBuildFile; fileRef = A468208C1AB8666A006EAD74 /* ChatService.m */; };
 		A46820921AB86BD3006EAD74 /* ChatMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A46820911AB86BD3006EAD74 /* ChatMessageTableViewCell.m */; };
-		A46820941AB87415006EAD74 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46820931AB87415006EAD74 /* ChatListViewController.swift */; };
 		A46E917E1AB6A68900A7BDD9 /* Quickblox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A46E916D1AB6A68900A7BDD9 /* Quickblox.framework */; };
 		A46E91941AB6A7E600A7BDD9 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A46E91931AB6A7E600A7BDD9 /* libz.1.2.5.dylib */; };
 		A46E91961AB6A7EB00A7BDD9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A46E91951AB6A7EB00A7BDD9 /* Foundation.framework */; };
@@ -53,6 +52,8 @@
 		A49A02711AE13DA10062A13F /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A02701AE13DA10062A13F /* UserList.swift */; };
 		A49A02731AE13DBC0062A13F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A02721AE13DBC0062A13F /* User.swift */; };
 		A49BD5491AB9664A00E23A38 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49BD5481AB9664A00E23A38 /* LaunchScreen.xib */; };
+		A4E0DEE31AE8B1BC002A7808 /* aqua.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E0DEE21AE8B1BC002A7808 /* aqua.png */; };
+		A4E0DEE51AE8B28C002A7808 /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E0DEE41AE8B28C002A7808 /* orange.png */; };
 		A4E2E5A61ABA980100A1A745 /* logout@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E2E5A41ABA980100A1A745 /* logout@1x.png */; };
 		A4E2E5A71ABA980100A1A745 /* logout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E2E5A51ABA980100A1A745 /* logout@2x.png */; };
 		A4E2E5AA1ABA98A800A1A745 /* support@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E2E5A81ABA98A800A1A745 /* support@1x.png */; };
@@ -161,7 +162,6 @@
 		A468208C1AB8666A006EAD74 /* ChatService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatService.m; sourceTree = "<group>"; };
 		A46820901AB86BD3006EAD74 /* ChatMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageTableViewCell.h; sourceTree = "<group>"; };
 		A46820911AB86BD3006EAD74 /* ChatMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageTableViewCell.m; sourceTree = "<group>"; };
-		A46820931AB87415006EAD74 /* ChatListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		A46E916D1AB6A68900A7BDD9 /* Quickblox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quickblox.framework; sourceTree = "<group>"; };
 		A46E91931AB6A7E600A7BDD9 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		A46E91951AB6A7EB00A7BDD9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -195,6 +195,8 @@
 		A49A02701AE13DA10062A13F /* UserList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
 		A49A02721AE13DBC0062A13F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A49BD5481AB9664A00E23A38 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		A4E0DEE21AE8B1BC002A7808 /* aqua.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aqua.png; sourceTree = "<group>"; };
+		A4E0DEE41AE8B28C002A7808 /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange.png; sourceTree = "<group>"; };
 		A4E2E5A41ABA980100A1A745 /* logout@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logout@1x.png"; sourceTree = "<group>"; };
 		A4E2E5A51ABA980100A1A745 /* logout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logout@2x.png"; sourceTree = "<group>"; };
 		A4E2E5A81ABA98A800A1A745 /* support@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "support@1x.png"; sourceTree = "<group>"; };
@@ -350,18 +352,13 @@
 		A46820881AB86246006EAD74 /* CHAT */ = {
 			isa = PBXGroup;
 			children = (
-				A46820891AB863B6006EAD74 /* ChatViewController.swift */,
-				A46820901AB86BD3006EAD74 /* ChatMessageTableViewCell.h */,
-				A46820911AB86BD3006EAD74 /* ChatMessageTableViewCell.m */,
+				A4E74C9E1AE75469008E4BC5 /* Create New Chat */,
+				A4E74C9D1AE7545C008E4BC5 /* Chat View */,
+				A4E74C9C1AE7544F008E4BC5 /* Chat list */,
 				A468208B1AB8666A006EAD74 /* ChatService.h */,
 				A468208C1AB8666A006EAD74 /* ChatService.m */,
-				A46820931AB87415006EAD74 /* ChatListViewController.swift */,
 				A43CD7881AB6C9AF00554A23 /* LocalStorageService.h */,
 				A43CD7891AB6C9AF00554A23 /* LocalStorageService.m */,
-				A41EB1181ABBF59D001BB355 /* ChatDialogTableViewCell.swift */,
-				A41EB11A1ABBF5C0001BB355 /* ChatDialogTableViewController.swift */,
-				A4FA40D01AE6589D009FC257 /* ChatUserViewController.swift */,
-				A4FA40D21AE660F1009FC257 /* UserChatCell.swift */,
 			);
 			name = CHAT;
 			sourceTree = "<group>";
@@ -406,6 +403,43 @@
 				A49A02721AE13DBC0062A13F /* User.swift */,
 			);
 			name = "List Users";
+			sourceTree = "<group>";
+		};
+		A4E0DEE11AE8B1A1002A7808 /* Message Image */ = {
+			isa = PBXGroup;
+			children = (
+				A4E0DEE41AE8B28C002A7808 /* orange.png */,
+				A4E0DEE21AE8B1BC002A7808 /* aqua.png */,
+			);
+			name = "Message Image";
+			sourceTree = "<group>";
+		};
+		A4E74C9C1AE7544F008E4BC5 /* Chat list */ = {
+			isa = PBXGroup;
+			children = (
+				A41EB1181ABBF59D001BB355 /* ChatDialogTableViewCell.swift */,
+				A41EB11A1ABBF5C0001BB355 /* ChatDialogTableViewController.swift */,
+			);
+			name = "Chat list";
+			sourceTree = "<group>";
+		};
+		A4E74C9D1AE7545C008E4BC5 /* Chat View */ = {
+			isa = PBXGroup;
+			children = (
+				A46820891AB863B6006EAD74 /* ChatViewController.swift */,
+				A46820901AB86BD3006EAD74 /* ChatMessageTableViewCell.h */,
+				A46820911AB86BD3006EAD74 /* ChatMessageTableViewCell.m */,
+			);
+			name = "Chat View";
+			sourceTree = "<group>";
+		};
+		A4E74C9E1AE75469008E4BC5 /* Create New Chat */ = {
+			isa = PBXGroup;
+			children = (
+				A4FA40D01AE6589D009FC257 /* ChatUserViewController.swift */,
+				A4FA40D21AE660F1009FC257 /* UserChatCell.swift */,
+			);
+			name = "Create New Chat";
 			sourceTree = "<group>";
 		};
 		A4EDB5B41ABD598500CDEB7C /* Profile */ = {
@@ -604,7 +638,7 @@
 		A4FAB7221AB4251C007047A7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A4F1F8A31AE365DB007167D2 /* Event Type */,
+				A4E0DEE11AE8B1A1002A7808 /* Message Image */,
 				A4FAB7231AB42523007047A7 /* Images */,
 			);
 			name = Resources;
@@ -613,6 +647,7 @@
 		A4FAB7231AB42523007047A7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A4F1F8A31AE365DB007167D2 /* Event Type */,
 				A4F1F8D21AE3A793007167D2 /* line.png */,
 				A4EDB5E21ABE763A00CDEB7C /* attention.png */,
 				A4EDB5E01ABE75DE00CDEB7C /* alarm54.png */,
@@ -775,11 +810,13 @@
 				A4EDB5D51ABE703400CDEB7C /* dinner.png in Resources */,
 				A4F1F8BF1AE36656007167D2 /* e_seminar.png in Resources */,
 				A4EDB5DF1ABE757300CDEB7C /* placeholder9.png in Resources */,
+				A4E0DEE51AE8B28C002A7808 /* orange.png in Resources */,
 				A4ECECC01ABA7C6500E52BB1 /* setting@1x.png in Resources */,
 				A4EDB5DD1ABE754400CDEB7C /* clock96.png in Resources */,
 				A4ECECB81ABA792100E52BB1 /* message@1x.png in Resources */,
 				A4F1F8B71AE36656007167D2 /* e_dinner.png in Resources */,
 				A4ECECBF1ABA7C6500E52BB1 /* notification@2x.png in Resources */,
+				A4E0DEE31AE8B1BC002A7808 /* aqua.png in Resources */,
 				A4F1F8B61AE36656007167D2 /* e_conference.png in Resources */,
 				A4F1F8CD1AE386C6007167D2 /* UserInvitedTableViewCell.xib in Resources */,
 				A4E2E5B21ABA9E7800A1A745 /* feedback@1x.png in Resources */,
@@ -864,7 +901,6 @@
 				A4F1F8A21AE35F04007167D2 /* EventTypeTableViewCell.swift in Sources */,
 				A495B6331AB92FD200DF3FA5 /* RootViewController.swift in Sources */,
 				A41EB11B1ABBF5C1001BB355 /* ChatDialogTableViewController.swift in Sources */,
-				A46820941AB87415006EAD74 /* ChatListViewController.swift in Sources */,
 				A4FAB71F1AB4237D007047A7 /* SWRevealViewController.m in Sources */,
 				A4E2E5B51ABAC08500A1A745 /* CheckinViewController.swift in Sources */,
 				A4606B9D1AB70EFB00AD74B4 /* MyCustomAnnotation.swift in Sources */,

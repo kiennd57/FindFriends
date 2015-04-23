@@ -13,20 +13,27 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
     var createdDialog: QBChatDialog! = QBChatDialog()
     var dialogs: NSMutableArray! = NSMutableArray()
     
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+    var selectedDialog: QBChatDialog! = QBChatDialog()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        //get dialog
+        // Get chat dialog list
         if LocalStorageService.sharedInstance().currentUser != nil {
             QBChat.dialogsWithExtendedRequest(nil, delegate: self)
         }
@@ -38,9 +45,7 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
 //        if self.createdDialog != nil {
 //            self.performSegueWithIdentifier("ShowSplashViewControllerSegue", sender: nil)
 //        }
-        
     }
-
     
     @IBAction func createDialog(sender: AnyObject) {
         self.performSegueWithIdentifier("ShowUsersViewControllerSegue", sender: nil)
@@ -48,16 +53,21 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.destinationViewController.isKindOfClass(ChatViewController) {
+//        if segue.destinationViewController.isKindOfClass(ChatViewController) {
+//            let desController = segue.destinationViewController as ChatViewController
+//            if self.createdDialog != nil {
+//                desController.dialog = self.createdDialog
+//                self.createdDialog = nil
+//            } else {
+//                let cell = sender as ChatDialogTableViewCell
+//                let dialog = self.dialogs.objectAtIndex(cell.tag) as QBChatDialog
+//                desController.dialog = dialog
+//            }
+//        }
+        
+        if segue.identifier == "ShowChatViewControllerSegue" {
             let desController = segue.destinationViewController as ChatViewController
-            if self.createdDialog != nil {
-                desController.dialog = self.createdDialog
-                self.createdDialog = nil
-            } else {
-                let cell = sender as ChatDialogTableViewCell
-                let dialog = self.dialogs.objectAtIndex(cell.tag) as QBChatDialog
-                desController.dialog = dialog
-            }
+            desController.dialog = selectedDialog
         }
     }
 
@@ -74,21 +84,26 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
         // Return the number of rows in the section.
         return self.dialogs.count
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("chatDialogTableViewCell") as ChatDialogTableViewCell
 
         let chatDialog = self.dialogs.objectAtIndex(indexPath.row) as QBChatDialog
+        
+        
         cell.tag = indexPath.row
         
         cell.userName.text = chatDialog.name
+        cell.lastMessage.text = "Fuck you"
 
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        selectedDialog = self.dialogs.objectAtIndex(indexPath.row) as QBChatDialog
+        self.performSegueWithIdentifier("ShowChatViewControllerSegue", sender: nil)
     }
     
     /////////////////////quickbloxAPI
