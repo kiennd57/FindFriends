@@ -95,7 +95,23 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
         
         cell.userName.text = chatDialog.name
         cell.lastMessage.text = "Fuck you"
-
+        
+        switch chatDialog.type.value {
+        case QBChatDialogTypePrivate.value:
+            cell.lastMessage.text = "Private chat"
+            let dictionary: [NSObject: AnyObject] = LocalStorageService.sharedInstance().usersAsDictionary
+//            let recipient = dictionary[chatDialog.recipientID] as QBUUser
+//            cell.userName.text = recipient.login
+        case QBChatDialogTypeGroup.value:
+            cell.lastMessage.text = "Group chat"
+            cell.userName.text = chatDialog.name
+        case QBChatDialogTypePublicGroup.value:
+            cell.lastMessage.text = "Group chat"
+            cell.userName.text = chatDialog.name
+        default:
+            break
+        }
+        
         return cell
     }
     

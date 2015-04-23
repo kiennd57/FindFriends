@@ -119,7 +119,7 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
         
         QBRequest.objectsWithClassName("Event", successBlock: { (response: QBResponse!, object: [AnyObject]!) -> Void in
             self.eventList = object as NSArray
-//            self.eventList = self.sortEventsByTimeRemaining(self.eventList)
+            self.eventList = self.sortEventTime(self.eventList)
             self.tableView.reloadData()
             hud.hide(true)
             }) { (response: QBResponse!) -> Void in
@@ -139,32 +139,30 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
     }
     
     ///////////////////////////////////////////////////////////////////////
-    func sortEventsByTimeRemaining(inputEvents: NSArray!) -> NSArray {
-        var tempList = NSMutableArray()
-        tempList = NSMutableArray(array: inputEvents)
-        for var i = 0; i < inputEvents.count - 1; i++ {
-            var event = inputEvents.objectAtIndex(i) as QBCOCustomObject
-            for var j = 1; j < inputEvents.count; j++ {
-                var compareEvent = inputEvents.objectAtIndex(j) as QBCOCustomObject
-                if timeRemaining(event) > timeRemaining(compareEvent) {
-                    var tmp = QBCOCustomObject()
-                    tempList.replaceObjectAtIndex(i, withObject: compareEvent)
-                    tempList.replaceObjectAtIndex(j, withObject: event)
+    func sortEventTime(eventList: NSArray!) -> NSArray{
+        var tmpList = NSMutableArray(array: eventList)
+        for var i = 0; i < tmpList.count - 1; i++ {
+            for var j = i + 1; j < tmpList.count; j++ {
+                var a = self.timeRemaining(tmpList.objectAtIndex(i) as QBCOCustomObject)
+                var b = self.timeRemaining(tmpList.objectAtIndex(j) as QBCOCustomObject)
+                if(a > b){
+                    tmpList.exchangeObjectAtIndex(i, withObjectAtIndex: j)
                 }
             }
         }
-        return tempList
+        return tmpList
     }
     
     func timeRemaining(event: QBCOCustomObject!) -> Int {
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-        let currentDate = NSDate()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+
         let str = event.fields["eventTime"] as String
-        let eventDateStr = "\(str):00"
-        let eventDate = dateFormatter.dateFromString(eventDateStr)
-        let theSecond = eventDate?.timeIntervalSinceDate(currentDate)
+
+        let eventDate = dateFormatter.dateFromString(str)
         
-        return Int(theSecond!)
+        let s = eventDate?.timeIntervalSince1970
+        
+        return Int(s!)
     }
 }

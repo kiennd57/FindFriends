@@ -44,31 +44,20 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         
         //Set title
         if self.dialog.type.value == QBChatDialogTypePrivate.value {
-//            let recipient =
+            let dictionary: [NSObject: AnyObject] = LocalStorageService.sharedInstance().usersAsDictionary
+            let recipient = dictionary[self.dialog.recipientID] as QBUUser
+            self.title = recipient.login
         } else {
-            println("This is chat group")
+            self.title = self.dialog.name
         }
         
-        
-        
-//        // Set title
-//        if(self.dialog.type == QBChatDialogTypePrivate){
-//            QBUUser *recipient = [LocalStorageService shared].usersAsDictionary[@(self.dialog.recipientID)];
-//            self.title = recipient.login == nil ? recipient.email : recipient.login;
-//        }else{
-//            self.title = self.dialog.name;
-//        }
-//        
-//        // Join room
-//        if(self.dialog.type != QBChatDialogTypePrivate){
-//            self.chatRoom = [self.dialog chatRoom];
-//            [[ChatService instance] joinRoom:self.chatRoom completionBlock:^(QBChatRoom *joinedChatRoom) {
-//                // joined
-//                }];
-//        }
-//        
-//        // get messages history
-//        [QBChat messagesWithDialogID:self.dialog.ID extendedRequest:nil delegate:self];
+        // Join room
+        if self.dialog.type.value != QBChatDialogTypePrivate.value {
+            self.chatRoom = self.dialog.chatRoom
+            ChatService.instance().joinRoom(self.chatRoom, completionBlock: { (joinedChatRoom: QBChatRoom!) -> Void in
+                // JOINED
+            })
+        }
         
         // get message history
         if self.dialog.ID != nil {
@@ -91,34 +80,36 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
     }
 
     @IBAction func sendMessage(sender: AnyObject) {
-//        if self.messageTextField.text.isEmpty {
-//            return
-//        }
+        
+        if self.messageTextField.text.isEmpty {
+            return
+        }
+        
+        //Create a message
         var message = QBChatMessage()
         message.text = messageTextField.text
         var params = NSMutableDictionary()
         params["save_to_history"] = true
         message.customParameters = params
         
-        // Chat Private
-        //if self.dialog.type == QBChatDialogTypePrivate {
+        // if chat private : 1 - 1
+        if self.dialog.type.value == QBChatDialogTypePrivate.value {
             message.recipientID = UInt(self.dialog.recipientID)
             message.senderID = LocalStorageService.sharedInstance().currentUser.ID
-        
+            
             ChatService.instance().sendMessage(message)
-        
             self.messages.addObject(message)
-            println("COUNT: \(self.messages.count)")
-        //} else {
-        //    ChatService.instance().sendMessage(message, toRoom: self.chatRoom)
-        //}
+        } else {
+            ChatService.instance().sendMessage(message, toRoom: self.chatRoom)
+        }
         
         self.messagesTableView.reloadData()
         if self.messages.count > 0 {
-            self.messagesTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self.messages.count - 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+            self.messagesTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self.messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
         }
-        //clean textfield
+        
         self.messageTextField.text = nil
+
     }
 
     func chatDidReceiveMessageNotification(notification: NSNotification) {
@@ -137,7 +128,18 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
     }
     
     func chatRoomDidReceiveMessageNotification(notification: NSNotification) {
+        var dictionary: [NSObject: AnyObject] = notification.userInfo!
+        var message = dictionary[kMessage] as QBChatMessage
+        let roomJID = dictionary[kRoomJID] as NSString
+        if self.chatRoom.JID != roomJID {
+            return
+        }
         
+        self.messages.addObject(message)
+        self.messagesTableView.reloadData()
+        if self.messages.count > 0 {
+            self.messagesTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self.messages.count - 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+        }
     }
 
     
@@ -190,11 +192,14 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         if result.success && result.isKindOfClass(QBChatHistoryMessageResult) {
             let res = result as QBChatHistoryMessageResult
             var theMessages = res.messages
-            if theMessages.count > 0 {
-                self.messages.addObjectsFromArray(theMessages.mutableCopy() as NSArray)
-                self.messagesTableView.reloadData()
-                self.messagesTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self.messages.count - 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+            if theMessages != nil {
+                if theMessages.count > 0 {
+                    self.messages.addObjectsFromArray(theMessages.mutableCopy() as NSArray)
+                    self.messagesTableView.reloadData()
+                    self.messagesTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self.messages.count - 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+                }
             }
+            
         }
     }
 }

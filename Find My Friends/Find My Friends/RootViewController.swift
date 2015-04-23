@@ -109,14 +109,14 @@ class RootViewController: UIViewController, MBProgressHUDDelegate, QBActionStatu
         let password = self.userDefault.objectForKey("currentPassword") as NSString!
         
         var extendedAuthRequest = QBSessionParameters()
-        extendedAuthRequest.userLogin = "phongnn"
-        extendedAuthRequest.userPassword = "Matkhaulagi"
+        extendedAuthRequest.userLogin = "embe"
+        extendedAuthRequest.userPassword = "12345678"
         
         QBRequest.createSessionWithExtendedParameters(extendedAuthRequest, successBlock: { (response: QBResponse!, session: QBASession!) -> Void in
             var currentUser = QBUUser()
             currentUser.ID = session.userID
-            currentUser.login = "phongnn"
-            currentUser.password = "Matkhaulagi"
+            currentUser.login = "embe"
+            currentUser.password = "12345678"
             
             LocalStorageService.sharedInstance().currentUser = currentUser
             

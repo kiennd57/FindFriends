@@ -15,8 +15,6 @@ class ChatUserViewController: UIViewController, NMPaginatorDelegate, UITableView
     var selectedUser: NSMutableArray!
     var paginator: UsersPaginator!
 
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +24,7 @@ class ChatUserViewController: UIViewController, NMPaginatorDelegate, UITableView
         
         usersTableView.delegate = self
         usersTableView.dataSource = self
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,7 +52,12 @@ class ChatUserViewController: UIViewController, NMPaginatorDelegate, UITableView
             selectedUsersName.addObject(user.login)
         }
         chatDialog.occupantIDs = selectedUsersIds
-        chatDialog.type = QBChatDialogTypePrivate
+        if self.selectedUser.count == 1 {
+            chatDialog.type = QBChatDialogTypePrivate
+        } else {
+            chatDialog.name = selectedUsersName.componentsJoinedByString(",")
+            chatDialog.type = QBChatDialogTypeGroup
+        }
 
         QBChat.createDialog(chatDialog, delegate: self)
     }
@@ -99,8 +103,8 @@ class ChatUserViewController: UIViewController, NMPaginatorDelegate, UITableView
     func completedWithResult(result: QBResult!) {
         if result.success && result.isKindOfClass(QBChatDialogResult) {
             var dialogRes = result as QBChatDialogResult
-            
-            let dialogsViewController = self.navigationController?.viewControllers[1] as ChatDialogTableViewController
+            let countView = self.navigationController?.viewControllers.count
+            let dialogsViewController = self.navigationController?.viewControllers[countView! - 2] as ChatDialogTableViewController
             dialogsViewController.createdDialog = dialogRes.dialog
             self.navigationController?.popViewControllerAnimated(true)
         } else {

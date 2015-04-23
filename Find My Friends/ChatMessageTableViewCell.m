@@ -96,7 +96,11 @@ static UIImage *aquaBubble;
         
         self.dateLabel.textAlignment = NSTextAlignmentLeft;
 //        self.dateLabel.text = [NSString stringWithFormat:@"%@, %@", [[LocalStorageService sharedInstance].currentUser login], time];
-        self.dateLabel.text = [NSString stringWithFormat:@"%@", [[LocalStorageService sharedInstance].currentUser login]];
+        
+        QBUUser *recipient = [LocalStorageService sharedInstance].usersAsDictionary[@(message.senderID)];
+        
+        self.dateLabel.text = [NSString stringWithFormat:@"%@", recipient.login];
+//        self.dateLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)message.recipientID];
         
     } else {
         [self.messageTextView setFrame:CGRectMake(320-size.width-padding/2, padding+5, size.width, size.height+padding)];
@@ -108,7 +112,9 @@ static UIImage *aquaBubble;
         
         self.dateLabel.textAlignment = NSTextAlignmentRight;
 //        self.dateLabel.text = [NSString stringWithFormat:@"%lu, %@", (unsigned long)message.senderID, time];
-        self.dateLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)message.senderID];
+        QBUUser *recipient = [LocalStorageService sharedInstance].usersAsDictionary[@([[LocalStorageService sharedInstance] currentUser].ID)];
+        
+        self.dateLabel.text = [NSString stringWithFormat:@"%@", recipient.login];
     }
 }
 
