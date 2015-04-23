@@ -1,4 +1,4 @@
-//
+
 //  ChatUserViewController.swift
 //  Find My Friends
 //
@@ -14,6 +14,7 @@ class ChatUserViewController: UIViewController, NMPaginatorDelegate, UITableView
     var users: NSMutableArray!
     var selectedUser: NSMutableArray!
     var paginator: UsersPaginator!
+    var userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
 
     override func viewDidLoad() {
         super.viewDidLoad()

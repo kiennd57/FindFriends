@@ -1984,6 +1984,7 @@
                                     <outlet property="lastMessage" destination="mXi-tn-QBw" id="lYv-ch-Sn4"/>
                                     <outlet property="userImage" destination="XTV-Vk-CvK" id="Uhn-iG-W66"/>
                                     <outlet property="userName" destination="8o9-ua-8du" id="ocy-cV-ayw"/>
+                                    <segue destination="qyG-Up-Dmt" kind="show" identifier="ShowChatViewControllerSegue" id="jO2-Qw-NtI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2003,8 +2004,7 @@
                     <connections>
                         <outlet property="menuButton" destination="w7i-j3-MQS" id="Hwk-mr-cm4"/>
                         <segue destination="27r-uW-O7a" kind="show" identifier="ShowUsersViewControllerSegue" id="XFz-XD-qn8"/>
-                        <segue destination="qyG-Up-Dmt" kind="show" identifier="ShowChatViewControllerSegue" id="8TA-za-zmv"/>
-                        <segue destination="qyG-Up-Dmt" kind="showDetail" identifier="" id="3H7-Lx-B07"/>
+                        <segue destination="qyG-Up-Dmt" kind="show" identifier="ShowNewChatViewControllerSegue" id="8TA-za-zmv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jEI-gz-c70" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3314,7 +3314,7 @@
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="87M-bm-GHW"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="uid-Sd-egA">
                             <connections>
-                                <segue destination="6KV-nW-4Cu" kind="show" id="ZZn-bl-l78"/>
+                                <segue destination="6KV-nW-4Cu" kind="show" identifier="goto_createEvent" id="ZZn-bl-l78"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -4869,7 +4869,7 @@
         <image name="userIcon.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3Nb-cz-SkR"/>
         <segue reference="8TA-za-zmv"/>
+        <segue reference="3Nb-cz-SkR"/>
     </inferredMetricsTieBreakers>
 </document>

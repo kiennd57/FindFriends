@@ -14,6 +14,7 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
     
     var eventList: NSArray = NSArray()
     var selectedRow = 0
+    var userDefaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,6 +136,8 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
             let desController = segue.destinationViewController as EventDetailTableViewController
             let selectedEvent = eventList.objectAtIndex(selectedRow) as QBCOCustomObject
             desController.event = selectedEvent
+        } else if segue.identifier == "goto_createEvent" {
+            userDefaults.setObject("e_birthday.png", forKey: "eventImage")
         }
     }
     

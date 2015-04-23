@@ -10,8 +10,9 @@ import UIKit
 
 class ChatDialogTableViewController: UITableViewController, QBActionStatusDelegate {
     
-    var createdDialog: QBChatDialog! = QBChatDialog()
+    var createdDialog: QBChatDialog!
     var dialogs: NSMutableArray! = NSMutableArray()
+    var userDefault = NSUserDefaults.standardUserDefaults()
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     var selectedDialog: QBChatDialog! = QBChatDialog()
@@ -42,32 +43,28 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-//        if self.createdDialog != nil {
-//            self.performSegueWithIdentifier("ShowSplashViewControllerSegue", sender: nil)
-//        }
+        if self.createdDialog != nil {
+            self.performSegueWithIdentifier("ShowNewChatViewControllerSegue", sender: nil)
+            println("NEW CHAT")
+        }
     }
     
     @IBAction func createDialog(sender: AnyObject) {
         self.performSegueWithIdentifier("ShowUsersViewControllerSegue", sender: nil)
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.destinationViewController.isKindOfClass(ChatViewController) {
-//            let desController = segue.destinationViewController as ChatViewController
-//            if self.createdDialog != nil {
-//                desController.dialog = self.createdDialog
-//                self.createdDialog = nil
-//            } else {
-//                let cell = sender as ChatDialogTableViewCell
-//                let dialog = self.dialogs.objectAtIndex(cell.tag) as QBChatDialog
-//                desController.dialog = dialog
-//            }
-//        }
-        
+
         if segue.identifier == "ShowChatViewControllerSegue" {
-            let desController = segue.destinationViewController as ChatViewController
-            desController.dialog = selectedDialog
+            let destinationViewController = segue.destinationViewController as ChatViewController
+            let cell = sender as ChatDialogTableViewCell
+            println("cell tag: \(cell.tag)")
+            let dialog = self.dialogs.objectAtIndex(cell.tag) as QBChatDialog
+            destinationViewController.dialog = dialog
+        } else if segue.identifier == "ShowNewChatViewControllerSegue" {
+            let destinationViewController = segue.destinationViewController as ChatViewController
+            destinationViewController.dialog = self.createdDialog
+            self.createdDialog = nil
         }
     }
 
@@ -90,7 +87,6 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
 
         let chatDialog = self.dialogs.objectAtIndex(indexPath.row) as QBChatDialog
         
-        
         cell.tag = indexPath.row
         
         cell.userName.text = chatDialog.name
@@ -100,8 +96,8 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
         case QBChatDialogTypePrivate.value:
             cell.lastMessage.text = "Private chat"
             let dictionary: [NSObject: AnyObject] = LocalStorageService.sharedInstance().usersAsDictionary
-//            let recipient = dictionary[chatDialog.recipientID] as QBUUser
-//            cell.userName.text = recipient.login
+            let recipient = dictionary[chatDialog.recipientID] as QBUUser
+            cell.userName.text = recipient.login
         case QBChatDialogTypeGroup.value:
             cell.lastMessage.text = "Group chat"
             cell.userName.text = chatDialog.name
@@ -118,24 +114,27 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        selectedDialog = self.dialogs.objectAtIndex(indexPath.row) as QBChatDialog
-        self.performSegueWithIdentifier("ShowChatViewControllerSegue", sender: nil)
+//        selectedDialog = self.dialogs.objectAtIndex(indexPath.row) as QBChatDialog
+//        self.performSegueWithIdentifier("ShowChatViewControllerSegue", sender: nil)
     }
     
     /////////////////////quickbloxAPI
     func completedWithResult(result: QBResult!) {
         if result.success && result.isKindOfClass(QBDialogsPagedResult) {
             let pagedResult = result as QBDialogsPagedResult
-            var dialogs = pagedResult.dialogs as NSArray
-            self.dialogs = dialogs.mutableCopy() as NSMutableArray
-            let pagedRequest = QBGeneralResponsePage(currentPage: 0, perPage: 100, totalEntries: 100)as QBGeneralResponsePage
-            let dislogsUsersIDs = pagedResult.dialogsUsersIDs as NSSet
-            QBRequest.usersWithIDs(dislogsUsersIDs.allObjects, page: pagedRequest, successBlock: { (response: QBResponse!, responsePage: QBGeneralResponsePage!, users: [AnyObject]!) -> Void in
-                LocalStorageService.sharedInstance().users = users
-                self.tableView.reloadData()
-                }, errorBlock: { (response: QBResponse!) -> Void in
-                
-            })
+            var dialogs = pagedResult.dialogs as NSArray!
+            if dialogs != nil {
+                self.dialogs = dialogs.mutableCopy() as NSMutableArray
+                let pagedRequest = QBGeneralResponsePage(currentPage: 0, perPage: 100, totalEntries: 100)as QBGeneralResponsePage
+                let dislogsUsersIDs = pagedResult.dialogsUsersIDs as NSSet
+                QBRequest.usersWithIDs(dislogsUsersIDs.allObjects, page: pagedRequest, successBlock: { (response: QBResponse!, responsePage: QBGeneralResponsePage!, users: [AnyObject]!) -> Void in
+                    LocalStorageService.sharedInstance().users = users
+                    self.tableView.reloadData()
+                    }, errorBlock: { (response: QBResponse!) -> Void in
+                        
+                })
+            }
+            
         }
     }
 }

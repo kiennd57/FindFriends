@@ -18,8 +18,6 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
     var chatRoom: QBChatRoom!
     var dialog: QBChatDialog!
     
-    var chatType: QBChatDialogType!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +28,6 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        println("ChatID:\(self.dialog.ID)")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -42,21 +39,27 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "chatDidReceiveMessageNotification:", name: kNotificationDidReceiveNewMessage, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "chatRoomDidReceiveMessageNotification:", name: kNotificationDidReceiveNewMessageFromRoom, object: nil)
         
-        //Set title
-        if self.dialog.type.value == QBChatDialogTypePrivate.value {
-            let dictionary: [NSObject: AnyObject] = LocalStorageService.sharedInstance().usersAsDictionary
-            let recipient = dictionary[self.dialog.recipientID] as QBUUser
-            self.title = recipient.login
-        } else {
-            self.title = self.dialog.name
-        }
+        self.view.userInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: "keyboardWillHide:")
+        self.view.addGestureRecognizer(tapGesture)
         
-        // Join room
-        if self.dialog.type.value != QBChatDialogTypePrivate.value {
-            self.chatRoom = self.dialog.chatRoom
-            ChatService.instance().joinRoom(self.chatRoom, completionBlock: { (joinedChatRoom: QBChatRoom!) -> Void in
-                // JOINED
-            })
+        //Set title
+//        if self.dialog.type.value == QBChatDialogTypePrivate.value {
+//            let dictionary: [NSObject: AnyObject] = LocalStorageService.sharedInstance().usersAsDictionary
+//            let recipient = dictionary[self.dialog.recipientID] as QBUUser
+//            self.title = recipient.login
+//        } else {
+//            self.title = self.dialog.name
+//        }
+
+        
+        if self.dialog != nil {
+            if self.dialog.type.value != QBChatDialogTypePrivate.value {
+                self.chatRoom = self.dialog.chatRoom
+                ChatService.instance().joinRoom(self.chatRoom, completionBlock: { (joinedRoom: QBChatRoom!) -> Void in
+                    
+                })
+            }
         }
         
         // get message history
@@ -109,7 +112,6 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         }
         
         self.messageTextField.text = nil
-
     }
 
     func chatDidReceiveMessageNotification(notification: NSNotification) {
@@ -174,9 +176,9 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
     
     func keyboardWillShow(notification: NSNotification) {
         UIView.animateWithDuration(0.3, animations: { () -> Void in
-            self.messageTextField.transform = CGAffineTransformMakeTranslation(0, -250)
-            self.sendMessageButton.transform = CGAffineTransformMakeTranslation(0, -250)
-            self.messagesTableView.frame = CGRectMake(self.messagesTableView.frame.origin.x, self.messagesTableView.frame.origin.y, self.messagesTableView.frame.size.width, self.messagesTableView.frame.size.height - 252)
+            self.messageTextField.transform = CGAffineTransformMakeTranslation(0, -210)
+            self.sendMessageButton.transform = CGAffineTransformMakeTranslation(0, -210)
+            self.messagesTableView.transform = CGAffineTransformMakeTranslation(0, -210)
         })
     }
     
@@ -184,8 +186,9 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             self.messageTextField.transform = CGAffineTransformIdentity
             self.sendMessageButton.transform = CGAffineTransformIdentity
-            self.messagesTableView.frame = CGRectMake(self.messagesTableView.frame.origin.x, self.messagesTableView.frame.origin.y, self.messagesTableView.frame.size.width, self.messagesTableView.frame.size.height + 252)
+            self.messagesTableView.transform = CGAffineTransformIdentity
         })
+        messageTextField.resignFirstResponder()
     }
 
     func completedWithResult(result: QBResult!) {
@@ -199,7 +202,6 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
                     self.messagesTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self.messages.count - 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
                 }
             }
-            
         }
     }
 }
