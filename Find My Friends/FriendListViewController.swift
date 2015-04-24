@@ -49,9 +49,9 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("cellUserIdentifier") as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("cellUserIdentifier") as! UITableViewCell
         
-        var user = users[indexPath.row] as QBUUser
+        var user = users[indexPath.row] as! QBUUser
         cell.tag = indexPath.row
         cell.textLabel?.text = user.login
         
@@ -61,7 +61,6 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.1
     }
-    
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
@@ -84,5 +83,4 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
         println("NUMBER USER: \(users.count)")
         usersTableView.reloadData()
     }
-
 }

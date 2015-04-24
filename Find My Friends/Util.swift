@@ -30,7 +30,7 @@ class Util {
         var filter = CIFilter(name: "CIGaussianBlur")
         filter.setValue(inputImage, forKey: kCIInputImageKey)
         filter.setValue(NSNumber(float: 10), forKey: "inputRadius")
-        var result = filter.valueForKey(kCIOutputImageKey) as CIImage
+        var result = filter.valueForKey(kCIOutputImageKey) as! CIImage
         var cgImage = context.createCGImage(result, fromRect: inputImage.extent())
         var returnImage = UIImage(CGImage: cgImage)
         

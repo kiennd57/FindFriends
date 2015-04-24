@@ -125,7 +125,7 @@ class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MB
         if tfFullName.text.isEmpty {return false}
         if tfPhoneNumber.text.isEmpty {return false}
         if tfPassword.text != tfConfirmPass.text {return false}
-        if countElements(tfPassword.text) < 8 {return false}
+        if count(tfPassword.text) < 8 {return false}
         return true
     }
 }

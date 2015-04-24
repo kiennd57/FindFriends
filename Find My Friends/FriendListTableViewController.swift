@@ -59,9 +59,9 @@ class FriendListTableViewController: UITableViewController, NMPaginatorDelegate,
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("cellUserIdentifier") as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("cellUserIdentifier") as! UITableViewCell
         
-        var user = users[indexPath.row] as QBUUser
+        var user = users[indexPath.row] as! QBUUser
         cell.tag = indexPath.row
         cell.textLabel?.text = user.login
         

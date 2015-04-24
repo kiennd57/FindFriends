@@ -42,13 +42,13 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "cellUser"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UserTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UserTableViewCell
         
-        let user = friendList[indexPath.row] as QBUUser
-        cell.userName.text = user.login
+        let user = friendList[indexPath.row] as? QBUUser
+        cell.userName.text = user!.login
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         
-        if participantList.containsObject(user.login) {
+        if participantList.containsObject(user!.login) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         } else {
             cell.accessoryType = UITableViewCellAccessoryType.None
@@ -61,7 +61,7 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as UserTableViewCell
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! UserTableViewCell
         if cell.accessoryType == UITableViewCellAccessoryType.None {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
             participantList.addObject(cell.userName.text!)

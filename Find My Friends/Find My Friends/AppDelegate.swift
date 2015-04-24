@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate your desired ViewController
-        rootController = storyboard.instantiateViewControllerWithIdentifier("rootView") as SWRevealViewController
+        rootController = storyboard.instantiateViewControllerWithIdentifier("rootView") as! SWRevealViewController
         self.spalshView = RootViewController()
         self.window?.rootViewController = self.spalshView
 

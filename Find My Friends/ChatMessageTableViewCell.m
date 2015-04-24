@@ -83,7 +83,7 @@ static UIImage *aquaBubble;
     
 	size.width += 10;
     
-    NSString *time = [messageDateFormatter stringFromDate:message.datetime];
+//    NSString *time = [messageDateFormatter stringFromDate:message.datetime];
     
     // Left/Right bubble
     if ([LocalStorageService sharedInstance].currentUser.ID != message.senderID) {

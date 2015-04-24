@@ -57,11 +57,11 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
 
     func underlineBackButton(){
         var titleString : NSMutableAttributedString = NSMutableAttributedString(string: backButton.titleLabel!.text!)
-        titleString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.StyleSingle.rawValue, range: NSMakeRange(0, backButton.titleLabel!.text!.utf16Count))
+//        titleString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.StyleSingle.rawValue, range: NSMakeRange(0, backButton.titleLabel!.text!.utf16))
         backButton.setAttributedTitle(titleString, forState: .Normal)
     }
     
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         if (fullname.isFirstResponder()){
             fullname.resignFirstResponder()
             username.becomeFirstResponder()
@@ -119,10 +119,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
     func doSignupWith(senderUsername: NSString, senderPass: NSString, senderEmail: NSString, senderFullname: NSString) {
         
         var user: QBUUser = QBUUser()
-        user.fullName = senderFullname
-        user.email = senderEmail
-        user.login = senderUsername
-        user.password = senderPass
+        user.fullName = senderFullname as String
+        user.email = senderEmail as String
+        user.login = senderUsername as String
+        user.password = senderPass as String
         
         QBRequest.signUp(user, successBlock: { (response: QBResponse!, theUser: QBUUser!) -> Void in
             var alert = UIAlertView(title: "CONGRATULATION!", message: "SIGN UP SUCCESSFULLY. BACK TO LOGIN", delegate: self, cancelButtonTitle: "OK")
@@ -151,7 +151,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
     }
     
     func checkPasswordLength() -> Bool {
-        if countElements(password.text) < 8 {
+        if count(password.text) < 8 {
             return false
         }
         return true

@@ -35,7 +35,7 @@ class EventImageController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as EventTypeTableViewCell!
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! EventTypeTableViewCell!
         cell.eventImage.image = UIImage(named: images[indexPath.row])
         cell.eventType.text = types[indexPath.row]
         

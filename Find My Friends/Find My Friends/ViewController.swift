@@ -69,7 +69,7 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
         
         if self.mapView.annotations.count <= 1 {
             for data in LocalStorageService.sharedInstance().checkins {
-                let geoData = data as QBLGeoData
+                let geoData = data as! QBLGeoData
                 let cood = CLLocationCoordinate2D(latitude: geoData.latitude, longitude: geoData.longitude)
                 let pin = SSLMapPin(coordinate: cood)
                 pin.subtitle = geoData.status
@@ -148,21 +148,15 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
         let loc = CLLocation(latitude: self.mapView.userLocation.coordinate.latitude, longitude: self.mapView.userLocation.coordinate.longitude)
         
         ceo.reverseGeocodeLocation(loc, completionHandler: { (placemarks: [AnyObject]!, error: NSError!) -> Void in
-            let placeMark = placemarks[0] as CLPlacemark
-            println("PLACE MARK: \(placeMark)")
-            println("City: \(placeMark.locality)")
-            println("name: \(placeMark.name)")
-            println("ocean: \(placeMark.ocean)")
-            println("postal code: \(placeMark.postalCode)")
-            println("sublocal: \(placeMark.subLocality)")
-            self.address = "\(placeMark.subLocality), \(placeMark.locality)"
+            let placeMark = placemarks[0] as? CLPlacemark
+            self.address = "\(placeMark!.subLocality), \(placeMark!.locality)"
             self.userDefaults.setObject(self.address, forKey: "checkinAddress")
         })
         
         var geoData:QBLGeoData = QBLGeoData()
         geoData.latitude = self.mapView.userLocation.coordinate.latitude
         geoData.longitude = self.mapView.userLocation.coordinate.longitude
-        geoData.status = status
+        geoData.status = status as String
         self.status = geoData.status
         QBRequest.createGeoData(geoData, successBlock: { (response: QBResponse!, geoData: QBLGeoData!) -> Void in
             hud.hide(true)
@@ -192,7 +186,7 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "goto_checkin" {
-            var destinationViewController = segue.destinationViewController as CheckinViewController
+            var destinationViewController = segue.destinationViewController as! CheckinViewController
             destinationViewController.mapView = self.mapView
 //            destinationViewController.longtitude = self.mapView.userLocation.coordinate.longitude
 //            destinationViewController.lattitude = self.mapView.userLocation.coordinate.latitude
@@ -217,8 +211,8 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("userCell") as UITableViewCell
-        let user = users[indexPath.row] as QBUUser
+        let cell = tableView.dequeueReusableCellWithIdentifier("userCell") as! UITableViewCell
+        let user = users[indexPath.row] as! QBUUser
         cell.textLabel?.text = user.login
         return cell
     }

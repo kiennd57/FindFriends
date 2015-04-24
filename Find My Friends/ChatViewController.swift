@@ -46,12 +46,13 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         //Set title
 //        if self.dialog.type.value == QBChatDialogTypePrivate.value {
 //            let dictionary: [NSObject: AnyObject] = LocalStorageService.sharedInstance().usersAsDictionary
-//            let recipient = dictionary[self.dialog.recipientID] as QBUUser
-//            self.title = recipient.login
+//            let recipient = dictionary[self.dialog.recipientID] as? QBUUser
+//            if recipient != nil {
+//                self.title = recipient!.login
+//            }
 //        } else {
 //            self.title = self.dialog.name
 //        }
-
         
         if self.dialog != nil {
             if self.dialog.type.value != QBChatDialogTypePrivate.value {
@@ -78,9 +79,9 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         }
     }
 
-    func hidesBottomBarWhenPushed() -> Bool {
-        return true
-    }
+//    func hidesBottomBarWhenPushed() -> Bool {
+//        return true
+//    }
 
     @IBAction func sendMessage(sender: AnyObject) {
         
@@ -117,7 +118,7 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
     func chatDidReceiveMessageNotification(notification: NSNotification) {
         
         var dictionary: [NSObject: AnyObject] = notification.userInfo!
-        var message = dictionary[kMessage] as QBChatMessage
+        var message = dictionary[kMessage] as! QBChatMessage
         if Int(message.senderID) != self.dialog.recipientID {
             return
         }
@@ -131,8 +132,8 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
     
     func chatRoomDidReceiveMessageNotification(notification: NSNotification) {
         var dictionary: [NSObject: AnyObject] = notification.userInfo!
-        var message = dictionary[kMessage] as QBChatMessage
-        let roomJID = dictionary[kRoomJID] as NSString
+        var message = dictionary[kMessage] as! QBChatMessage
+        let roomJID = dictionary[kRoomJID] as! NSString
         if self.chatRoom.JID != roomJID {
             return
         }
@@ -150,20 +151,20 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("ChatMessageCellIdentifier") as ChatMessageTableViewCell!
+        var cell = tableView.dequeueReusableCellWithIdentifier("ChatMessageCellIdentifier") as! ChatMessageTableViewCell!
         
         if cell == nil {
             cell = ChatMessageTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "ChatMessageCellIdentifier")
         }
         
-        let message = self.messages.objectAtIndex(indexPath.row) as QBChatAbstractMessage
+        let message = self.messages.objectAtIndex(indexPath.row) as! QBChatAbstractMessage
         cell.configureCellWithMessage(message)
         
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let chatMessage = self.messages.objectAtIndex(indexPath.row) as QBChatAbstractMessage
+        let chatMessage = self.messages.objectAtIndex(indexPath.row) as! QBChatAbstractMessage
         let cellHeight = ChatMessageTableViewCell.heightForCellWithMessage(chatMessage)
         
         return cellHeight
@@ -193,11 +194,11 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
 
     func completedWithResult(result: QBResult!) {
         if result.success && result.isKindOfClass(QBChatHistoryMessageResult) {
-            let res = result as QBChatHistoryMessageResult
+            let res = result as! QBChatHistoryMessageResult
             var theMessages = res.messages
             if theMessages != nil {
                 if theMessages.count > 0 {
-                    self.messages.addObjectsFromArray(theMessages.mutableCopy() as NSArray)
+                    self.messages.addObjectsFromArray((theMessages.mutableCopy()) as! [AnyObject])
                     self.messagesTableView.reloadData()
                     self.messagesTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self.messages.count - 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
                 }

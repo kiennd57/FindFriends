@@ -32,8 +32,8 @@ class CheckinViewController: UIViewController, MKMapViewDelegate,  CLLocationMan
         mapView.showsPointsOfInterest = true
         mapView.showsBuildings = true
         println("ADDress: \(theAddress)")
-        theAddress = NSUserDefaults.standardUserDefaults().objectForKey("checkinAddress") as NSString
-        address.text = theAddress
+        theAddress = NSUserDefaults.standardUserDefaults().objectForKey("checkinAddress") as! NSString
+        address.text = theAddress as String
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -44,7 +44,7 @@ class CheckinViewController: UIViewController, MKMapViewDelegate,  CLLocationMan
         // ADD AN ANNOTATION
         var point = MKPointAnnotation()
         point.coordinate = self.mapView.userLocation.coordinate
-        point.title = status
+        point.title = status as String
         point.subtitle = "This is subtitle"
         
         mapView.addAnnotation(point)
@@ -58,7 +58,7 @@ class CheckinViewController: UIViewController, MKMapViewDelegate,  CLLocationMan
         // ADD AN ANNOTATION
         var point = MKPointAnnotation()
         point.coordinate = self.mapView.userLocation.coordinate
-        point.title = status
+        point.title = status as String
         point.subtitle = "This is subtitle"
         
         mapView.addAnnotation(point)

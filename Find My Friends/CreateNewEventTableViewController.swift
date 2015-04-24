@@ -42,14 +42,14 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         println(__FUNCTION__)
-        var imageName = userDefaults.objectForKey("eventImage") as String
+        var imageName = userDefaults.objectForKey("eventImage") as! String
         if imageName == "" {
             imageName = "e_birthday.png"
         }
         eventImage.image = UIImage(named: imageName)
         
         if userDefaults.objectForKey("participant") != nil {
-            participant = userDefaults.objectForKey("participant") as NSMutableArray
+            participant = userDefaults.objectForKey("participant") as! NSMutableArray
             self.tableView.reloadData()
             userDefaults.removeObjectForKey("participant")
         }
@@ -155,14 +155,14 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
             if indexPath.row == participant.count {
                 let cellIdentifier = "cellAddFriend"
                 tableView.registerNib(UINib(nibName: "AddParticipantTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-                let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as AddParticipantTableViewCell
+                let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! AddParticipantTableViewCell
                 cell.btnInvite.addTarget(self, action: "inviteUserAction", forControlEvents: UIControlEvents.TouchUpInside)
                 return cell
             } else {
                 let cellIdentifier = "cellUserInvited"
                 tableView.registerNib(UINib(nibName: "UserInvitedTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-                let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UserInvitedTableViewCell
-                cell.userName.text = participant.objectAtIndex(indexPath.row) as NSString
+                let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UserInvitedTableViewCell
+                cell.userName.text = participant.objectAtIndex(indexPath.row) as? String
                 return cell
             }
         }
@@ -256,7 +256,7 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
         
         var doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "doneAction")
         barItems.addObject(doneButton)
-        pickerToolBar.setItems(barItems, animated: true)
+        pickerToolBar.setItems(barItems as [AnyObject], animated: true)
         eventTime.inputAccessoryView = pickerToolBar
     }
     

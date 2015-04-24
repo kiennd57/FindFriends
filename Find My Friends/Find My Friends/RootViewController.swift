@@ -12,111 +12,42 @@ class RootViewController: UIViewController, MBProgressHUDDelegate, QBActionStatu
 
     let util = Util()
     let userDefault = NSUserDefaults.standardUserDefaults()
+    var hud: MBProgressHUD!
     
-    
-    /*
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.view.backgroundColor = UIColor(patternImage: util.blurImage(UIImage(named: "kien.jpg")!))
         
-        var hud = MBProgressHUD(view:self.view)
+        hud = MBProgressHUD(view:self.view)
         hud.labelText = "LOADING"
         hud.delegate = self
         hud.show(true)
         self.view.addSubview(hud)
         
+        let userName = self.userDefault.objectForKey("currentUserName") as! String!
+        let password = self.userDefault.objectForKey("currentPassword") as! String!
         
-                    QBRequest.createSessionWithSuccessBlock({ (response: QBResponse!, session: QBASession!) -> Void in
-                        println("CREATE SESSION SUCCESSFULLY!")
-                        
-                        let userName = self.userDefault.objectForKey("currentUserName") as NSString!
-                        let password = self.userDefault.objectForKey("currentPassword") as NSString!
-                        
-                        if userName != nil && password != nil {
-                            if self.userDefault.boolForKey(self.util.KEY_AUTHORIZED) {
-                                QBRequest.logInWithUserLogin(userName, password: password, successBlock: { (response: QBResponse!, user: QBUUser!) -> Void in
-                                    var currentUser: QBUUser = QBUUser()
-                                    
-                                    currentUser.ID = session.userID
-                                    currentUser.login = userName
-                                    currentUser.password = password
-                                    //save to singeton
-                                    LocalStorageService.sharedInstance().saveCurrentUser(currentUser)
-                                    
-                                    self.userDefault.setBool(true, forKey: self.util.KEY_AUTHORIZED)
-                                    self.userDefault.setObject(userName, forKey: "currentUserName")
-                                    self.userDefault.setObject(password, forKey: "currentPassword")
-                                    
-                                    
-                                    ChatService.instance().loginWithUser(currentUser, completionBlock: { () -> Void in
-                                        println("LOGIN SUCCESS TO CHAT")
-                                    })
-                                    
-                                    
-
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    }, errorBlock: { (response: QBResponse!) -> Void in
-                                        let alert = UIAlertView(title: "LOGIN FAIL!", message: "Can not login", delegate: self, cancelButtonTitle: "OK")
-                                        alert.show()
-                                })
-                            }
-                        }
-                        
-                        var filter = QBLGeoDataFilter()
-                        filter.lastOnly = true
-                        filter.sortBy = GeoDataSortByKindLatitude
-                        QBRequest.geoDataWithFilter(filter, page: QBGeneralResponsePage(currentPage: 1, perPage: 6), successBlock: { (response: QBResponse!, objects: [AnyObject]!, responsePage: QBGeneralResponsePage!) -> Void in
         
-                            dispatch_after(dispatch_time(DISPATCH_TIME_NOW,Int64(2*NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
-                                hud.hide(true)
-                                let appdelegate = UIApplication.sharedApplication().delegate as AppDelegate
-                                self.presentViewController(appdelegate.rootController, animated: true, completion: nil)
-                            })
-        
-                            LocalStorageService.sharedInstance().saveCheckins(objects)
-                            println("CHECKIN LIST: \(LocalStorageService.sharedInstance().checkins)")
-        
-                            }, errorBlock: { (response: QBResponse!) -> Void in
-        
-                        })
-                        }, errorBlock: { (response: QBResponse!) -> Void in
-                            var alertView = UIAlertView(title: "SESSION CREATED FAILT", message: "DINH MENH", delegate: self, cancelButtonTitle: "OK")
-                            alertView.show()
-                    })
+        if userName != nil && password != nil {
+            createSession(userName, password: password)
+        } else {
+            createSession("embe", password: "12345678")
+        }
     }
-
-    */
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.view.backgroundColor = UIColor(patternImage: util.blurImage(UIImage(named: "kien.jpg")!))
-        
-        var hud = MBProgressHUD(view:self.view)
-        hud.labelText = "LOADING"
-        hud.delegate = self
-        hud.show(true)
-        self.view.addSubview(hud)
-        
-        let userName = self.userDefault.objectForKey("currentUserName") as NSString!
-        let password = self.userDefault.objectForKey("currentPassword") as NSString!
-        
+    func createSession(userName: String, password: String) {
         var extendedAuthRequest = QBSessionParameters()
-        extendedAuthRequest.userLogin = "phongnn"
-        extendedAuthRequest.userPassword = "Matkhaulagi"
+        extendedAuthRequest.userLogin = userName
+        extendedAuthRequest.userPassword = password
         
         QBRequest.createSessionWithExtendedParameters(extendedAuthRequest, successBlock: { (response: QBResponse!, session: QBASession!) -> Void in
+            //set current user
             var currentUser = QBUUser()
             currentUser.ID = session.userID
-            currentUser.login = "phongnn"
-            currentUser.password = "Matkhaulagi"
-            
+            currentUser.login = userName
+            currentUser.password = password
+            self.userDefault.setBool(true, forKey: self.util.KEY_AUTHORIZED)
             LocalStorageService.sharedInstance().currentUser = currentUser
             
             ChatService.instance().loginWithUser(currentUser, completionBlock: { () -> Void in
@@ -126,28 +57,22 @@ class RootViewController: UIViewController, MBProgressHUDDelegate, QBActionStatu
             filter.lastOnly = true
             filter.sortBy = GeoDataSortByKindLatitude
             QBRequest.geoDataWithFilter(filter, page: QBGeneralResponsePage(currentPage: 1, perPage: 6), successBlock: { (response: QBResponse!, objects: [AnyObject]!, responsePage: QBGeneralResponsePage!) -> Void in
-                hud.hide(true)
+                self.hud.hide(true)
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW,Int64(2*NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
-                    let appdelegate = UIApplication.sharedApplication().delegate as AppDelegate
+                    let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                     self.presentViewController(appdelegate.rootController, animated: true, completion: nil)
                 })
                 
                 LocalStorageService.sharedInstance().saveCheckins(objects)
                 println("CHECKIN LIST: \(LocalStorageService.sharedInstance().checkins)")
-                hud.hide(true)
+                self.hud.hide(true)
                 }, errorBlock: { (response: QBResponse!) -> Void in
                     
             })
             
-            
-
-            
-            
             }) { (response: QBResponse!) -> Void in
-            
+                
         }
-
-
     }
 
 
@@ -155,6 +80,4 @@ class RootViewController: UIViewController, MBProgressHUDDelegate, QBActionStatu
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
 }

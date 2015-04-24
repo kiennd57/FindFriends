@@ -49,24 +49,24 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
         
         dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-        let str = event.fields["eventTime"] as String
+        let str = event.fields["eventTime"] as! String
         let eventDateStr = "\(str):00"
         println("\(eventDateStr)")
         eventDate = dateFormatter.dateFromString(eventDateStr)
     }
     
     func showAllInformation() {
-        eventTitle.text = event.fields["eventName"] as NSString
+        eventTitle.text = event.fields["eventName"] as? String
         if event.fields["eventPlace"] != nil {
-            eventPlace.text = event.fields["eventPlace"] as NSString
+            eventPlace.text = event.fields["eventPlace"] as? String
         }
         if event.fields["eventTime"] != nil {
-            eventTime.text = event.fields["eventTime"] as NSString
+            eventTime.text = event.fields["eventTime"] as? String
         }
         if event.fields["eventDescription"] != nil {
-            eventDescription.text = event.fields["eventDescription"] as NSString
+            eventDescription.text = event.fields["eventDescription"] as? String
         }
-        eventImage.image = UIImage(named: event.fields["eventImage"] as String)
+        eventImage.image = UIImage(named: (event.fields["eventImage"] as? String)!)
     }
     
     /////////////////////////////////////////////////////////////////////////

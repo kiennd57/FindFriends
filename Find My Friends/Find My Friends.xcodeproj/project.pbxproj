@@ -46,8 +46,6 @@
 		A488882D1AB73BB8008EBF92 /* NMPaginator.m in Sources */ = {isa = PBXBuildFile; fileRef = A488882C1AB73BB8008EBF92 /* NMPaginator.m */; };
 		A48888341AB73FD4008EBF92 /* UsersPaginator.m in Sources */ = {isa = PBXBuildFile; fileRef = A48888321AB73FD4008EBF92 /* UsersPaginator.m */; };
 		A48888361AB75660008EBF92 /* FriendListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48888351AB75660008EBF92 /* FriendListTableViewController.swift */; };
-		A495B6301AB9275300DF3FA5 /* SecondSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A495B62E1AB9275300DF3FA5 /* SecondSplashViewController.swift */; };
-		A495B6311AB9275300DF3FA5 /* SecondSplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A495B62F1AB9275300DF3FA5 /* SecondSplashViewController.xib */; };
 		A495B6331AB92FD200DF3FA5 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A495B6321AB92FD200DF3FA5 /* RootViewController.swift */; };
 		A49A02711AE13DA10062A13F /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A02701AE13DA10062A13F /* UserList.swift */; };
 		A49A02731AE13DBC0062A13F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A02721AE13DBC0062A13F /* User.swift */; };
@@ -189,8 +187,6 @@
 		A48888311AB73FD4008EBF92 /* UsersPaginator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersPaginator.h; sourceTree = "<group>"; };
 		A48888321AB73FD4008EBF92 /* UsersPaginator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersPaginator.m; sourceTree = "<group>"; };
 		A48888351AB75660008EBF92 /* FriendListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListTableViewController.swift; sourceTree = "<group>"; };
-		A495B62E1AB9275300DF3FA5 /* SecondSplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondSplashViewController.swift; sourceTree = "<group>"; };
-		A495B62F1AB9275300DF3FA5 /* SecondSplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondSplashViewController.xib; sourceTree = "<group>"; };
 		A495B6321AB92FD200DF3FA5 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		A49A02701AE13DA10062A13F /* UserList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
 		A49A02721AE13DBC0062A13F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -352,13 +348,10 @@
 		A46820881AB86246006EAD74 /* CHAT */ = {
 			isa = PBXGroup;
 			children = (
+				A4A661D31AEA3055006CAF25 /* Chat service */,
 				A4E74C9E1AE75469008E4BC5 /* Create New Chat */,
 				A4E74C9D1AE7545C008E4BC5 /* Chat View */,
 				A4E74C9C1AE7544F008E4BC5 /* Chat list */,
-				A468208B1AB8666A006EAD74 /* ChatService.h */,
-				A468208C1AB8666A006EAD74 /* ChatService.m */,
-				A43CD7881AB6C9AF00554A23 /* LocalStorageService.h */,
-				A43CD7891AB6C9AF00554A23 /* LocalStorageService.m */,
 			);
 			name = CHAT;
 			sourceTree = "<group>";
@@ -405,6 +398,17 @@
 			name = "List Users";
 			sourceTree = "<group>";
 		};
+		A4A661D31AEA3055006CAF25 /* Chat service */ = {
+			isa = PBXGroup;
+			children = (
+				A468208B1AB8666A006EAD74 /* ChatService.h */,
+				A468208C1AB8666A006EAD74 /* ChatService.m */,
+				A43CD7881AB6C9AF00554A23 /* LocalStorageService.h */,
+				A43CD7891AB6C9AF00554A23 /* LocalStorageService.m */,
+			);
+			name = "Chat service";
+			sourceTree = "<group>";
+		};
 		A4E0DEE11AE8B1A1002A7808 /* Message Image */ = {
 			isa = PBXGroup;
 			children = (
@@ -417,8 +421,8 @@
 		A4E74C9C1AE7544F008E4BC5 /* Chat list */ = {
 			isa = PBXGroup;
 			children = (
-				A41EB1181ABBF59D001BB355 /* ChatDialogTableViewCell.swift */,
 				A41EB11A1ABBF5C0001BB355 /* ChatDialogTableViewController.swift */,
+				A41EB1181ABBF59D001BB355 /* ChatDialogTableViewCell.swift */,
 			);
 			name = "Chat list";
 			sourceTree = "<group>";
@@ -559,8 +563,6 @@
 				A4FAB6FE1AB422A3007047A7 /* Main.storyboard */,
 				A4FAB7011AB422A3007047A7 /* Images.xcassets */,
 				A4FAB6F81AB422A3007047A7 /* Supporting Files */,
-				A495B62E1AB9275300DF3FA5 /* SecondSplashViewController.swift */,
-				A495B62F1AB9275300DF3FA5 /* SecondSplashViewController.xib */,
 				A495B6321AB92FD200DF3FA5 /* RootViewController.swift */,
 			);
 			path = "Find My Friends";
@@ -836,7 +838,6 @@
 				A4F1F8C31AE36656007167D2 /* e_wedding.png in Resources */,
 				A4ECECB91ABA792100E52BB1 /* message@2x.png in Resources */,
 				A4E2E5AB1ABA98A800A1A745 /* support@2x.png in Resources */,
-				A495B6311AB9275300DF3FA5 /* SecondSplashViewController.xib in Resources */,
 				A4E2E5AE1ABA9C6500A1A745 /* event@1x.png in Resources */,
 				A4EDB5D91ABE70D400CDEB7C /* cinema.png in Resources */,
 				A4E2E5B31ABA9E7800A1A745 /* feedback@2x.png in Resources */,
@@ -910,7 +911,6 @@
 				A46E91BD1AB6B62A00A7BDD9 /* MBProgressHUD.m in Sources */,
 				A43CD78A1AB6C9AF00554A23 /* LocalStorageService.m in Sources */,
 				A4F1F8CC1AE386C6007167D2 /* UserInvitedTableViewCell.swift in Sources */,
-				A495B6301AB9275300DF3FA5 /* SecondSplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

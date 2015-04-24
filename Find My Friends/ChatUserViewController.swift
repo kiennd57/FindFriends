@@ -39,7 +39,7 @@ class ChatUserViewController: UIViewController, NMPaginatorDelegate, UITableView
 
     @IBAction func createDialog(sender: AnyObject) {
         if selectedUser.count == 0 {
-            let alert = UIAlertView(title: "ALERT!", message: "Please select atleast 1 user", delegate: self, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: "ALERT!", message: "Please select at least 1 user", delegate: self, cancelButtonTitle: "OK")
             alert.show()
             return
         }
@@ -48,11 +48,12 @@ class ChatUserViewController: UIViewController, NMPaginatorDelegate, UITableView
         var selectedUsersIds = NSMutableArray()
         var selectedUsersName = NSMutableArray()
         for var i = 0; i < selectedUser.count; i++ {
-            let user = selectedUser.objectAtIndex(i) as QBUUser
-            selectedUsersIds.addObject("\(user.ID)")
+            let user = selectedUser.objectAtIndex(i) as! QBUUser
+            selectedUsersIds.addObject(user.ID)
             selectedUsersName.addObject(user.login)
         }
-        chatDialog.occupantIDs = selectedUsersIds
+        
+        chatDialog.occupantIDs = selectedUsersIds as [AnyObject]!
         if self.selectedUser.count == 1 {
             chatDialog.type = QBChatDialogTypePrivate
         } else {
@@ -72,40 +73,40 @@ class ChatUserViewController: UIViewController, NMPaginatorDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("userChatCell") as UserChatCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("userChatCell") as? UserChatCell
         
         
-        let user = users.objectAtIndex(indexPath.row) as QBUUser
-        cell.tag = indexPath.row
-        cell.userName.text = user.login
+        let user = users.objectAtIndex(indexPath.row) as? QBUUser
+        cell!.tag = indexPath.row
+        cell!.userName.text = user!.login
         
-        if selectedUser.containsObject(user) {
-            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        if selectedUser.containsObject(user!) {
+            cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
         } else {
-            cell.accessoryType = UITableViewCellAccessoryType.None
+            cell!.accessoryType = UITableViewCellAccessoryType.None
         }
         
-        return cell
+        return cell!
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let selectedCell = tableView.cellForRowAtIndexPath(indexPath)
-        let user = users.objectAtIndex(indexPath.row) as QBUUser
-        if selectedUser.containsObject(user) {
-            selectedUser.removeObject(user)
+        let user = users.objectAtIndex(indexPath.row) as? QBUUser
+        if selectedUser.containsObject(user!) {
+            selectedUser.removeObject(user!)
             selectedCell?.accessoryType = UITableViewCellAccessoryType.None
         } else {
-            selectedUser.addObject(user)
+            selectedUser.addObject(user!)
             selectedCell?.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
     }
     
     func completedWithResult(result: QBResult!) {
         if result.success && result.isKindOfClass(QBChatDialogResult) {
-            var dialogRes = result as QBChatDialogResult
+            var dialogRes = result as! QBChatDialogResult
             let countView = self.navigationController?.viewControllers.count
-            let dialogsViewController = self.navigationController?.viewControllers[countView! - 2] as ChatDialogTableViewController
+            let dialogsViewController = self.navigationController?.viewControllers[countView! - 2] as! ChatDialogTableViewController
             dialogsViewController.createdDialog = dialogRes.dialog
             self.navigationController?.popViewControllerAnimated(true)
         } else {
