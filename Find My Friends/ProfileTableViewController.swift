@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MBProgressHUDDelegate {
+class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MBProgressHUDDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var imageProfile: UIImageView!
@@ -50,6 +50,10 @@ class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MB
         imageProfile.layer.cornerRadius = 40
         imageProfile.layer.borderWidth = 1
         imageProfile.layer.borderColor = UIColor.lightGrayColor().CGColor
+        imageProfile.userInteractionEnabled = true
+        
+        let tapImageGesture = UITapGestureRecognizer(target: self, action: "changeProfileAction:")
+        imageProfile.addGestureRecognizer(tapImageGesture)
         
         tfFullName.delegate = self
         tfPhoneNumber.delegate = self
@@ -69,6 +73,15 @@ class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MB
             tfPassword.text = currentUser.password
             tfConfirmPass.text = currentUser.password
         }
+    }
+    
+    
+    /////////////////////////////////////////////////////////////////////////
+    func changeProfileAction(sender: AnyObject) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
+        let actionSheet = UIAlertController(title: "Select From Library", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
     }
     /////////////////////////////////////////////////////////////////////////
     

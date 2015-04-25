@@ -98,7 +98,6 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         self.messagesTableView.reloadData()
     }
 
-
     @IBAction func sendMessage(sender: AnyObject) {
         
         if self.messageTextField.text.isEmpty {
