@@ -124,7 +124,31 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
         user.login = senderUsername as String
         user.password = senderPass as String
         
+        let hud = MBProgressHUD(view: self.view)
+        hud.delegate = self
+        hud.labelText = "Loading profile"
+        self.view.addSubview(hud)
+        self.view.bringSubviewToFront(hud)
+        hud.show(true)
+        
+        let userProfile = QBCOCustomObject()
+        
+        userProfile.className = "UserProfile"
+        userProfile.fields["userName"] = user.login
+        userProfile.fields["fullName"] = user.fullName
+        userProfile.fields["passWord"] = user.password
+        userProfile.fields["email"] = user.email
+        
         QBRequest.signUp(user, successBlock: { (response: QBResponse!, theUser: QBUUser!) -> Void in
+            
+            QBRequest.createObject(userProfile, successBlock: { (response: QBResponse!, object: QBCOCustomObject!) -> Void in
+                hud.hide(true)
+                }) { (response: QBResponse!) -> Void in
+                    hud.hide(true)
+                    let failAlert = UIAlertView(title: "OOPS!", message: "Your profile is not loaded", delegate: self, cancelButtonTitle: "OK")
+                    failAlert.show()
+            }
+            
             var alert = UIAlertView(title: "CONGRATULATION!", message: "SIGN UP SUCCESSFULLY. BACK TO LOGIN", delegate: self, cancelButtonTitle: "OK")
             alert.tag = 1
             alert.show()
@@ -132,9 +156,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
                 println("\(response.error.description)")
         }
         
-        
         //To be added
-//        QBRequest.createObject(<#object: QBCOCustomObject!#>, successBlock: <#((QBResponse!, QBCOCustomObject!) -> Void)!##(QBResponse!, QBCOCustomObject!) -> Void#>, errorBlock: <#QBRequestErrorBlock!##(QBResponse!) -> Void#>)
         
     }
     
