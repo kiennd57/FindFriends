@@ -132,6 +132,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
                 println("\(response.error.description)")
         }
         
+        
+        //To be added
+//        QBRequest.createObject(<#object: QBCOCustomObject!#>, successBlock: <#((QBResponse!, QBCOCustomObject!) -> Void)!##(QBResponse!, QBCOCustomObject!) -> Void#>, errorBlock: <#QBRequestErrorBlock!##(QBResponse!) -> Void#>)
+        
     }
     
     func checkUsernameFilling() -> Bool {

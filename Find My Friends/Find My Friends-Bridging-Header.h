@@ -13,3 +13,4 @@
 #import "ChatMessageTableViewCell.h"
 #import "StaticDataTableViewController.h"
 #import "SSMPushMessage.h"
+#import "ELCImagePickerController.h"
