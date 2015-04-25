@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         QBConnection.registerServiceSecret("yT2QaB9h5HpsSYm");
         QBSettings.setAccountKey("XTa7eHtDykX4D3kWe5ga");
         
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate your desired ViewController
         rootController = storyboard.instantiateViewControllerWithIdentifier("rootView") as! SWRevealViewController
@@ -54,6 +55,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        var dictionary = NSDictionary(dictionary: userInfo)
+        ChatService.instance().receiveRemoteNotification(userInfo)
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        
+        QBRequest.registerSubscriptionForDeviceToken(deviceToken, successBlock: { (response: QBResponse!, subscriptions: [AnyObject]!) -> Void in
+            println("Register notification with device token success")
+            }) { (response: QBError!) -> Void in
+            let alert = UIAlertView(title: "Error", message: "\(response.reasons.description)", delegate: self, cancelButtonTitle: "OK")
+                alert.show()
+        }
+    }
 
 }
 

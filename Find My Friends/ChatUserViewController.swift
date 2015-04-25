@@ -75,7 +75,6 @@ class ChatUserViewController: UIViewController, NMPaginatorDelegate, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("userChatCell") as? UserChatCell
         
-        
         let user = users.objectAtIndex(indexPath.row) as? QBUUser
         cell!.tag = indexPath.row
         cell!.userName.text = user!.login

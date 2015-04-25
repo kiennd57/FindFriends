@@ -112,6 +112,27 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
         selectedRow = indexPath.row
         self.performSegueWithIdentifier("goto_eventDetail", sender: self)
     }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            let event = eventList.objectAtIndex(indexPath.row) as? QBCOCustomObject
+            QBRequest.deleteObjectWithID(event?.ID, className: "Event", successBlock: { (response: QBResponse!) -> Void in
+                let alert = UIAlertView(title: "OK", message: "OK", delegate: self, cancelButtonTitle: "OK")
+                alert.show()
+                var eventListMutable = NSMutableArray(array: self.eventList)
+                eventListMutable.removeObjectAtIndex(indexPath.row)
+                self.eventList = eventListMutable
+                self.tableView.reloadData()
+                }, errorBlock: { (error: QBResponse!) -> Void in
+                    let alert = UIAlertView(title: "fail", message: "fail", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
+            })
+        }
+    }
 
     /////////////////////////////////
     func retrieveAllEvents() {

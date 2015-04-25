@@ -132,6 +132,23 @@ typedef void(^CompletionBlockWithResult)(NSArray *);
                                                         object:nil userInfo:@{kMessage: message, kRoomJID: roomJID}];
 }
 
+- (void) receiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"didReceiveRemoteNotification userInfo=%@", userInfo);
+    
+    // Get push alert
+    NSString *message = userInfo[QBMPushMessageApsKey][QBMPushMessageAlertKey];
+    NSMutableDictionary *pushInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:message, @"message", nil];
+    //    NSMutableDictionary *pushInfo = [NSMutableDictionary dicti]
+    
+    // get push rich content
+    NSString *richContent = userInfo[@"rich_content"];
+    if(richContent != nil){
+        pushInfo[@"rich_content"] = richContent;
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPushDidReceive object:nil userInfo:pushInfo];
+}
+
 
 #pragma mark
 #pragma mark Additional
@@ -148,5 +165,6 @@ static SystemSoundID soundID;
     
     AudioServicesPlaySystemSound(soundID);
 }
+
 
 @end

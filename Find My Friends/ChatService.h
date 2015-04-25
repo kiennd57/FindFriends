@@ -11,6 +11,7 @@
 
 #define kNotificationDidReceiveNewMessage @"kNotificationDidReceiveNewMessage"
 #define kNotificationDidReceiveNewMessageFromRoom @"kNotificationDidReceiveNewMessageFromRoom"
+#define kPushDidReceive @"kPushDidReceive"
 #define kMessage @"kMessage"
 #define kRoomJID @"kRoomJID"
 
@@ -27,5 +28,6 @@
 - (void)joinRoom:(QBChatRoom *)room completionBlock:(void(^)(QBChatRoom *))completionBlock;
 - (void)leaveRoom:(QBChatRoom *)room;
 - (void)requestRoomsWithCompletionBlock:(void(^)(NSArray *))completionBlock;
+- (void)receiveRemoteNotification:(NSDictionary *)userInfo;
 
 @end

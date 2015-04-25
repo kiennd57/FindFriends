@@ -50,6 +50,8 @@ class RootViewController: UIViewController, MBProgressHUDDelegate, QBActionStatu
             self.userDefault.setBool(true, forKey: self.util.KEY_AUTHORIZED)
             LocalStorageService.sharedInstance().currentUser = currentUser
             
+            self.registerForRemoteNotifications()
+            
             ChatService.instance().loginWithUser(currentUser, completionBlock: { () -> Void in
             })
             
@@ -74,6 +76,32 @@ class RootViewController: UIViewController, MBProgressHUDDelegate, QBActionStatu
                 
         }
     }
+    
+    func registerForRemoteNotifications () {
+        if UIApplication.sharedApplication().respondsToSelector("registerUserNotificationSettings:") {
+            UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+            UIApplication.sharedApplication().registerForRemoteNotifications()
+        } else {
+            UIApplication.sharedApplication().registerForRemoteNotificationTypes(UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound)
+        }
+    }
+    
+    
+//    - (void)registerForRemoteNotifications{
+//    
+//    #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+//    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+//    
+//    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+//    [[UIApplication sharedApplication] registerForRemoteNotifications];
+//    }
+//    else{
+//    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
+//    }
+//    #else
+//    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
+//    #endif
+//    }
 
 
     override func didReceiveMemoryWarning() {

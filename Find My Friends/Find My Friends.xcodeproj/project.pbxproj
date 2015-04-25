@@ -91,22 +91,6 @@
 		A4F1F89E1AE34E9D007167D2 /* CreateNewEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F1F89D1AE34E9D007167D2 /* CreateNewEventTableViewController.swift */; };
 		A4F1F8A01AE35DD3007167D2 /* EventImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F1F89F1AE35DD3007167D2 /* EventImageController.swift */; };
 		A4F1F8A21AE35F04007167D2 /* EventTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F1F8A11AE35F03007167D2 /* EventTypeTableViewCell.swift */; };
-		A4F1F8B41AE36656007167D2 /* e_birthday.png in Resources */ = {isa = PBXBuildFile; fileRef = A4F1F8A41AE36656007167D2 /* e_birthday.png */; };
-		A4F1F8B51AE36656007167D2 /* e_coffee.png in Resources */ = {isa = PBXBuildFile; fileRef = A4F1F8A51AE36656007167D2 /* e_coffee.png */; };
-		A4F1F8B61AE36656007167D2 /* e_conference.png in Resources */ = {isa = PBXBuildFile; fileRef = A4F1F8A61AE36656007167D2 /* e_conference.png */; };
-		A4F1F8B71AE36656007167D2 /* e_dinner.png in Resources */ = {isa = PBXBuildFile; fileRef = A4F1F8A71AE36656007167D2 /* e_dinner.png */; };
-		A4F1F8B81AE36656007167D2 /* e_family.png in Resources */ = {isa = PBXBuildFile; fileRef = A4F1F8A81AE36656007167D2 /* e_family.png */; };
-		A4F1F8B91AE36656007167D2 /* e_golf.png in Resources */ = {isa = PBXBuildFile; fileRef = A4F1F8A91AE36656007167D2 /* e_golf.png */; };
-		A4F1F8BA1AE36656007167D2 /* e_graduated.png in Resources */ = {isa = PBXBuildFile; fileRef = A4F1F8AA1AE36656007167D2 /* e_graduated.png */; };
-		A4F1F8BB1AE36656007167D2 /* e_meeting.png in Resources */ = {isa = PBXBuildFile; fileRef = A4F1F8AB1AE36656007167D2 /* e_meeting.png */; };
-		A4F1F8BC1AE36656007167D2 /* e_networking_event.png in Resources */ = {isa = PBXBuildFile; fileRef = A4F1F8AC1AE36656007167D2 /* e_networking_event.png */; };
-		A4F1F8BD1AE36656007167D2 /* e_party.png in Resources */ = {isa = PBXBuildFile; fileRef = A4F1F8AD1AE36656007167D2 /* e_party.png */; };
-		A4F1F8BE1AE36656007167D2 /* e_press_conference.png in Resources */ = {isa = PBXBuildFile; fileRef = A4F1F8AE1AE36656007167D2 /* e_press_conference.png */; };
-		A4F1F8BF1AE36656007167D2 /* e_seminar.png in Resources */ = {isa = PBXBuildFile; fileRef = A4F1F8AF1AE36656007167D2 /* e_seminar.png */; };
-		A4F1F8C01AE36656007167D2 /* e_show.png in Resources */ = {isa = PBXBuildFile; fileRef = A4F1F8B01AE36656007167D2 /* e_show.png */; };
-		A4F1F8C11AE36656007167D2 /* e_team_building_event.png in Resources */ = {isa = PBXBuildFile; fileRef = A4F1F8B11AE36656007167D2 /* e_team_building_event.png */; };
-		A4F1F8C21AE36656007167D2 /* e_travel.png in Resources */ = {isa = PBXBuildFile; fileRef = A4F1F8B21AE36656007167D2 /* e_travel.png */; };
-		A4F1F8C31AE36656007167D2 /* e_wedding.png in Resources */ = {isa = PBXBuildFile; fileRef = A4F1F8B31AE36656007167D2 /* e_wedding.png */; };
 		A4F1F8C81AE3832C007167D2 /* AddParticipantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F1F8C61AE3832C007167D2 /* AddParticipantTableViewCell.swift */; };
 		A4F1F8C91AE3832C007167D2 /* AddParticipantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F1F8C71AE3832C007167D2 /* AddParticipantTableViewCell.xib */; };
 		A4F1F8CC1AE386C6007167D2 /* UserInvitedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F1F8CA1AE386C6007167D2 /* UserInvitedTableViewCell.swift */; };
@@ -128,6 +112,7 @@
 		A4FAB7281AB42C10007047A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FAB7271AB42C10007047A7 /* LoginViewController.swift */; };
 		A4FAB7371AB42F4A007047A7 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FAB7361AB42F4A007047A7 /* Util.swift */; };
 		A4FAB7391AB43045007047A7 /* 1.JPG in Resources */ = {isa = PBXBuildFile; fileRef = A4FAB7381AB43045007047A7 /* 1.JPG */; };
+		A4FB84971AEB3B1500BD3783 /* SSMPushMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FB84961AEB3B1500BD3783 /* SSMPushMessage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -232,22 +217,6 @@
 		A4F1F89D1AE34E9D007167D2 /* CreateNewEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewEventTableViewController.swift; sourceTree = "<group>"; };
 		A4F1F89F1AE35DD3007167D2 /* EventImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventImageController.swift; sourceTree = "<group>"; };
 		A4F1F8A11AE35F03007167D2 /* EventTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTypeTableViewCell.swift; sourceTree = "<group>"; };
-		A4F1F8A41AE36656007167D2 /* e_birthday.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_birthday.png; sourceTree = "<group>"; };
-		A4F1F8A51AE36656007167D2 /* e_coffee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_coffee.png; sourceTree = "<group>"; };
-		A4F1F8A61AE36656007167D2 /* e_conference.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_conference.png; sourceTree = "<group>"; };
-		A4F1F8A71AE36656007167D2 /* e_dinner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_dinner.png; sourceTree = "<group>"; };
-		A4F1F8A81AE36656007167D2 /* e_family.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_family.png; sourceTree = "<group>"; };
-		A4F1F8A91AE36656007167D2 /* e_golf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_golf.png; sourceTree = "<group>"; };
-		A4F1F8AA1AE36656007167D2 /* e_graduated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_graduated.png; sourceTree = "<group>"; };
-		A4F1F8AB1AE36656007167D2 /* e_meeting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_meeting.png; sourceTree = "<group>"; };
-		A4F1F8AC1AE36656007167D2 /* e_networking_event.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_networking_event.png; sourceTree = "<group>"; };
-		A4F1F8AD1AE36656007167D2 /* e_party.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_party.png; sourceTree = "<group>"; };
-		A4F1F8AE1AE36656007167D2 /* e_press_conference.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_press_conference.png; sourceTree = "<group>"; };
-		A4F1F8AF1AE36656007167D2 /* e_seminar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_seminar.png; sourceTree = "<group>"; };
-		A4F1F8B01AE36656007167D2 /* e_show.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_show.png; sourceTree = "<group>"; };
-		A4F1F8B11AE36656007167D2 /* e_team_building_event.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_team_building_event.png; sourceTree = "<group>"; };
-		A4F1F8B21AE36656007167D2 /* e_travel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_travel.png; sourceTree = "<group>"; };
-		A4F1F8B31AE36656007167D2 /* e_wedding.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_wedding.png; sourceTree = "<group>"; };
 		A4F1F8C61AE3832C007167D2 /* AddParticipantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddParticipantTableViewCell.swift; sourceTree = "<group>"; };
 		A4F1F8C71AE3832C007167D2 /* AddParticipantTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddParticipantTableViewCell.xib; sourceTree = "<group>"; };
 		A4F1F8CA1AE386C6007167D2 /* UserInvitedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInvitedTableViewCell.swift; sourceTree = "<group>"; };
@@ -276,6 +245,8 @@
 		A4FAB7271AB42C10007047A7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A4FAB7361AB42F4A007047A7 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		A4FAB7381AB43045007047A7 /* 1.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.JPG; sourceTree = "<group>"; };
+		A4FB84951AEB3B1500BD3783 /* SSMPushMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSMPushMessage.h; sourceTree = "<group>"; };
+		A4FB84961AEB3B1500BD3783 /* SSMPushMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSMPushMessage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -389,6 +360,13 @@
 			name = "User List";
 			sourceTree = "<group>";
 		};
+		A4914C031AEAAF8E0043577B /* Event type */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Event type";
+			sourceTree = "<group>";
+		};
 		A49A026F1AE13D840062A13F /* List Users */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +379,8 @@
 		A4A661D31AEA3055006CAF25 /* Chat service */ = {
 			isa = PBXGroup;
 			children = (
+				A4FB84951AEB3B1500BD3783 /* SSMPushMessage.h */,
+				A4FB84961AEB3B1500BD3783 /* SSMPushMessage.m */,
 				A468208B1AB8666A006EAD74 /* ChatService.h */,
 				A468208C1AB8666A006EAD74 /* ChatService.m */,
 				A43CD7881AB6C9AF00554A23 /* LocalStorageService.h */,
@@ -462,29 +442,6 @@
 				A4F1F8DA1AE3BE2A007167D2 /* Event List */,
 			);
 			name = Event;
-			sourceTree = "<group>";
-		};
-		A4F1F8A31AE365DB007167D2 /* Event Type */ = {
-			isa = PBXGroup;
-			children = (
-				A4F1F8A41AE36656007167D2 /* e_birthday.png */,
-				A4F1F8A51AE36656007167D2 /* e_coffee.png */,
-				A4F1F8A61AE36656007167D2 /* e_conference.png */,
-				A4F1F8A71AE36656007167D2 /* e_dinner.png */,
-				A4F1F8A81AE36656007167D2 /* e_family.png */,
-				A4F1F8A91AE36656007167D2 /* e_golf.png */,
-				A4F1F8AA1AE36656007167D2 /* e_graduated.png */,
-				A4F1F8AB1AE36656007167D2 /* e_meeting.png */,
-				A4F1F8AC1AE36656007167D2 /* e_networking_event.png */,
-				A4F1F8AD1AE36656007167D2 /* e_party.png */,
-				A4F1F8AE1AE36656007167D2 /* e_press_conference.png */,
-				A4F1F8AF1AE36656007167D2 /* e_seminar.png */,
-				A4F1F8B01AE36656007167D2 /* e_show.png */,
-				A4F1F8B11AE36656007167D2 /* e_team_building_event.png */,
-				A4F1F8B21AE36656007167D2 /* e_travel.png */,
-				A4F1F8B31AE36656007167D2 /* e_wedding.png */,
-			);
-			name = "Event Type";
 			sourceTree = "<group>";
 		};
 		A4F1F8CE1AE388C0007167D2 /* Static Table View */ = {
@@ -649,7 +606,7 @@
 		A4FAB7231AB42523007047A7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				A4F1F8A31AE365DB007167D2 /* Event Type */,
+				A4914C031AEAAF8E0043577B /* Event type */,
 				A4F1F8D21AE3A793007167D2 /* line.png */,
 				A4EDB5E21ABE763A00CDEB7C /* attention.png */,
 				A4EDB5E01ABE75DE00CDEB7C /* alarm54.png */,
@@ -798,11 +755,9 @@
 				A4EDB5D71ABE708F00CDEB7C /* coffee.png in Resources */,
 				A4FAB7251AB42537007047A7 /* menu.png in Resources */,
 				A4EDB5D01ABE6F7B00CDEB7C /* birthday@1x.png in Resources */,
-				A4F1F8B51AE36656007167D2 /* e_coffee.png in Resources */,
 				A4EDB5E11ABE75DE00CDEB7C /* alarm54.png in Resources */,
 				A4FAB7001AB422A3007047A7 /* Main.storyboard in Resources */,
 				A48888251AB73936008EBF92 /* userIcon.png in Resources */,
-				A4F1F8BD1AE36656007167D2 /* e_party.png in Resources */,
 				A4F1F8C91AE3832C007167D2 /* AddParticipantTableViewCell.xib in Resources */,
 				A4FAB7391AB43045007047A7 /* 1.JPG in Resources */,
 				A4F1F8D31AE3A793007167D2 /* line.png in Resources */,
@@ -811,31 +766,23 @@
 				A4ECECB51ABA792100E52BB1 /* addMessage@2x.png in Resources */,
 				A4ECECB71ABA792100E52BB1 /* home@2x.png in Resources */,
 				A4EDB5D51ABE703400CDEB7C /* dinner.png in Resources */,
-				A4F1F8BF1AE36656007167D2 /* e_seminar.png in Resources */,
 				A4EDB5DF1ABE757300CDEB7C /* placeholder9.png in Resources */,
 				A4E0DEE51AE8B28C002A7808 /* orange.png in Resources */,
 				A4ECECC01ABA7C6500E52BB1 /* setting@1x.png in Resources */,
 				A4EDB5DD1ABE754400CDEB7C /* clock96.png in Resources */,
 				A4ECECB81ABA792100E52BB1 /* message@1x.png in Resources */,
-				A4F1F8B71AE36656007167D2 /* e_dinner.png in Resources */,
 				A4ECECBF1ABA7C6500E52BB1 /* notification@2x.png in Resources */,
 				A4E0DEE31AE8B1BC002A7808 /* aqua.png in Resources */,
-				A4F1F8B61AE36656007167D2 /* e_conference.png in Resources */,
 				A4F1F8CD1AE386C6007167D2 /* UserInvitedTableViewCell.xib in Resources */,
 				A4E2E5B21ABA9E7800A1A745 /* feedback@1x.png in Resources */,
-				A4F1F8C11AE36656007167D2 /* e_team_building_event.png in Resources */,
 				A4ECECC41ABA7D8E00E52BB1 /* profile@1x.png in Resources */,
-				A4F1F8BA1AE36656007167D2 /* e_graduated.png in Resources */,
-				A4F1F8B81AE36656007167D2 /* e_family.png in Resources */,
 				A49BD5491AB9664A00E23A38 /* LaunchScreen.xib in Resources */,
-				A4F1F8BC1AE36656007167D2 /* e_networking_event.png in Resources */,
 				9D3B71BE1ABAD529001DAA86 /* icon-180.png in Resources */,
 				9D3B71BC1ABAD486001DAA86 /* kien.jpg in Resources */,
 				A4EDB5D11ABE6F7B00CDEB7C /* birthday@2x.png in Resources */,
 				A4ECECB41ABA792100E52BB1 /* addMessage@1x.png in Resources */,
 				A4ECECB61ABA792100E52BB1 /* home@1x.png in Resources */,
 				A4E2E5AF1ABA9C6500A1A745 /* event@2x.png in Resources */,
-				A4F1F8C31AE36656007167D2 /* e_wedding.png in Resources */,
 				A4ECECB91ABA792100E52BB1 /* message@2x.png in Resources */,
 				A4E2E5AB1ABA98A800A1A745 /* support@2x.png in Resources */,
 				A4E2E5AE1ABA9C6500A1A745 /* event@1x.png in Resources */,
@@ -843,14 +790,8 @@
 				A4E2E5B31ABA9E7800A1A745 /* feedback@2x.png in Resources */,
 				A4FAB7021AB422A3007047A7 /* Images.xcassets in Resources */,
 				A4E2E5A61ABA980100A1A745 /* logout@1x.png in Resources */,
-				A4F1F8B91AE36656007167D2 /* e_golf.png in Resources */,
 				A4E2E5AA1ABA98A800A1A745 /* support@1x.png in Resources */,
-				A4F1F8B41AE36656007167D2 /* e_birthday.png in Resources */,
-				A4F1F8BE1AE36656007167D2 /* e_press_conference.png in Resources */,
 				A4E2E5B71ABAF36B00A1A745 /* bg.jpg in Resources */,
-				A4F1F8C21AE36656007167D2 /* e_travel.png in Resources */,
-				A4F1F8C01AE36656007167D2 /* e_show.png in Resources */,
-				A4F1F8BB1AE36656007167D2 /* e_meeting.png in Resources */,
 				A48888261AB73936008EBF92 /* userIcon@2x.png in Resources */,
 				A4ECECBE1ABA7C6500E52BB1 /* notification@1x.png in Resources */,
 				A4EDB5E31ABE763A00CDEB7C /* attention.png in Resources */,
@@ -899,6 +840,7 @@
 				A4FAB6FB1AB422A3007047A7 /* AppDelegate.swift in Sources */,
 				A4F1F89E1AE34E9D007167D2 /* CreateNewEventTableViewController.swift in Sources */,
 				A4FAB7281AB42C10007047A7 /* LoginViewController.swift in Sources */,
+				A4FB84971AEB3B1500BD3783 /* SSMPushMessage.m in Sources */,
 				A468208A1AB863B6006EAD74 /* ChatViewController.swift in Sources */,
 				A4F1F8A21AE35F04007167D2 /* EventTypeTableViewCell.swift in Sources */,
 				A495B6331AB92FD200DF3FA5 /* RootViewController.swift in Sources */,

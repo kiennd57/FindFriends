@@ -38,6 +38,9 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "chatDidReceiveMessageNotification:", name: kNotificationDidReceiveNewMessage, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "chatRoomDidReceiveMessageNotification:", name: kNotificationDidReceiveNewMessageFromRoom, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pushDidReceive:", name: kPushDidReceive, object: nil)
+        
+
         
         self.view.userInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: "keyboardWillHide:")
@@ -82,6 +85,19 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
 //    func hidesBottomBarWhenPushed() -> Bool {
 //        return true
 //    }
+    
+    func pushDidReceive(notification: NSNotification) {
+        let dictionary: [NSObject: AnyObject] = notification.userInfo!
+        let message = dictionary["message"] as! String
+        
+        var pushMessage = SSMPushMessage(message: message, richContentFilesIDs: nil)
+        var theMessage = QBChatMessage()
+        theMessage.text = message
+        
+        self.messages.addObject(theMessage)
+        self.messagesTableView.reloadData()
+    }
+
 
     @IBAction func sendMessage(sender: AnyObject) {
         
@@ -110,6 +126,15 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         self.messagesTableView.reloadData()
         if self.messages.count > 0 {
             self.messagesTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self.messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+        }
+        
+        
+        
+        let recipentUser = "\(self.dialog.recipientID)"
+        QBRequest.sendPushWithText(messageTextField.text, toUsers: recipentUser, successBlock: { (response: QBResponse!, events: [AnyObject]!) -> Void in
+            
+            }) { (error: QBError!) -> Void in
+            
         }
         
         self.messageTextField.text = nil

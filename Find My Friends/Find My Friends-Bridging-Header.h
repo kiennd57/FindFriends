@@ -12,3 +12,4 @@
 #import "ChatService.h"
 #import "ChatMessageTableViewCell.h"
 #import "StaticDataTableViewController.h"
+#import "SSMPushMessage.h"
