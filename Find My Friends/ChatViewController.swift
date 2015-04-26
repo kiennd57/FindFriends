@@ -72,7 +72,7 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
                     
                 })
             }
-        }
+        } 
         
         // get message history
         if self.dialog.ID != nil {
@@ -176,7 +176,6 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
             self.messagesTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self.messages.count - 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
         }
     }
-
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.messages.count
@@ -192,7 +191,7 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         let message = self.messages.objectAtIndex(indexPath.row) as! QBChatAbstractMessage
         cell.configureCellWithMessage(message)
         cell.selectionStyle = .None
-         
+        
         return cell
     }
     
