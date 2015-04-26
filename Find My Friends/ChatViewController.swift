@@ -13,7 +13,6 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
     @IBOutlet weak var messagesTableView: UITableView!
     @IBOutlet weak var sendMessageButton: UIButton!
     @IBOutlet weak var messageTextField: UITextField!
-    
     var messages:NSMutableArray!
     var chatRoom: QBChatRoom!
     var dialog: QBChatDialog!
@@ -24,6 +23,12 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         messages = NSMutableArray()
         messagesTableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
+        initialize()
+    }
+    
+    func initialize(){
+        sendMessageButton.layer.cornerRadius = 8
+        sendMessageButton.layer.borderColor = UIColor.clearColor().CGColor
     }
     
     override func viewDidAppear(animated: Bool) {

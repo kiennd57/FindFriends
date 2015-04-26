@@ -1,18 +1,18 @@
 //
-//  ChatDialogTableViewCell.swift
+//  UserMapTableViewCell.swift
 //  Find My Friends
 //
-//  Created by Phong Nguyen Nam on 3/20/15.
+//  Created by KHOA on 4/25/15.
 //  Copyright (c) 2015 Nam Phong Nguyen. All rights reserved.
 //
 
 import UIKit
 
-class ChatDialogTableViewCell: UITableViewCell {
+class UserMapTableViewCell: UITableViewCell {
 
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var lastMessage: UILabel!
+    
     
     
     override func awakeFromNib() {
@@ -24,8 +24,6 @@ class ChatDialogTableViewCell: UITableViewCell {
         userImage.layer.masksToBounds = true
     }
 
-    
-    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

@@ -211,10 +211,15 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("userCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("userCell") as! UserMapTableViewCell
         let user = users[indexPath.row] as! QBUUser
-        cell.textLabel?.text = user.login
+        cell.userName.text = user.login
+        cell.userImage.image = UIImage(named: "kien.jpg")
         return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60
     }
 }
 

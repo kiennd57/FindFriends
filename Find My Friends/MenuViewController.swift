@@ -14,7 +14,10 @@ class MenuViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.view.backgroundColor = UIColor(patternImage: util.blurImage(UIImage(named: "bg.jpg")!))
+//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "blue.jpg")!);)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "blue.jpg")!)
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+        self.tableView.separatorColor = UIColor.whiteColor()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,10 +39,12 @@ class MenuViewController: UITableViewController {
     override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         
-//        header.textLabel.textColor = UIColor.lightGrayColor()
+        header.textLabel.textColor = UIColor.lightTextColor()
         header.textLabel.font = UIFont.boldSystemFontOfSize(18)
         header.textLabel.frame = header.frame
         header.textLabel.textAlignment = NSTextAlignment.Left
+        
+        header.backgroundColor = UIColor(patternImage: util.blurImage(UIImage(named: "blue.jpg")!))
     }
     
     

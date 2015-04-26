@@ -64,8 +64,6 @@
 		A4E2E5B71ABAF36B00A1A745 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A4E2E5B61ABAF36B00A1A745 /* bg.jpg */; };
 		A4ECECB41ABA792100E52BB1 /* addMessage@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4ECECAE1ABA792100E52BB1 /* addMessage@1x.png */; };
 		A4ECECB51ABA792100E52BB1 /* addMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4ECECAF1ABA792100E52BB1 /* addMessage@2x.png */; };
-		A4ECECB61ABA792100E52BB1 /* home@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4ECECB01ABA792100E52BB1 /* home@1x.png */; };
-		A4ECECB71ABA792100E52BB1 /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4ECECB11ABA792100E52BB1 /* home@2x.png */; };
 		A4ECECB81ABA792100E52BB1 /* message@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4ECECB21ABA792100E52BB1 /* message@1x.png */; };
 		A4ECECB91ABA792100E52BB1 /* message@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4ECECB31ABA792100E52BB1 /* message@2x.png */; };
 		A4ECECBE1ABA7C6500E52BB1 /* notification@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4ECECBA1ABA7C6500E52BB1 /* notification@1x.png */; };
@@ -120,6 +118,10 @@
 		A4FB84AE1AEB47E700BD3783 /* ELCImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FB84A41AEB47E600BD3783 /* ELCImagePickerController.m */; };
 		A4FB84AF1AEB47E700BD3783 /* ELCConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FB84A71AEB47E600BD3783 /* ELCConsole.m */; };
 		A4FB84B01AEB47E700BD3783 /* ELCOverlayImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FB84A91AEB47E600BD3783 /* ELCOverlayImageView.m */; };
+		D22DD3EA1AEBF51200CECBC2 /* home@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = D22DD3E91AEBF51200CECBC2 /* home@1x.png */; };
+		D22DD3F21AEBF9DB00CECBC2 /* blue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D22DD3F11AEBF9DB00CECBC2 /* blue.jpg */; };
+		D232C46F1AEB8E5B00A93E42 /* AboutUsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D232C46E1AEB8E5B00A93E42 /* AboutUsController.swift */; };
+		D232C4711AEB974200A93E42 /* UserMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D232C4701AEB974200A93E42 /* UserMapTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,8 +199,6 @@
 		A4E2E5B61ABAF36B00A1A745 /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 		A4ECECAE1ABA792100E52BB1 /* addMessage@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addMessage@1x.png"; sourceTree = "<group>"; };
 		A4ECECAF1ABA792100E52BB1 /* addMessage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addMessage@2x.png"; sourceTree = "<group>"; };
-		A4ECECB01ABA792100E52BB1 /* home@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@1x.png"; sourceTree = "<group>"; };
-		A4ECECB11ABA792100E52BB1 /* home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@2x.png"; sourceTree = "<group>"; };
 		A4ECECB21ABA792100E52BB1 /* message@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message@1x.png"; sourceTree = "<group>"; };
 		A4ECECB31ABA792100E52BB1 /* message@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message@2x.png"; sourceTree = "<group>"; };
 		A4ECECBA1ABA7C6500E52BB1 /* notification@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notification@1x.png"; sourceTree = "<group>"; };
@@ -271,6 +271,10 @@
 		A4FB84A71AEB47E600BD3783 /* ELCConsole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCConsole.m; sourceTree = "<group>"; };
 		A4FB84A81AEB47E600BD3783 /* ELCOverlayImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCOverlayImageView.h; sourceTree = "<group>"; };
 		A4FB84A91AEB47E600BD3783 /* ELCOverlayImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCOverlayImageView.m; sourceTree = "<group>"; };
+		D22DD3E91AEBF51200CECBC2 /* home@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@1x.png"; sourceTree = "<group>"; };
+		D22DD3F11AEBF9DB00CECBC2 /* blue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blue.jpg; sourceTree = "<group>"; };
+		D232C46E1AEB8E5B00A93E42 /* AboutUsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsController.swift; sourceTree = "<group>"; };
+		D232C4701AEB974200A93E42 /* UserMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMapTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,6 +324,7 @@
 				A4606B9C1AB70EFA00AD74B4 /* MyCustomAnnotation.swift */,
 				A4FAB6FC1AB422A3007047A7 /* ViewController.swift */,
 				A4E2E5B41ABAC08500A1A745 /* CheckinViewController.swift */,
+				D232C4701AEB974200A93E42 /* UserMapTableViewCell.swift */,
 			);
 			name = Maps;
 			sourceTree = "<group>";
@@ -636,8 +641,10 @@
 				A4EDB5E21ABE763A00CDEB7C /* attention.png */,
 				A4EDB5E01ABE75DE00CDEB7C /* alarm54.png */,
 				A4EDB5DE1ABE757300CDEB7C /* placeholder9.png */,
+				D22DD3F11AEBF9DB00CECBC2 /* blue.jpg */,
 				A4EDB5DC1ABE754400CDEB7C /* clock96.png */,
 				A4EDB5D81ABE70D400CDEB7C /* cinema.png */,
+				D22DD3E91AEBF51200CECBC2 /* home@1x.png */,
 				A4EDB5D61ABE708F00CDEB7C /* coffee.png */,
 				A4EDB5D41ABE703400CDEB7C /* dinner.png */,
 				A4EDB5D21ABE6FC600CDEB7C /* graduation.png */,
@@ -662,8 +669,6 @@
 				A4ECECBD1ABA7C6500E52BB1 /* setting@2x.png */,
 				A4ECECAE1ABA792100E52BB1 /* addMessage@1x.png */,
 				A4ECECAF1ABA792100E52BB1 /* addMessage@2x.png */,
-				A4ECECB01ABA792100E52BB1 /* home@1x.png */,
-				A4ECECB11ABA792100E52BB1 /* home@2x.png */,
 				A4ECECB21ABA792100E52BB1 /* message@1x.png */,
 				A4ECECB31ABA792100E52BB1 /* message@2x.png */,
 				A48888231AB73936008EBF92 /* userIcon.png */,
@@ -677,6 +682,7 @@
 		A4FAB7261AB42BC5007047A7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D232C46D1AEB8E3700A93E42 /* About us */,
 				A4EDB5B71ABD684300CDEB7C /* Event */,
 				A4EDB5B41ABD598500CDEB7C /* Profile */,
 				A48888271AB73A0B008EBF92 /* User List */,
@@ -717,6 +723,14 @@
 				A4FB84A91AEB47E600BD3783 /* ELCOverlayImageView.m */,
 			);
 			name = "Image Picker";
+			sourceTree = "<group>";
+		};
+		D232C46D1AEB8E3700A93E42 /* About us */ = {
+			isa = PBXGroup;
+			children = (
+				D232C46E1AEB8E5B00A93E42 /* AboutUsController.swift */,
+			);
+			name = "About us";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -813,7 +827,6 @@
 				A4EDB5D31ABE6FC600CDEB7C /* graduation.png in Resources */,
 				A4ECECC51ABA7D8E00E52BB1 /* profile@2x.png in Resources */,
 				A4ECECB51ABA792100E52BB1 /* addMessage@2x.png in Resources */,
-				A4ECECB71ABA792100E52BB1 /* home@2x.png in Resources */,
 				A4EDB5D51ABE703400CDEB7C /* dinner.png in Resources */,
 				A4EDB5DF1ABE757300CDEB7C /* placeholder9.png in Resources */,
 				A4E0DEE51AE8B28C002A7808 /* orange.png in Resources */,
@@ -830,9 +843,10 @@
 				9D3B71BC1ABAD486001DAA86 /* kien.jpg in Resources */,
 				A4EDB5D11ABE6F7B00CDEB7C /* birthday@2x.png in Resources */,
 				A4ECECB41ABA792100E52BB1 /* addMessage@1x.png in Resources */,
-				A4ECECB61ABA792100E52BB1 /* home@1x.png in Resources */,
 				A4E2E5AF1ABA9C6500A1A745 /* event@2x.png in Resources */,
 				A4ECECB91ABA792100E52BB1 /* message@2x.png in Resources */,
+				D22DD3F21AEBF9DB00CECBC2 /* blue.jpg in Resources */,
+				D22DD3EA1AEBF51200CECBC2 /* home@1x.png in Resources */,
 				A4E2E5AB1ABA98A800A1A745 /* support@2x.png in Resources */,
 				A4E2E5AE1ABA9C6500A1A745 /* event@1x.png in Resources */,
 				A4EDB5D91ABE70D400CDEB7C /* cinema.png in Resources */,
@@ -887,6 +901,7 @@
 				A4FAB7371AB42F4A007047A7 /* Util.swift in Sources */,
 				A4FAB7211AB4245B007047A7 /* MenuViewController.swift in Sources */,
 				A4EDB5DB1ABE748400CDEB7C /* EventDetailTableViewController.swift in Sources */,
+				D232C46F1AEB8E5B00A93E42 /* AboutUsController.swift in Sources */,
 				A4FA40D11AE6589D009FC257 /* ChatUserViewController.swift in Sources */,
 				A4F1F8C81AE3832C007167D2 /* AddParticipantTableViewCell.swift in Sources */,
 				A41EB1191ABBF59D001BB355 /* ChatDialogTableViewCell.swift in Sources */,
@@ -907,6 +922,7 @@
 				A4606B981AB6EFBD00AD74B4 /* SSLMapPin.m in Sources */,
 				A46E91BD1AB6B62A00A7BDD9 /* MBProgressHUD.m in Sources */,
 				A4FB84B01AEB47E700BD3783 /* ELCOverlayImageView.m in Sources */,
+				D232C4711AEB974200A93E42 /* UserMapTableViewCell.swift in Sources */,
 				A43CD78A1AB6C9AF00554A23 /* LocalStorageService.m in Sources */,
 				A4F1F8CC1AE386C6007167D2 /* UserInvitedTableViewCell.swift in Sources */,
 			);

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MBProgressHUDDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ELCImagePickerControllerDelegate {
+class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MBProgressHUDDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate {
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var imageProfile: UIImageView!
@@ -23,13 +23,12 @@ class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MB
     @IBOutlet weak var tfConfirmPass: UITextField!
     
     
-    
+    var imagePickerView: UIImagePickerController!
     
     var currentUser: QBUUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Menu Bar Button Action
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -51,7 +50,7 @@ class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MB
         imageProfile.layer.borderWidth = 1
         imageProfile.layer.borderColor = UIColor.lightGrayColor().CGColor
         imageProfile.userInteractionEnabled = true
-        
+
         let tapImageGesture = UITapGestureRecognizer(target: self, action: "changeProfileAction:")
         imageProfile.addGestureRecognizer(tapImageGesture)
         
@@ -78,11 +77,37 @@ class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MB
     
     /////////////////////////////////////////////////////////////////////////
     func changeProfileAction(sender: AnyObject) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
+        imagePickerView = UIImagePickerController()
+        imagePickerView.delegate = self
+        imagePickerView.allowsEditing = true
         
-        let actionSheet = UIAlertController(title: "Select From Library", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let popup = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Take a photo", "Choose an image")
+        
+        popup.showInView(self.view)
+
     }
+    
+    
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        if actionSheet.buttonTitleAtIndex(buttonIndex) == "Take a photo" {
+            imagePickerView.sourceType = UIImagePickerControllerSourceType.Camera;
+            self.presentViewController(imagePickerView, animated: true, completion: nil)
+        } else if actionSheet.buttonTitleAtIndex(buttonIndex) == "Choose an image" {
+            imagePickerView.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+            self.presentViewController(imagePickerView, animated: true, completion: nil)
+        } else if actionSheet.buttonTitleAtIndex(buttonIndex) == "Cancel" {
+        }
+    }
+    
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        let chosenImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        self.imageProfile.image = chosenImage;
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        
+    }
+    
     /////////////////////////////////////////////////////////////////////////
     
     
@@ -110,6 +135,24 @@ class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MB
                     alert.show()
                     hud.hide(true)
                         println("ERROR: \(response.error)")
+                })
+                
+                var object = QBCOCustomObject()
+                object.className = "UserProfile"
+                object.fields["userName"] = currentUser.login
+//                object.fields["fullName"] = currentUser.fullName
+                object.fields["password"] = currentUser.password
+//                object.fields["email"] = currentUser.email
+//                object.fields["phoneNumber"] = currentUser.phone
+                object.fields["avatar"] = UIImagePNGRepresentation(UIImage(named: "orange.png"))
+                
+                
+                QBRequest.createObject(object, successBlock: { (response: QBResponse!, customObject: QBCOCustomObject!) -> Void in
+                        let alert = UIAlertView(title: "SUCCESS", message: nil, delegate: self, cancelButtonTitle: "Cancel")
+                        alert.show()
+                    }, errorBlock: { (error: QBResponse!) -> Void in
+                        let alert = UIAlertView(title: "FAIL", message: nil, delegate: self, cancelButtonTitle: "Cancel")
+                        alert.show()
                 })
             }
         } else {
