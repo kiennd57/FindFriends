@@ -170,7 +170,7 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
             let selectedEvent = eventList.objectAtIndex(selectedRow) as! QBCOCustomObject
             desController.event = selectedEvent
         } else if segue.identifier == "goto_createEvent" {
-            userDefaults.setObject("e_birthday.png", forKey: "eventImage")
+            userDefaults.setObject("e_default.jpg", forKey: "eventImage")
         }
     }
     

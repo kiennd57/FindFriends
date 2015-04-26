@@ -41,13 +41,10 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        println(__FUNCTION__)
-        var imageName = userDefaults.objectForKey("eventImage") as! String
-        if imageName == "" {
-            imageName = "e_birthday.png"
-        }
-        eventImage.image = UIImage(named: imageName)
-        
+
+            var imageName = userDefaults.objectForKey("eventImage") as! String
+            eventImage.image = UIImage(named: imageName)
+
         if userDefaults.objectForKey("participant") != nil {
             participant = userDefaults.objectForKey("participant") as! NSMutableArray
             self.tableView.reloadData()

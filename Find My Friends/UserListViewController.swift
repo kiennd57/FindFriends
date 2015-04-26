@@ -12,6 +12,8 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var friendTableView: UITableView!
     
+    @IBOutlet weak var nav: UINavigationBar!
+    
     var friendList: NSArray = NSArray()
     var participantList: NSMutableArray = NSMutableArray()
     var userDefault: NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -23,8 +25,13 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
         // Do any additional setup after loading the view.
         friendTableView.delegate = self
         friendTableView.dataSource = self
+        
+        nav.tintColor = UIColor.whiteColor()
+        nav.barTintColor = UIColor(red: 45/255, green: 130/255, blue: 184/255, alpha: 1)
+        nav.titleTextAttributes = NSDictionary(objectsAndKeys: UIColor.whiteColor(), NSForegroundColorAttributeName,
+            UIColor.whiteColor(), NSBackgroundColorAttributeName) as [NSObject : AnyObject]
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -53,6 +60,8 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
         } else {
             cell.accessoryType = UITableViewCellAccessoryType.None
         }
+        cell.backgroundColor = UIColor(red: 0, green: 115/255, blue: 150/255, alpha: 1)
+        
         return cell
     }
     

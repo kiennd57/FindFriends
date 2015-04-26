@@ -8,49 +8,58 @@
 
 import UIKit
 
-class EventImageController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    @IBOutlet weak var eventTypeTableView: UITableView!
+class EventImageController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    let cellIdentifier = "cellEventType"
-    let images = ["e_birthday.png", "e_coffee.png", "e_dinner.png", "e_family.png", "e_golf.png", "e_graduated.png", "e_meeting", "e_networking_event.png", "e_party.png", "e_press_conference.png", "e_seminar.png", "e_show.png", "e_team_building_event.png", "e_travel.png", "e_wedding.png"]
-    let types = ["Birthday", "Coffee", "Dinner", "Family", "Golf", "Graduation", "Meeting", "Networking event", "Party", "Conference", "Seminar", "Show", "Team building", "Travel", "Wedding"]
+    @IBOutlet var collectionView: UICollectionView!
     
-    var userDefaults: NSUserDefaults!
+    let cellIdentifier = "cell"
+    var image = ["e_art.png", "e_boat.png", "e_bussiness.png", "e_buying.png", "e_camp.png", "e_cinema.png", "e_cycle.png", "e_game.png", "e_gamecomputer.png", "e_heart.png", "e_helicopter.png", "e_hotair.png", "e_learning.png", "e_magicwand.png", "e_magnifyingglass.png", "e_map.png", "e_math.png", "e_mic.png", "e_money.png", "e_motorcycle.png", "e_movie.png", "e_music.png", "e_news.png", "e_paint.png", "e_paintcan.png", "e_pencil.png", "e_phuot.png", "e_plane.png", "e_poker.png", "e_present.png", "e_programming.png", "e_racingflags.png", "e_running.png", "e_sailboat.png", "e_schooolbus.png", "e_scooter.png", "e_selffie.png", "e_shoeprints.png", "e_shopping.png", "e_skateboard.png", "e_spaceshuttle.png", "e_stockmarket.png", "e_tractor.png", "e_train.png", "e_unicycle.png"]
+    
+    var userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        eventTypeTableView.delegate = self
-        eventTypeTableView.dataSource = self
-        userDefaults = NSUserDefaults.standardUserDefaults()
+        self.collectionView!.delegate = self
+        self.collectionView!.dataSource = self
+        
+        self.collectionView!.backgroundColor = UIColor.whiteColor()
+        
+        var flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        flowLayout.itemSize = CGSize(width: 70, height: 70)
+        //        flowLayout.scrollDirection = UICollectionViewScrollDirection.Horizontal
+        self.collectionView?.setCollectionViewLayout(flowLayout, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return images.count
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        userDefaults.setObject(self.image[indexPath.row], forKey: "eventImage")
+//        println(userDefaults.objectForKey("eventImage"))
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! EventTypeTableViewCell!
-        cell.eventImage.image = UIImage(named: images[indexPath.row])
-        cell.eventType.text = types[indexPath.row]
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        //#warning Incomplete method implementation -- Return the number of sections
+        return 1
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //#warning Incomplete method implementation -- Return the number of items in the section
+        return image.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as! EventCollectionViewCell
+        
+        // Configure the cell
+        cell.imageView.image = UIImage(named: self.image[indexPath.row])
         
         return cell
-    }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 70
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        userDefaults.setObject(images[indexPath.row], forKey: "eventImage")
-        userDefaults.setObject(types[indexPath.row], forKey: "eventType")
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
 }
