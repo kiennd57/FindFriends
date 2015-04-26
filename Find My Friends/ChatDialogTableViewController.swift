@@ -21,13 +21,24 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initialize()
+    }
+
+    func initialize() {
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 45/255, green: 130/255, blue: 184/255, alpha: 1)
+        self.navigationController?.navigationBar.titleTextAttributes = NSDictionary(objectsAndKeys: UIColor.whiteColor(), NSForegroundColorAttributeName,
+            UIColor.whiteColor(), NSBackgroundColorAttributeName) as [NSObject : AnyObject]
+//        self.tableView.backgroundColor = UIColor(red: 155/255, green: 180/255, blue: 201/255, alpha: 1)
+        self.tableView.separatorColor = UIColor(red: 155/255, green: 180/255, blue: 201/255, alpha: 1)
+        tableView.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0);
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -97,6 +108,9 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
         default:
             break
         }
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+//        cell.backgroundColor = UIColor(red: 160/255, green: 190/255, blue: 210/255, alpha: 1)
+        cell.backgroundColor = UIColor(red: 0, green: 115/255, blue: 150/255, alpha: 1)
         
         return cell
     }
@@ -105,13 +119,25 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 80
+    }
+    
+//    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 0
+//    }
+//    
+//    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 0
+//    }
+    
     /////////////////////quickbloxAPI
     func completedWithResult(result: QBResult!) {
         if result.success && result.isKindOfClass(QBDialogsPagedResult) {
             
             let pagedResult = result as! QBDialogsPagedResult
             if pagedResult.dialogs != nil {
-                self.dialogs = NSMutableArray(array: pagedResult.dialogs!)
+                self.dialogs = NSMutableArray(array: pagedResult.dialogs)
                 let pagedRequest = QBGeneralResponsePage(currentPage: 0, perPage: 100, totalEntries: 100)as QBGeneralResponsePage
                 let dislogsUsersIDs = pagedResult.dialogsUsersIDs as NSSet
                 QBRequest.usersWithIDs(dislogsUsersIDs.allObjects, page: pagedRequest, successBlock: { (response: QBResponse!, responsePage: QBGeneralResponsePage!, users: [AnyObject]!) -> Void in
@@ -120,7 +146,6 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
                     }, errorBlock: { (response: QBResponse!) -> Void in
                 })
             }
-            
         }
     }
 }

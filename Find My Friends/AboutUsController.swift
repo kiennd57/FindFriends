@@ -26,6 +26,11 @@ class AboutUsController: UIViewController {
     func initialize(){
         logoImage.layer.cornerRadius = 80
         logoImage.layer.masksToBounds = true
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 45/255, green: 130/255, blue: 184/255, alpha: 1)
+        self.navigationController?.navigationBar.titleTextAttributes = NSDictionary(objectsAndKeys: UIColor.whiteColor(), NSForegroundColorAttributeName,
+            UIColor.whiteColor(), NSBackgroundColorAttributeName) as [NSObject : AnyObject]
     }
     
     override func didReceiveMemoryWarning() {

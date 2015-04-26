@@ -44,6 +44,7 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
         eventDescription.layer.cornerRadius = 4.0
         eventDescription.layer.borderColor = UIColor.whiteColor().CGColor
         
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         let editBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "goToEditEvent")
         self.navigationItem.rightBarButtonItem = editBtn
         

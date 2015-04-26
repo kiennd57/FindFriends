@@ -29,6 +29,10 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
     func initialize(){
         sendMessageButton.layer.cornerRadius = 8
         sendMessageButton.layer.borderColor = UIColor.clearColor().CGColor
+        
+        self.view.backgroundColor = UIColor(red: 207/255, green: 209/255, blue: 201/255, alpha: 1)
+        self.messagesTableView.backgroundColor = UIColor(red: 232/255, green: 235/255, blue: 225/255, alpha: 1)
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -44,7 +48,6 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "chatDidReceiveMessageNotification:", name: kNotificationDidReceiveNewMessage, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "chatRoomDidReceiveMessageNotification:", name: kNotificationDidReceiveNewMessageFromRoom, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "pushDidReceive:", name: kPushDidReceive, object: nil)
-        
 
         
         self.view.userInteractionEnabled = true
@@ -188,7 +191,8 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         
         let message = self.messages.objectAtIndex(indexPath.row) as! QBChatAbstractMessage
         cell.configureCellWithMessage(message)
-        
+        cell.selectionStyle = .None
+         
         return cell
     }
     
@@ -227,7 +231,7 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
             var theMessages = res.messages
             if theMessages != nil {
                 if theMessages.count > 0 {
-                    self.messages.addObjectsFromArray((theMessages.mutableCopy()) as! [AnyObject])
+                    self.messages.addObjectsFromArray(theMessages as [AnyObject])
                     self.messagesTableView.reloadData()
                     self.messagesTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self.messages.count - 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
                 }

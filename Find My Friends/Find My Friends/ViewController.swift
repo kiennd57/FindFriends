@@ -17,6 +17,7 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
     @IBOutlet weak var mapType: UISegmentedControl!
     @IBOutlet weak var userTable: UITableView!
     
+    
     var userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     let util = Util()
     var status: NSString!
@@ -34,7 +35,6 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        
         initialize()
         
         mapView.delegate = self
@@ -45,6 +45,8 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
         locationManager.startUpdatingLocation()
         mapView.showsPointsOfInterest = true
         mapView.showsBuildings = true
+
+        
     }
     
     func initialize() {
@@ -53,6 +55,12 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
         checkinButton.layer.cornerRadius = 4.0
         checkinButton.layer.borderWidth = 0.1
         checkinButton.layer.borderColor = UIColor.greenColor().CGColor
+//        self.navigationController?.navigationBar.barTintColor = UIColor(patternImage: UIImage(named: "blue.jpg")!)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 45/255, green: 130/255, blue: 184/255, alpha: 1)
+        self.navigationController?.navigationBar.titleTextAttributes = NSDictionary(objectsAndKeys: UIColor.whiteColor(), NSForegroundColorAttributeName,
+                                                                                                    UIColor.whiteColor(), NSBackgroundColorAttributeName) as [NSObject : AnyObject]
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
     
     override func viewDidAppear(animated: Bool) {

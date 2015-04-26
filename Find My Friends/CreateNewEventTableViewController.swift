@@ -57,7 +57,7 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
     
     func initialize() {
         userDefaults = NSUserDefaults.standardUserDefaults()
-        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         eventTitle.delegate = self
         eventTime.delegate = self
         eventPlace.delegate = self

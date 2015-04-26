@@ -25,6 +25,12 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 45/255, green: 130/255, blue: 184/255, alpha: 1)
+        self.navigationController?.navigationBar.titleTextAttributes = NSDictionary(objectsAndKeys: UIColor.whiteColor(), NSForegroundColorAttributeName,
+            UIColor.whiteColor(), NSBackgroundColorAttributeName) as [NSObject : AnyObject]
+        tableView.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0);
     }
     
     override func viewWillAppear(animated: Bool) {

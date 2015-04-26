@@ -11,6 +11,9 @@ import UIKit
 class ChatUserViewController: UIViewController, NMPaginatorDelegate, UITableViewDelegate, UITableViewDataSource, QBActionStatusDelegate {
     
     @IBOutlet weak var usersTableView: UITableView!
+    @IBOutlet weak var createDialogbtn: UIButton!
+    
+    
     var users: NSMutableArray!
     var selectedUser: NSMutableArray!
     var paginator: UsersPaginator!
@@ -25,7 +28,16 @@ class ChatUserViewController: UIViewController, NMPaginatorDelegate, UITableView
         
         usersTableView.delegate = self
         usersTableView.dataSource = self
+        usersTableView.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0);
         
+        initialize()
+    }
+    
+    func initialize() {
+        self.view.backgroundColor = UIColor(red: 190/255, green: 221/255, blue: 247/255, alpha: 1)
+        self.usersTableView.backgroundColor = UIColor(red: 190/255, green: 221/255, blue: 247/255, alpha: 1)
+        createDialogbtn.hidden = true
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,6 +97,9 @@ class ChatUserViewController: UIViewController, NMPaginatorDelegate, UITableView
             cell!.accessoryType = UITableViewCellAccessoryType.None
         }
         
+//        cell!.backgroundColor = UIColor(red: 45/255, green: 165/255, blue: 240/255, alpha: 1)
+        cell!.backgroundColor = UIColor(red: 0, green: 115/255, blue: 150/255, alpha: 1)
+        
         return cell!
     }
     
@@ -99,6 +114,10 @@ class ChatUserViewController: UIViewController, NMPaginatorDelegate, UITableView
             selectedUser.addObject(user!)
             selectedCell?.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60
     }
     
     func completedWithResult(result: QBResult!) {
@@ -117,5 +136,6 @@ class ChatUserViewController: UIViewController, NMPaginatorDelegate, UITableView
     func paginator(paginator: AnyObject!, didReceiveResults results: [AnyObject]!) {
         users.addObjectsFromArray(results)
         self.usersTableView.reloadData()
+        createDialogbtn.hidden = false
     }
 }
