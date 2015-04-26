@@ -42,7 +42,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
         signupButton.layer.cornerRadius = 8
         imageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
 //        util.setImageBlur(imageView)
-        imageView.image = util.blurImage(UIImage(named: "kien.jpg")!)
+        imageView.image = util.blurImage(UIImage(named: "blue.jpg")!)
         util.setupTextField(username)
         util.setupTextField(password)
     }

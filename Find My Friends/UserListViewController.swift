@@ -13,6 +13,7 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var friendTableView: UITableView!
     
     @IBOutlet weak var nav: UINavigationBar!
+    @IBOutlet weak var backBtn: UIButton!
     
     var friendList: NSArray = NSArray()
     var participantList: NSMutableArray = NSMutableArray()
@@ -30,6 +31,10 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
         nav.barTintColor = UIColor(red: 45/255, green: 130/255, blue: 184/255, alpha: 1)
         nav.titleTextAttributes = NSDictionary(objectsAndKeys: UIColor.whiteColor(), NSForegroundColorAttributeName,
             UIColor.whiteColor(), NSBackgroundColorAttributeName) as [NSObject : AnyObject]
+        self.view.backgroundColor = UIColor(red: 45/255, green: 130/255, blue: 184/255, alpha: 1)
+        friendTableView.backgroundColor = UIColor(red: 45/255, green: 130/255, blue: 184/255, alpha: 1)
+        self.backBtn.hidden = true
+        friendTableView.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0);
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,7 +65,7 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
         } else {
             cell.accessoryType = UITableViewCellAccessoryType.None
         }
-        cell.backgroundColor = UIColor(red: 0, green: 115/255, blue: 150/255, alpha: 1)
+        cell.backgroundColor = UIColor(red: 55/255, green: 140/255, blue: 195/255, alpha: 1)
         
         return cell
     }
@@ -94,6 +99,7 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
         QBRequest.usersForPage(QBGeneralResponsePage(currentPage: 0, perPage: 100, totalEntries: 100), successBlock: { (response: QBResponse!, responsePage: QBGeneralResponsePage!, userList: [AnyObject]!) -> Void in
             self.friendList = userList as NSArray
             self.friendTableView.reloadData()
+            self.backBtn.hidden = false
             self.friendTableView.hidden = false
             hud.hide(true)
             }) { (response: QBResponse!) -> Void in

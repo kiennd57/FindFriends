@@ -45,7 +45,6 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
         locationManager.startUpdatingLocation()
         mapView.showsPointsOfInterest = true
         mapView.showsBuildings = true
-
         
     }
     
@@ -61,6 +60,8 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
                                                                                                     UIColor.whiteColor(), NSBackgroundColorAttributeName) as [NSObject : AnyObject]
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        userTable.backgroundColor = UIColor(red: 55/255, green: 140/255, blue: 195/255, alpha: 1)
+        userTable.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0);
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -223,7 +224,7 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
         let user = users[indexPath.row] as! QBUUser
         cell.userName.text = user.login
         cell.userImage.image = UIImage(named: "kien.jpg")
-        cell.backgroundColor = UIColor(red: 0, green: 115/255, blue: 150/255, alpha: 1)
+        cell.backgroundColor = UIColor(red: 55/255, green: 140/255, blue: 195/255, alpha: 1)
         return cell
     }
     

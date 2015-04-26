@@ -17,7 +17,7 @@ class RootViewController: UIViewController, MBProgressHUDDelegate, QBActionStatu
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(patternImage: util.blurImage(UIImage(named: "kien.jpg")!))
+        self.view.backgroundColor = UIColor(red: 45/255, green: 130/255, blue: 184/255, alpha: 1)
         
         hud = MBProgressHUD(view:self.view)
         hud.labelText = "LOADING"

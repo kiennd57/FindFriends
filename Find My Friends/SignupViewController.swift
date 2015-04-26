@@ -47,18 +47,30 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
         
         signUpButton.layer.cornerRadius = 8
         
-        imageView.image = util.blurImage(UIImage(named: "kien.jpg")!)
+        imageView.image = util.blurImage(UIImage(named: "blue.jpg")!)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: "dimissKeyboard")
+        self.view.userInteractionEnabled = true
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func dimissKeyboard() {
+        fullname.resignFirstResponder()
+        username.resignFirstResponder()
+        password.resignFirstResponder()
+        confirmPassword.resignFirstResponder()
+        email.resignFirstResponder()
+        animatedSignupView()
+    }
 
     func underlineBackButton(){
-        var titleString : NSMutableAttributedString = NSMutableAttributedString(string: backButton.titleLabel!.text!)
-//        titleString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.StyleSingle.rawValue, range: NSMakeRange(0, backButton.titleLabel!.text!.utf16))
-        backButton.setAttributedTitle(titleString, forState: .Normal)
+        let underlineAttriString = NSAttributedString(string: "Back to login", attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
+        backButton.setAttributedTitle(underlineAttriString, forState: .Normal)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

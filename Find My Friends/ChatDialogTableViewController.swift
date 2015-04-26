@@ -109,8 +109,8 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
             break
         }
         cell.selectionStyle = UITableViewCellSelectionStyle.None
-//        cell.backgroundColor = UIColor(red: 160/255, green: 190/255, blue: 210/255, alpha: 1)
-        cell.backgroundColor = UIColor(red: 0, green: 115/255, blue: 150/255, alpha: 1)
+        cell.backgroundColor = UIColor(red: 55/255, green: 140/255, blue: 195/255, alpha: 1)
+//        cell.backgroundColor = UIColor(red: 0, green: 115/255, blue: 150/255, alpha: 1)
         
         return cell
     }

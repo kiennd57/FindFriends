@@ -49,6 +49,7 @@
 		A49A02731AE13DBC0062A13F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A02721AE13DBC0062A13F /* User.swift */; };
 		A49BD5491AB9664A00E23A38 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49BD5481AB9664A00E23A38 /* LaunchScreen.xib */; };
 		A4B6D23F1AECE07600AF7564 /* e_default.png in Resources */ = {isa = PBXBuildFile; fileRef = A4B6D23E1AECE07600AF7564 /* e_default.png */; };
+		A4B6D2411AED501C00AF7564 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A4B6D2401AED501C00AF7564 /* icon.png */; };
 		A4DC84BE1AEC875200E08E63 /* menu_event.png in Resources */ = {isa = PBXBuildFile; fileRef = A4DC84B71AEC875200E08E63 /* menu_event.png */; };
 		A4DC84BF1AEC875200E08E63 /* menu_home.png in Resources */ = {isa = PBXBuildFile; fileRef = A4DC84B81AEC875200E08E63 /* menu_home.png */; };
 		A4DC84C01AEC875200E08E63 /* menu_logout.png in Resources */ = {isa = PBXBuildFile; fileRef = A4DC84B91AEC875200E08E63 /* menu_logout.png */; };
@@ -204,6 +205,7 @@
 		A49A02721AE13DBC0062A13F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A49BD5481AB9664A00E23A38 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		A4B6D23E1AECE07600AF7564 /* e_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_default.png; sourceTree = "<group>"; };
+		A4B6D2401AED501C00AF7564 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		A4DC84B71AEC875200E08E63 /* menu_event.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_event.png; sourceTree = "<group>"; };
 		A4DC84B81AEC875200E08E63 /* menu_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_home.png; sourceTree = "<group>"; };
 		A4DC84B91AEC875200E08E63 /* menu_logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_logout.png; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 		A4DC84B61AEC873F00E08E63 /* Menu icon */ = {
 			isa = PBXGroup;
 			children = (
+				A4B6D2401AED501C00AF7564 /* icon.png */,
 				A4DC84D91AECB7C400E08E63 /* addBtn.png */,
 				A4DC84D41AEC9A2100E08E63 /* menu.png */,
 				A4DC84C51AEC8ACE00E08E63 /* menu_support.png */,
@@ -914,6 +917,7 @@
 				D24567E61AECD00D0020719E /* e_shopping.png in Resources */,
 				A4DC84D51AEC9A2100E08E63 /* menu.png in Resources */,
 				D24567DE1AECD00D0020719E /* e_programming.png in Resources */,
+				A4B6D2411AED501C00AF7564 /* icon.png in Resources */,
 				D24567CB1AECD00D0020719E /* e_hotair.png in Resources */,
 				A4EDB5DF1ABE757300CDEB7C /* placeholder9.png in Resources */,
 				A4DC84CB1AEC8E3900E08E63 /* userIcon.png in Resources */,

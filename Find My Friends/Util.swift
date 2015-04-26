@@ -14,7 +14,7 @@ class Util {
     func setupTextField(textField: UITextField) {
         textField.layer.borderWidth = 1.5
         textField.layer.cornerRadius = 8
-        textField.layer.borderColor = UIColor.lightGrayColor().CGColor
+        textField.layer.borderColor = UIColor.whiteColor().CGColor
     }
     
     func setImageBlur(imageView: UIImageView) {
