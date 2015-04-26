@@ -204,6 +204,21 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
         }
     }
     
+    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        
+        header.textLabel.textColor = UIColor.blackColor()
+        header.textLabel.font = UIFont.boldSystemFontOfSize(18)
+        header.textLabel.frame = header.frame
+        header.textLabel.textAlignment = NSTextAlignment.Left
+        
+        header.backgroundColor = UIColor.redColor()
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
     ////////////////////////////////////////////////////////////////////////////////////////
     func inviteUserAction() {
         self.performSegueWithIdentifier("goto_selectUser", sender: self)

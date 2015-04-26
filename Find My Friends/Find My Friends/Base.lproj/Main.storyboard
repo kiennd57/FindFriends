@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="phh-ro-rwH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="phh-ro-rwH">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -1411,7 +1411,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="60" id="yF4-5q-HMD" customClass="UserMapTableViewCell" customModule="Find_My_Friends" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="userCell" rowHeight="60" id="yF4-5q-HMD" customClass="UserMapTableViewCell" customModule="Find_My_Friends" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yF4-5q-HMD" id="rL5-wW-uwY">
@@ -1442,7 +1442,7 @@
                                                         <constraint firstAttribute="height" constant="45" id="NmE-k9-LY6"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
@@ -1500,15 +1500,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="EXi-Kk-Cee" secondAttribute="bottom" constant="20" id="CFK-cZ-AaN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EXi-Kk-Cee" secondAttribute="trailing" constant="-16" id="02F-zJ-dsi"/>
+                            <constraint firstItem="EXi-Kk-Cee" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="0wy-c2-qCh"/>
+                            <constraint firstItem="EXi-Kk-Cee" firstAttribute="top" secondItem="meS-Pk-vPy" secondAttribute="bottom" constant="8" id="DLb-4S-MFm">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="MjA-p2-5Kw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="DOw-wc-nNQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="meS-Pk-vPy" secondAttribute="trailing" constant="-16" id="Gr7-Sq-VxL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MjA-p2-5Kw" secondAttribute="trailing" constant="-16" id="Lzm-tZ-I0i"/>
                             <constraint firstItem="meS-Pk-vPy" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="NE4-Ap-OEL"/>
-                            <constraint firstItem="EXi-Kk-Cee" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="O4G-1I-hf6"/>
                             <constraint firstItem="MjA-p2-5Kw" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="PWg-MR-wdO"/>
-                            <constraint firstItem="EXi-Kk-Cee" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Xqb-ur-ShI"/>
-                            <constraint firstItem="EXi-Kk-Cee" firstAttribute="top" secondItem="meS-Pk-vPy" secondAttribute="bottom" constant="8" id="eFS-he-88G"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="EXi-Kk-Cee" secondAttribute="bottom" id="cyz-jH-cb3"/>
                             <constraint firstAttribute="centerX" secondItem="tPt-nN-UUv" secondAttribute="centerX" id="eHc-UY-hI4"/>
                             <constraint firstItem="tPt-nN-UUv" firstAttribute="centerY" secondItem="WhN-8S-cZV" secondAttribute="centerY" id="jnL-oP-uBL"/>
                             <constraint firstItem="meS-Pk-vPy" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="nDA-6O-XVy"/>
@@ -1524,7 +1526,7 @@
                                 <exclude reference="EXi-Kk-Cee"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="CFK-cZ-AaN"/>
+                                <exclude reference="cyz-jH-cb3"/>
                                 <exclude reference="qXn-no-FoB"/>
                                 <exclude reference="eHc-UY-hI4"/>
                                 <exclude reference="jnL-oP-uBL"/>
@@ -1532,9 +1534,9 @@
                                 <exclude reference="Gr7-Sq-VxL"/>
                                 <exclude reference="NE4-Ap-OEL"/>
                                 <exclude reference="nDA-6O-XVy"/>
-                                <exclude reference="O4G-1I-hf6"/>
-                                <exclude reference="Xqb-ur-ShI"/>
-                                <exclude reference="eFS-he-88G"/>
+                                <exclude reference="02F-zJ-dsi"/>
+                                <exclude reference="0wy-c2-qCh"/>
+                                <exclude reference="DLb-4S-MFm"/>
                                 <exclude reference="DOw-wc-nNQ"/>
                                 <exclude reference="Lzm-tZ-I0i"/>
                                 <exclude reference="PWg-MR-wdO"/>
@@ -1549,7 +1551,7 @@
                                 <include reference="EXi-Kk-Cee"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="CFK-cZ-AaN"/>
+                                <include reference="cyz-jH-cb3"/>
                                 <include reference="qXn-no-FoB"/>
                                 <include reference="eHc-UY-hI4"/>
                                 <include reference="jnL-oP-uBL"/>
@@ -1557,9 +1559,9 @@
                                 <include reference="Gr7-Sq-VxL"/>
                                 <include reference="NE4-Ap-OEL"/>
                                 <include reference="nDA-6O-XVy"/>
-                                <include reference="O4G-1I-hf6"/>
-                                <include reference="Xqb-ur-ShI"/>
-                                <include reference="eFS-he-88G"/>
+                                <include reference="02F-zJ-dsi"/>
+                                <include reference="0wy-c2-qCh"/>
+                                <include reference="DLb-4S-MFm"/>
                                 <include reference="DOw-wc-nNQ"/>
                                 <include reference="Lzm-tZ-I0i"/>
                                 <include reference="PWg-MR-wdO"/>
@@ -1601,7 +1603,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="7yP-Mb-h5C"/>
                                 </constraints>
-                                <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.27380607792794681" green="0.66666666666666663" blue="0.57632369637218828" alpha="1" colorSpace="calibratedRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
@@ -1694,10 +1696,11 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p00-vF-SLX">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.2738060779" green="0.66666666669999997" blue="0.57632369640000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="nyi-fZ-97D"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Close">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -3671,16 +3674,16 @@ Address: 	University of Engineering and                      Technology
                                 <exclude reference="BVs-EF-EbS"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="kbh-ct-eCB"/>
+                                <exclude reference="ByQ-vo-f4y"/>
+                                <exclude reference="fwl-fj-KNX"/>
+                                <exclude reference="hcY-P2-TNk"/>
                                 <exclude reference="kDc-Jc-hLC"/>
                                 <exclude reference="y0M-SA-J3n"/>
                                 <exclude reference="zVC-aU-49V"/>
                                 <exclude reference="LPw-u6-VK8"/>
                                 <exclude reference="dlb-rY-viV"/>
                                 <exclude reference="yvN-Os-FxC"/>
-                                <exclude reference="ByQ-vo-f4y"/>
-                                <exclude reference="fwl-fj-KNX"/>
-                                <exclude reference="hcY-P2-TNk"/>
-                                <exclude reference="kbh-ct-eCB"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -3690,16 +3693,16 @@ Address: 	University of Engineering and                      Technology
                                 <include reference="BVs-EF-EbS"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="kbh-ct-eCB"/>
+                                <include reference="ByQ-vo-f4y"/>
+                                <include reference="fwl-fj-KNX"/>
+                                <include reference="hcY-P2-TNk"/>
                                 <include reference="kDc-Jc-hLC"/>
                                 <include reference="y0M-SA-J3n"/>
                                 <include reference="zVC-aU-49V"/>
                                 <include reference="LPw-u6-VK8"/>
                                 <include reference="dlb-rY-viV"/>
                                 <include reference="yvN-Os-FxC"/>
-                                <include reference="ByQ-vo-f4y"/>
-                                <include reference="fwl-fj-KNX"/>
-                                <include reference="hcY-P2-TNk"/>
-                                <include reference="kbh-ct-eCB"/>
                             </mask>
                         </variation>
                     </view>
@@ -4839,10 +4842,9 @@ Address: 	University of Engineering and                      Technology
         <!--Event Image Controller-->
         <scene sceneID="cP1-5I-Xyg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5lg-pU-cYS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="SPk-0L-OMq" customClass="EventImageController" customModule="Find_My_Friends" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="SYW-aT-rju">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Snq-1S-b4g">
@@ -4903,6 +4905,7 @@ Address: 	University of Engineering and                      Technology
                         <outlet property="collectionView" destination="SYW-aT-rju" id="LkV-jM-9HV"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5lg-pU-cYS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5857.5" y="1051.5"/>
         </scene>
