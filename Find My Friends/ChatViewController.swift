@@ -16,6 +16,7 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
     var messages:NSMutableArray!
     var chatRoom: QBChatRoom!
     var dialog: QBChatDialog!
+    var recipient: UInt = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,17 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         let tapGesture = UITapGestureRecognizer(target: self, action: "keyboardWillHide:")
         self.view.addGestureRecognizer(tapGesture)
         
+        println("Nguoi nhan: \(self.dialog.recipientID)")
+        
+        var users = LocalStorageService.sharedInstance().userList
+        for var i = 0; i < users.count; i++ {
+            var user = users[i] as! QBUUser
+            if Int(user.ID) == self.dialog.recipientID {
+                self.title = user.login
+                recipient = user.ID
+            }
+        }
+        
         //Set title
 //        if self.dialog.type.value == QBChatDialogTypePrivate.value {
 //            let dictionary: [NSObject: AnyObject] = LocalStorageService.sharedInstance().usersAsDictionary
@@ -89,10 +101,6 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
             self.chatRoom = nil
         }
     }
-
-//    func hidesBottomBarWhenPushed() -> Bool {
-//        return true
-//    }
     
     func pushDidReceive(notification: NSNotification) {
         let dictionary: [NSObject: AnyObject] = notification.userInfo!
@@ -101,6 +109,8 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         var pushMessage = SSMPushMessage(message: message, richContentFilesIDs: nil)
         var theMessage = QBChatMessage()
         theMessage.text = message
+        theMessage.senderID = recipient
+        
         
         self.messages.addObject(theMessage)
         self.messagesTableView.reloadData()
@@ -134,8 +144,6 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         if self.messages.count > 0 {
             self.messagesTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self.messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
         }
-        
-        
         
         let recipentUser = "\(self.dialog.recipientID)"
         QBRequest.sendPushWithText(messageTextField.text, toUsers: recipentUser, successBlock: { (response: QBResponse!, events: [AnyObject]!) -> Void in
