@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="phh-ro-rwH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="phh-ro-rwH">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -4913,6 +4913,7 @@ Address: 	University of Engineering and                      Technology
                         <outlet property="days" destination="4zd-nk-KpD" id="WRb-BX-gA9"/>
                         <outlet property="eventDescription" destination="nz9-cI-GzF" id="LAL-T6-bru"/>
                         <outlet property="eventImage" destination="FY6-Eb-tWW" id="vet-zs-akc"/>
+                        <outlet property="eventMapLocation" destination="zbU-0V-QYy" id="Wj3-dl-PcR"/>
                         <outlet property="eventPlace" destination="TgP-RU-oYe" id="2p4-ma-szZ"/>
                         <outlet property="eventTime" destination="8pz-vi-YmJ" id="rHu-F9-OYc"/>
                         <outlet property="eventTitle" destination="35c-Np-wlO" id="XOE-u9-YhN"/>
@@ -4923,7 +4924,7 @@ Address: 	University of Engineering and                      Technology
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2CF-3m-Hon" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3501" y="1699.5"/>
+            <point key="canvasLocation" x="3681" y="1700.25"/>
         </scene>
         <!--Event Image Controller-->
         <scene sceneID="cP1-5I-Xyg">

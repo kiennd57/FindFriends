@@ -8,12 +8,13 @@
 
 import UIKit
 
-class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate {
+class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var eventImage: UIImageView!
     @IBOutlet weak var eventTitle: UILabel!
     @IBOutlet weak var eventPlace: UILabel!
     @IBOutlet weak var eventTime: UILabel!
+    @IBOutlet weak var eventMapLocation: MKMapView!
     
     @IBOutlet weak var days: UILabel!
     @IBOutlet weak var hours: UILabel!
@@ -26,6 +27,9 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
     var eventDate: NSDate!
     var dateFormatter: NSDateFormatter!
     var timer: NSTimer!
+    var locationManager: CLLocationManager!
+    
+    var eventAnnotation: SSLMapPin!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +58,14 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
         let eventDateStr = "\(str):00"
         println("\(eventDateStr)")
         eventDate = dateFormatter.dateFromString(eventDateStr)
+        
+        eventMapLocation.delegate = self
+        locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        eventMapLocation.showsPointsOfInterest = true
+        eventMapLocation.showsBuildings = true
     }
     
     func showAllInformation() {
@@ -68,6 +80,39 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
             eventDescription.text = event.fields["eventDescription"] as? String
         }
         eventImage.image = UIImage(named: (event.fields["eventImage"] as? String)!)
+        
+
+        eventAnnotation = SSLMapPin(coordinate: CLLocationCoordinate2D(latitude: 21.03217275099044, longitude: 105.7880523753822))
+        eventMapLocation.addAnnotation(eventAnnotation)
+        
+        var region = MKCoordinateRegionMakeWithDistance(eventAnnotation.coordinate, 800, 800)
+        eventMapLocation.setRegion(eventMapLocation.regionThatFits(region), animated: true)
+    }
+    
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        
+        if annotation.isKindOfClass(MKUserLocation) {
+            return nil
+        }
+        
+        let AnnotationIdentifier = "eventAnnotation"
+        var theAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: AnnotationIdentifier)
+        
+        var imageView = UIImageView()
+        imageView.image = UIImage(named: (event.fields["eventImage"] as? String)!)
+        imageView.layer.borderWidth = 1;
+        imageView.layer.borderColor = UIColor.whiteColor().CGColor
+        imageView.backgroundColor = UIColor.redColor()
+        var f: CGRect = CGRectMake(5,5.5,45,45);
+        imageView.frame = f
+        imageView.layer.cornerRadius = 22.5;
+        imageView.layer.masksToBounds = true;
+        theAnnotationView.rightCalloutAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIView
+        
+        theAnnotationView.addSubview(imageView)
+        theAnnotationView.enabled = true;
+        theAnnotationView.image = UIImage(named: "pin.png")
+        return theAnnotationView
     }
     
     /////////////////////////////////////////////////////////////////////////

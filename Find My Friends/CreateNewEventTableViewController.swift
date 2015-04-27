@@ -137,6 +137,17 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
             println("Finish draging")
             println("The new latitude is: \(view.annotation.coordinate.latitude)")
             println("The new longitude is: \(view.annotation.coordinate.longitude)")
+            
+            
+            let ceo = CLGeocoder()
+            let loc = CLLocation(latitude: view.annotation.coordinate.latitude, longitude: view.annotation.coordinate.longitude)
+            
+            ceo.reverseGeocodeLocation(loc, completionHandler: { (placemarks: [AnyObject]!, error: NSError!) -> Void in
+                let placeMark = placemarks[0] as? CLPlacemark
+                let address = "\(placeMark!.subLocality), \(placeMark!.locality)"
+                println("Address: \(address)")
+            })
+            
             view.dragState = MKAnnotationViewDragState.None
         } else if newState == MKAnnotationViewDragState.Canceling {
             view.dragState = MKAnnotationViewDragState.None
@@ -173,6 +184,8 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
             event.fields["eventImage"] = userDefaults.objectForKey("eventImage")
             event.fields["eventParticipant"] = participant
             event.fields["eventOwner"] = owner
+            event.fields["longitude"] = eventAnnotation.coordinate.longitude
+            event.fields["latitude"] = eventAnnotation.coordinate.latitude
             
             QBRequest.createObject(event, successBlock: { (response: QBResponse!, object: QBCOCustomObject!) -> Void in
                 let successAlert = UIAlertView(title: "SUCCESS!", message: "Your event was created and sent to your friend", delegate: self, cancelButtonTitle: "GOT IT")
