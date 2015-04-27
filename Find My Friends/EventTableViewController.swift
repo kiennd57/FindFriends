@@ -163,13 +163,17 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
         
         for var i = 0; i < temp.count; i++ {
             let event = temp.objectAtIndex(i) as! QBCOCustomObject
-            let participants = event.fields["eventParticipant"] as! NSMutableArray
-            
-            if(participants.count > 0) {
-                if (!participants.containsObject(LocalStorageService.sharedInstance().currentUser.login) ) {
-                    temp.removeObjectAtIndex(i)
+            if event.fields["eventParticipant"] != nil {
+                let participants = event.fields["eventParticipant"] as! NSMutableArray
+                
+                if(participants.count > 0) {
+                    if (!participants.containsObject(LocalStorageService.sharedInstance().currentUser.login) ) {
+                        temp.removeObjectAtIndex(i)
+                    }
                 }
-            }
+            } else {
+                temp.removeObjectAtIndex(i)
+            }            
         }
         
         return temp
