@@ -150,6 +150,23 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
             }
         }
     }
+    
+    func filterEvent(senderEvents: NSArray) -> NSArray {
+        let temp = NSMutableArray(array: senderEvents)
+        
+        for var i = 0; i < temp.count; i++ {
+            let event = temp.objectAtIndex(i) as! QBCOCustomObject
+            let participants = event.fields["eventParticipant"] as! NSMutableArray
+            
+            if(participants.count > 0) {
+                if (!participants.containsObject(LocalStorageService.sharedInstance().currentUser.login) ) {
+                    temp.removeObjectAtIndex(i)
+                }
+            }
+        }
+        
+        return temp
+    }
 
     /////////////////////////////////
     func retrieveAllEvents() {
@@ -164,6 +181,7 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
         
         QBRequest.objectsWithClassName("Event", successBlock: { (response: QBResponse!, object: [AnyObject]!) -> Void in
             self.eventList = NSArray(array: object)
+            self.eventList = self.filterEvent(self.eventList)
             self.eventList = self.sortEventTime(self.eventList)
             self.tableView.reloadData()
             hud.hide(true)
