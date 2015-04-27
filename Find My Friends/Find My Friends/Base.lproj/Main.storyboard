@@ -4813,7 +4813,7 @@ Address: 	University of Engineering and                      Technology
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.49044549160000001" green="0.77172111740000005" blue="0.60706047249999995" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="NQl-C2-KDe">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="320" id="NQl-C2-KDe">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NQl-C2-KDe" id="kj9-ap-FWH">
@@ -4824,20 +4824,20 @@ Address: 	University of Engineering and                      Technology
                                                 </mapView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="zbU-0V-QYy" firstAttribute="leading" secondItem="kj9-ap-FWH" secondAttribute="leadingMargin" constant="-8" id="HQv-I9-2FJ"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="zbU-0V-QYy" secondAttribute="bottom" constant="-8" id="J7L-NL-3hF"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="zbU-0V-QYy" secondAttribute="trailing" constant="-8" id="sqm-ur-h6R"/>
-                                                <constraint firstItem="zbU-0V-QYy" firstAttribute="top" secondItem="kj9-ap-FWH" secondAttribute="topMargin" constant="-8" id="ygo-Vz-XHI"/>
+                                                <constraint firstItem="zbU-0V-QYy" firstAttribute="top" secondItem="kj9-ap-FWH" secondAttribute="topMargin" constant="-8" id="l3V-X4-p95"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="zbU-0V-QYy" secondAttribute="bottom" constant="-8" id="lcS-nj-U8p"/>
+                                                <constraint firstItem="zbU-0V-QYy" firstAttribute="leading" secondItem="kj9-ap-FWH" secondAttribute="leadingMargin" constant="-16" id="ruZ-E0-Cjf"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="zbU-0V-QYy" secondAttribute="trailing" constant="-16" id="yW1-HW-VSz"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
                                                     <exclude reference="zbU-0V-QYy"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="HQv-I9-2FJ"/>
-                                                    <exclude reference="J7L-NL-3hF"/>
-                                                    <exclude reference="sqm-ur-h6R"/>
-                                                    <exclude reference="ygo-Vz-XHI"/>
+                                                    <exclude reference="l3V-X4-p95"/>
+                                                    <exclude reference="lcS-nj-U8p"/>
+                                                    <exclude reference="ruZ-E0-Cjf"/>
+                                                    <exclude reference="yW1-HW-VSz"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -4845,61 +4845,13 @@ Address: 	University of Engineering and                      Technology
                                                     <include reference="zbU-0V-QYy"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="HQv-I9-2FJ"/>
-                                                    <include reference="J7L-NL-3hF"/>
-                                                    <include reference="sqm-ur-h6R"/>
-                                                    <include reference="ygo-Vz-XHI"/>
+                                                    <include reference="l3V-X4-p95"/>
+                                                    <include reference="lcS-nj-U8p"/>
+                                                    <include reference="ruZ-E0-Cjf"/>
+                                                    <include reference="yW1-HW-VSz"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="40" id="d9a-gD-4ax">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d9a-gD-4ax" id="MFP-wp-0Sm">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YyI-GA-Aio">
-                                                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                    <state key="normal" title="Delete Event">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="deleteEvent:" destination="qWU-ND-khp" eventType="touchUpInside" id="xWI-hk-e4J"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="YyI-GA-Aio" firstAttribute="trailing" secondItem="MFP-wp-0Sm" secondAttribute="trailingMargin" id="0nC-HW-Fir"/>
-                                                <constraint firstItem="YyI-GA-Aio" firstAttribute="top" secondItem="MFP-wp-0Sm" secondAttribute="topMargin" constant="-8" id="MIz-KQ-rJ0"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="YyI-GA-Aio" secondAttribute="bottom" constant="-8" id="qeG-6g-WTH"/>
-                                                <constraint firstItem="YyI-GA-Aio" firstAttribute="leading" secondItem="MFP-wp-0Sm" secondAttribute="leadingMargin" id="vCl-AH-cRL"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="subviews">
-                                                    <exclude reference="YyI-GA-Aio"/>
-                                                </mask>
-                                                <mask key="constraints">
-                                                    <exclude reference="0nC-HW-Fir"/>
-                                                    <exclude reference="MIz-KQ-rJ0"/>
-                                                    <exclude reference="qeG-6g-WTH"/>
-                                                    <exclude reference="vCl-AH-cRL"/>
-                                                </mask>
-                                            </variation>
-                                            <variation key="heightClass=regular-widthClass=compact">
-                                                <mask key="subviews">
-                                                    <include reference="YyI-GA-Aio"/>
-                                                </mask>
-                                                <mask key="constraints">
-                                                    <include reference="0nC-HW-Fir"/>
-                                                    <include reference="MIz-KQ-rJ0"/>
-                                                    <include reference="qeG-6g-WTH"/>
-                                                    <include reference="vCl-AH-cRL"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="0.31852991791420404" blue="0.13679466328967715" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>

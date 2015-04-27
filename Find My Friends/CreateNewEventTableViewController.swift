@@ -173,8 +173,8 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
             self.view.bringSubviewToFront(hud)
             hud.show(true)
             
-            let owner = self.userDefault.objectForKey("currentUserName") as! String!
-                      
+            let owner = LocalStorageService.sharedInstance().currentUser.login
+
             let event = QBCOCustomObject()
             event.className = "Event"
             event.fields["eventName"] = self.eventTitle.text

@@ -81,12 +81,23 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
         }
         eventImage.image = UIImage(named: (event.fields["eventImage"] as? String)!)
         
-
-        eventAnnotation = SSLMapPin(coordinate: CLLocationCoordinate2D(latitude: 21.03217275099044, longitude: 105.7880523753822))
+        let longitude = event.fields["longitude"] as! NSString
+        let doubleLongitude = theDoubleValue(longitude)
+        
+        let latitude = event.fields["latitude"] as! NSString
+        let doubleLatitude = theDoubleValue(latitude)
+        
+        println("Longitude is: \(doubleLongitude)")
+        eventAnnotation = SSLMapPin(coordinate: CLLocationCoordinate2D(latitude: doubleLatitude, longitude: doubleLongitude))
         eventMapLocation.addAnnotation(eventAnnotation)
         
         var region = MKCoordinateRegionMakeWithDistance(eventAnnotation.coordinate, 800, 800)
         eventMapLocation.setRegion(eventMapLocation.regionThatFits(region), animated: true)
+    }
+    
+    func theDoubleValue(str: NSString!) -> Double {
+        
+        return str.doubleValue
     }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {

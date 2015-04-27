@@ -128,10 +128,10 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             let event = eventList.objectAtIndex(indexPath.row) as! QBCOCustomObject
-            let userName = self.userDefault.objectForKey("currentUserName") as! String!
+            let userName = LocalStorageService.sharedInstance().currentUser.login
             let owner = event.fields["eventOwner"] as! String!
             
-            if (owner != userName && owner != nil){
+            if (owner != userName && owner != nil) {
                 let alert = UIAlertView(title: "Alert!", message: "You don't have right to delete", delegate: self, cancelButtonTitle: "OK")
                 alert.show()
             }
@@ -148,7 +148,6 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
                         alert.show()
                 })
             }
-            
         }
     }
 
