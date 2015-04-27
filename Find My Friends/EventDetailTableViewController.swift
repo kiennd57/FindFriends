@@ -129,7 +129,15 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
     /////////////////////////////////////////////////////////////////////////
     func goToEditEvent() {
         println(__FUNCTION__)
+        
+        self.performSegueWithIdentifier("goto_editEvent", sender: self)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let desController = segue.destinationViewController as! EditEventTableViewController
+        desController.event = self.event
+    }
+
     
     @IBAction func deleteEvent(sender: AnyObject) {
         println(__FUNCTION__)

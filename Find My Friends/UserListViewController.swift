@@ -83,6 +83,7 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! UserTableViewCell
         if cell.accessoryType == UITableViewCellAccessoryType.None {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            cell.accessoryView?.backgroundColor = UIColor.whiteColor()
             participantList.addObject(cell.userName.text!)
         } else {
             cell.accessoryType = UITableViewCellAccessoryType.None

@@ -146,6 +146,7 @@
 		D24567EA1AECD00D0020719E /* e_tractor.png in Resources */ = {isa = PBXBuildFile; fileRef = D24567BD1AECD00D0020719E /* e_tractor.png */; };
 		D24567EB1AECD00D0020719E /* e_train.png in Resources */ = {isa = PBXBuildFile; fileRef = D24567BE1AECD00D0020719E /* e_train.png */; };
 		D24567EC1AECD00D0020719E /* e_unicycle.png in Resources */ = {isa = PBXBuildFile; fileRef = D24567BF1AECD00D0020719E /* e_unicycle.png */; };
+		D2D1FEBC1AEE820F001EA464 /* EditEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D1FEBB1AEE820F001EA464 /* EditEventTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -313,6 +314,7 @@
 		D24567BD1AECD00D0020719E /* e_tractor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_tractor.png; sourceTree = "<group>"; };
 		D24567BE1AECD00D0020719E /* e_train.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_train.png; sourceTree = "<group>"; };
 		D24567BF1AECD00D0020719E /* e_unicycle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_unicycle.png; sourceTree = "<group>"; };
+		D2D1FEBB1AEE820F001EA464 /* EditEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEventTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -586,6 +588,7 @@
 			isa = PBXGroup;
 			children = (
 				A4EDB5DA1ABE748400CDEB7C /* EventDetailTableViewController.swift */,
+				D2D1FEBA1AEE81C6001EA464 /* Edit Event */,
 			);
 			name = "Event detail";
 			sourceTree = "<group>";
@@ -825,6 +828,14 @@
 			name = "Event Type";
 			sourceTree = "<group>";
 		};
+		D2D1FEBA1AEE81C6001EA464 /* Edit Event */ = {
+			isa = PBXGroup;
+			children = (
+				D2D1FEBB1AEE820F001EA464 /* EditEventTableViewController.swift */,
+			);
+			name = "Edit Event";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1011,6 +1022,7 @@
 				A4FAB6FD1AB422A3007047A7 /* ViewController.swift in Sources */,
 				A46E91B91AB6A89E00A7BDD9 /* SignupViewController.swift in Sources */,
 				A4F1F8D71AE3B2A9007167D2 /* UserListViewController.swift in Sources */,
+				D2D1FEBC1AEE820F001EA464 /* EditEventTableViewController.swift in Sources */,
 				A49A02711AE13DA10062A13F /* UserList.swift in Sources */,
 				A4EDB5B61ABD599B00CDEB7C /* ProfileTableViewController.swift in Sources */,
 				A468208D1AB8666A006EAD74 /* ChatService.m in Sources */,
