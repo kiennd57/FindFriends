@@ -56,8 +56,6 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
         eventDescription.layer.borderColor = UIColor.whiteColor().CGColor
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        let editBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "goToEditEvent")
-        self.navigationItem.rightBarButtonItem = editBtn
         
         dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
@@ -79,6 +77,12 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
     
     func showAllInformation() {
         thisEvent = LocalStorageService.sharedInstance().currentEvent
+        var eventOwner = thisEvent.fields["eventOwner"] as! String
+        if LocalStorageService.sharedInstance().currentUser == eventOwner {
+            let editBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "goToEditEvent")
+            self.navigationItem.rightBarButtonItem = editBtn
+        }
+        
         eventTitle.text = thisEvent.fields["eventName"] as? String
         if event.fields["eventPlace"] != nil {
             eventPlace.text = thisEvent.fields["eventPlace"] as? String
