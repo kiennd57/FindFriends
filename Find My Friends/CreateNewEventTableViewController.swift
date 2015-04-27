@@ -8,18 +8,21 @@
 
 import UIKit
 
-class CreateNewEventTableViewController: StaticDataTableViewController, UITextFieldDelegate, UITextViewDelegate, MBProgressHUDDelegate {
+class CreateNewEventTableViewController: StaticDataTableViewController, UITextFieldDelegate, UITextViewDelegate, MBProgressHUDDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var eventImage: UIImageView!
     @IBOutlet weak var eventTitle: UITextField!
     @IBOutlet weak var eventTime: UITextField!
     @IBOutlet weak var eventPlace: UITextField!
     @IBOutlet weak var eventDescription: UITextView!
+    @IBOutlet weak var eventMapView: MKMapView!
+    
+    var eventAnnotation: SSLMapPin!
     
     var datePicker: UIDatePicker!
     var pickerToolBar: UIToolbar!
     var userDefaults: NSUserDefaults!
-    
+    var locationManager: CLLocationManager!
     var participant: NSMutableArray = NSMutableArray()
     var friendList: NSMutableArray = NSMutableArray()
     
@@ -37,6 +40,12 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         println(__FUNCTION__)
+        var centerLocation = eventMapView.centerCoordinate
+        println("location: \(centerLocation.longitude) and \(centerLocation.latitude)")
+        
+        eventAnnotation = SSLMapPin(coordinate: centerLocation)
+
+        eventMapView.addAnnotation(eventAnnotation)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -66,7 +75,71 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
         createDatePicker()
         createSaveButtonBar()
         createSelectImageAction()
+        
+        //Map
+        eventMapView.delegate = self
+        locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        eventMapView.showsPointsOfInterest = true
+        eventMapView.showsBuildings = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: "gotoEventMap")
+        eventMapView.addGestureRecognizer(tapGesture)
     }
+    
+    func gotoEventMap() {
+        self.performSegueWithIdentifier("goto_eventMap", sender: nil)
+    }
+    
+    /////////////////////////////////////////////////////////////
+    
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        
+        if annotation.isKindOfClass(MKUserLocation) {
+            return nil
+        }
+        
+        let AnnotationIdentifier = "eventAnnotation"
+        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(AnnotationIdentifier) as MKAnnotationView!
+        
+        if annotationView != nil {
+            return annotationView
+        } else {
+            var theAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: AnnotationIdentifier)
+            
+            var imageView = UIImageView()
+            imageView.image = UIImage(named: "e_default.png")
+            imageView.layer.borderWidth = 1;
+            imageView.layer.borderColor = UIColor.whiteColor().CGColor
+            imageView.backgroundColor = UIColor.redColor()
+            var f: CGRect = CGRectMake(5,5.5,45,45);
+            imageView.frame = f
+            imageView.layer.cornerRadius = 22.5;
+            imageView.layer.masksToBounds = true;
+            theAnnotationView.rightCalloutAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIView
+            
+            theAnnotationView.addSubview(imageView)
+            theAnnotationView.enabled = true;
+            theAnnotationView.canShowCallout = true;
+            theAnnotationView.image = UIImage(named: "pin.png")
+            theAnnotationView.draggable = true
+            theAnnotationView.userInteractionEnabled = true
+            return theAnnotationView
+        }
+    }
+    
+    
+    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
+        if newState == MKAnnotationViewDragState.Ending {
+            println("Finish draging")
+            println("The new latitude is: \(view.annotation.coordinate.latitude)")
+            println("The new longitude is: \(view.annotation.coordinate.longitude)")
+        }
+    }
+    
     
     ////////////////////////////////////
     func createSaveButtonBar() {

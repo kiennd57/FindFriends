@@ -41,6 +41,9 @@
 		A46E91B61AB6A84900A7BDD9 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A46E91B51AB6A84900A7BDD9 /* libxml2.dylib */; };
 		A46E91B91AB6A89E00A7BDD9 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46E91B81AB6A89E00A7BDD9 /* SignupViewController.swift */; };
 		A46E91BD1AB6B62A00A7BDD9 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A46E91BC1AB6B62A00A7BDD9 /* MBProgressHUD.m */; };
+		A4766A181AED6AFB002803E7 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = A4766A161AED6AFB002803E7 /* pin.png */; };
+		A4766A191AED6AFB002803E7 /* userTest.png in Resources */ = {isa = PBXBuildFile; fileRef = A4766A171AED6AFB002803E7 /* userTest.png */; };
+		A4766A1C1AED7FA8002803E7 /* EventMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4766A1B1AED7FA8002803E7 /* EventMap.swift */; };
 		A488882D1AB73BB8008EBF92 /* NMPaginator.m in Sources */ = {isa = PBXBuildFile; fileRef = A488882C1AB73BB8008EBF92 /* NMPaginator.m */; };
 		A48888341AB73FD4008EBF92 /* UsersPaginator.m in Sources */ = {isa = PBXBuildFile; fileRef = A48888321AB73FD4008EBF92 /* UsersPaginator.m */; };
 		A48888361AB75660008EBF92 /* FriendListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48888351AB75660008EBF92 /* FriendListTableViewController.swift */; };
@@ -195,6 +198,9 @@
 		A46E91B81AB6A89E00A7BDD9 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		A46E91BB1AB6B62A00A7BDD9 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		A46E91BC1AB6B62A00A7BDD9 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		A4766A161AED6AFB002803E7 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
+		A4766A171AED6AFB002803E7 /* userTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userTest.png; sourceTree = "<group>"; };
+		A4766A1B1AED7FA8002803E7 /* EventMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMap.swift; sourceTree = "<group>"; };
 		A488882B1AB73BB8008EBF92 /* NMPaginator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMPaginator.h; sourceTree = "<group>"; };
 		A488882C1AB73BB8008EBF92 /* NMPaginator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMPaginator.m; sourceTree = "<group>"; };
 		A48888311AB73FD4008EBF92 /* UsersPaginator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersPaginator.h; sourceTree = "<group>"; };
@@ -414,6 +420,23 @@
 			name = HUD;
 			sourceTree = "<group>";
 		};
+		A4766A151AED6AE1002803E7 /* Map icon */ = {
+			isa = PBXGroup;
+			children = (
+				A4766A161AED6AFB002803E7 /* pin.png */,
+				A4766A171AED6AFB002803E7 /* userTest.png */,
+			);
+			name = "Map icon";
+			sourceTree = "<group>";
+		};
+		A4766A1A1AED7F91002803E7 /* Map Event */ = {
+			isa = PBXGroup;
+			children = (
+				A4766A1B1AED7FA8002803E7 /* EventMap.swift */,
+			);
+			name = "Map Event";
+			sourceTree = "<group>";
+		};
 		A48888271AB73A0B008EBF92 /* User List */ = {
 			isa = PBXGroup;
 			children = (
@@ -570,6 +593,7 @@
 		A4F1F8DC1AE3BE40007167D2 /* Create New Event */ = {
 			isa = PBXGroup;
 			children = (
+				A4766A1A1AED7F91002803E7 /* Map Event */,
 				A4DC84C71AEC8C8900E08E63 /* event image */,
 				A4F1F89D1AE34E9D007167D2 /* CreateNewEventTableViewController.swift */,
 				A4F1F8A11AE35F03007167D2 /* EventTypeTableViewCell.swift */,
@@ -694,6 +718,7 @@
 		A4FAB7221AB4251C007047A7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A4766A151AED6AE1002803E7 /* Map icon */,
 				D24567921AECCF5F0020719E /* Event Type */,
 				A4DC84B61AEC873F00E08E63 /* Menu icon */,
 				A4E0DEE11AE8B1A1002A7808 /* Message Image */,
@@ -910,6 +935,8 @@
 				D24567C21AECD00D0020719E /* e_bussiness.png in Resources */,
 				D24567C91AECD00D0020719E /* e_heart.png in Resources */,
 				A4F1F8D31AE3A793007167D2 /* line.png in Resources */,
+				A4766A181AED6AFB002803E7 /* pin.png in Resources */,
+				A4766A191AED6AFB002803E7 /* userTest.png in Resources */,
 				D24567CD1AECD00D0020719E /* e_magicwand.png in Resources */,
 				D24567CE1AECD00D0020719E /* e_magnifyingglass.png in Resources */,
 				A4DC84C31AEC875200E08E63 /* menu_profile.png in Resources */,
@@ -987,6 +1014,7 @@
 				A49A02711AE13DA10062A13F /* UserList.swift in Sources */,
 				A4EDB5B61ABD599B00CDEB7C /* ProfileTableViewController.swift in Sources */,
 				A468208D1AB8666A006EAD74 /* ChatService.m in Sources */,
+				A4766A1C1AED7FA8002803E7 /* EventMap.swift in Sources */,
 				A4FAB7371AB42F4A007047A7 /* Util.swift in Sources */,
 				A4FAB7211AB4245B007047A7 /* MenuViewController.swift in Sources */,
 				A4EDB5DB1ABE748400CDEB7C /* EventDetailTableViewController.swift in Sources */,

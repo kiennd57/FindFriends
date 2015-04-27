@@ -34,8 +34,8 @@ class ChatUserViewController: UIViewController, NMPaginatorDelegate, UITableView
     }
     
     func initialize() {
-        self.view.backgroundColor = UIColor(red: 45/255, green: 130/255, blue: 184/255, alpha: 1)
-        self.usersTableView.backgroundColor = UIColor(red: 45/255, green: 130/255, blue: 184/255, alpha: 1)
+        self.view.backgroundColor = UIColor(red: 55/255, green: 140/255, blue: 195/255, alpha: 1)
+        self.usersTableView.backgroundColor = UIColor(red: 55/255, green: 140/255, blue: 195/255, alpha: 1)
         createDialogbtn.hidden = true
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }

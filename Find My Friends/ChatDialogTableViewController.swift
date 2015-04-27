@@ -34,8 +34,8 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 45/255, green: 130/255, blue: 184/255, alpha: 1)
         self.navigationController?.navigationBar.titleTextAttributes = NSDictionary(objectsAndKeys: UIColor.whiteColor(), NSForegroundColorAttributeName,
             UIColor.whiteColor(), NSBackgroundColorAttributeName) as [NSObject : AnyObject]
-//        self.tableView.backgroundColor = UIColor(red: 155/255, green: 180/255, blue: 201/255, alpha: 1)
         self.tableView.separatorColor = UIColor(red: 155/255, green: 180/255, blue: 201/255, alpha: 1)
+        tableView.backgroundColor = UIColor(red: 55/255, green: 140/255, blue: 195/255, alpha: 1)
         tableView.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0);
     }
     
@@ -48,6 +48,13 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
         
         // Get chat dialog list
         if LocalStorageService.sharedInstance().currentUser != nil {
+            hud = MBProgressHUD(view: self.view)
+            hud.delegate = self
+            hud.labelText = "Get chat list"
+            self.view.addSubview(hud)
+            self.view.bringSubviewToFront(hud)
+            hud.show(true)
+            
             QBChat.dialogsWithExtendedRequest(nil, delegate: self)
         }
     }
@@ -133,8 +140,8 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
     
     /////////////////////quickbloxAPI
     func completedWithResult(result: QBResult!) {
+        hud.hide(true)
         if result.success && result.isKindOfClass(QBDialogsPagedResult) {
-            
             let pagedResult = result as! QBDialogsPagedResult
             if pagedResult.dialogs != nil {
                 self.dialogs = NSMutableArray(array: pagedResult.dialogs)

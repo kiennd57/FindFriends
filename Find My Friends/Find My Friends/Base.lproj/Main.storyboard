@@ -880,23 +880,23 @@
                                 <exclude reference="cVg-Dd-49y"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="9BI-MX-UK5"/>
-                                <exclude reference="aho-K5-Bah"/>
-                                <exclude reference="zEd-4f-nlD"/>
+                                <exclude reference="46E-VT-ez2"/>
+                                <exclude reference="HWY-lK-srv"/>
                                 <exclude reference="0wn-au-GPm"/>
                                 <exclude reference="Vey-y8-qaJ"/>
                                 <exclude reference="hI8-43-vVh"/>
-                                <exclude reference="PFj-q2-9PX"/>
-                                <exclude reference="cMD-wh-bxq"/>
-                                <exclude reference="46E-VT-ez2"/>
-                                <exclude reference="HWY-lK-srv"/>
+                                <exclude reference="KNK-OM-u82"/>
                                 <exclude reference="Wp2-TB-3cq"/>
                                 <exclude reference="fcZ-Y2-jYz"/>
                                 <exclude reference="EgO-zb-bft"/>
                                 <exclude reference="vPq-Mf-Ar2"/>
                                 <exclude reference="5Pf-AW-aCM"/>
                                 <exclude reference="dGj-XB-8sf"/>
-                                <exclude reference="KNK-OM-u82"/>
+                                <exclude reference="9BI-MX-UK5"/>
+                                <exclude reference="aho-K5-Bah"/>
+                                <exclude reference="zEd-4f-nlD"/>
+                                <exclude reference="PFj-q2-9PX"/>
+                                <exclude reference="cMD-wh-bxq"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -910,23 +910,23 @@
                                 <include reference="cVg-Dd-49y"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="9BI-MX-UK5"/>
-                                <include reference="aho-K5-Bah"/>
-                                <include reference="zEd-4f-nlD"/>
+                                <include reference="46E-VT-ez2"/>
+                                <include reference="HWY-lK-srv"/>
                                 <include reference="0wn-au-GPm"/>
                                 <include reference="Vey-y8-qaJ"/>
                                 <include reference="hI8-43-vVh"/>
-                                <include reference="PFj-q2-9PX"/>
-                                <include reference="cMD-wh-bxq"/>
-                                <include reference="46E-VT-ez2"/>
-                                <include reference="HWY-lK-srv"/>
+                                <include reference="KNK-OM-u82"/>
                                 <include reference="Wp2-TB-3cq"/>
                                 <include reference="fcZ-Y2-jYz"/>
                                 <include reference="EgO-zb-bft"/>
                                 <include reference="vPq-Mf-Ar2"/>
                                 <include reference="5Pf-AW-aCM"/>
                                 <include reference="dGj-XB-8sf"/>
-                                <include reference="KNK-OM-u82"/>
+                                <include reference="9BI-MX-UK5"/>
+                                <include reference="aho-K5-Bah"/>
+                                <include reference="zEd-4f-nlD"/>
+                                <include reference="PFj-q2-9PX"/>
+                                <include reference="cMD-wh-bxq"/>
                             </mask>
                         </variation>
                     </view>
@@ -4091,54 +4091,41 @@ Address: 	University of Engineering and                      Technology
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="80" id="dmm-gi-cLX">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="320" id="dmm-gi-cLX">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dmm-gi-cLX" id="MDO-RH-Dvl">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location on map" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gtj-oj-KwN">
-                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="130" id="5Uk-es-xyQ"/>
-                                                        <constraint firstAttribute="height" constant="40" id="YMz-nP-dG4"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="5Uk-es-xyQ"/>
-                                                            <exclude reference="YMz-nP-dG4"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
-                                                        <mask key="constraints">
-                                                            <include reference="5Uk-es-xyQ"/>
-                                                            <include reference="YMz-nP-dG4"/>
-                                                        </mask>
-                                                    </variation>
-                                                </label>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="s25-DP-1Xr">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                </mapView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="Gtj-oj-KwN" secondAttribute="centerY" id="UV6-q3-rct"/>
-                                                <constraint firstItem="Gtj-oj-KwN" firstAttribute="leading" secondItem="MDO-RH-Dvl" secondAttribute="leadingMargin" id="Vz3-6s-I6k"/>
+                                                <constraint firstItem="s25-DP-1Xr" firstAttribute="top" secondItem="MDO-RH-Dvl" secondAttribute="topMargin" constant="-8" id="0jv-y8-1se"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="s25-DP-1Xr" secondAttribute="trailing" constant="-8" id="MaP-L6-3zP"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="s25-DP-1Xr" secondAttribute="bottom" constant="-8" id="Nhc-a0-0BH"/>
+                                                <constraint firstItem="s25-DP-1Xr" firstAttribute="leading" secondItem="MDO-RH-Dvl" secondAttribute="leadingMargin" constant="-8" id="dfb-rH-yva"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
-                                                    <exclude reference="Gtj-oj-KwN"/>
+                                                    <exclude reference="s25-DP-1Xr"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="UV6-q3-rct"/>
-                                                    <exclude reference="Vz3-6s-I6k"/>
+                                                    <exclude reference="0jv-y8-1se"/>
+                                                    <exclude reference="MaP-L6-3zP"/>
+                                                    <exclude reference="Nhc-a0-0BH"/>
+                                                    <exclude reference="dfb-rH-yva"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
                                                 <mask key="subviews">
-                                                    <include reference="Gtj-oj-KwN"/>
+                                                    <include reference="s25-DP-1Xr"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="UV6-q3-rct"/>
-                                                    <include reference="Vz3-6s-I6k"/>
+                                                    <include reference="0jv-y8-1se"/>
+                                                    <include reference="MaP-L6-3zP"/>
+                                                    <include reference="Nhc-a0-0BH"/>
+                                                    <include reference="dfb-rH-yva"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -4157,16 +4144,71 @@ Address: 	University of Engineering and                      Technology
                     <connections>
                         <outlet property="eventDescription" destination="tBI-zj-rnm" id="G5L-GG-isq"/>
                         <outlet property="eventImage" destination="ajv-3f-xrn" id="Yue-St-eVU"/>
+                        <outlet property="eventMapView" destination="s25-DP-1Xr" id="8VW-pa-c7R"/>
                         <outlet property="eventPlace" destination="UOS-Lx-BBz" id="4Pb-Nt-bOg"/>
                         <outlet property="eventTime" destination="JvR-YQ-O9u" id="DIs-q5-7ay"/>
                         <outlet property="eventTitle" destination="4Ff-QN-UWe" id="5cp-Ub-O2e"/>
                         <segue destination="SPk-0L-OMq" kind="presentation" identifier="goto_EventType" id="StV-pE-rPj"/>
                         <segue destination="CaN-b4-QaD" kind="presentation" identifier="goto_selectUser" id="Wod-Nk-Rke"/>
+                        <segue destination="n8W-KX-IDe" kind="show" identifier="goto_eventMap" id="NUv-C1-eBj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTd-PI-txV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4306.5" y="1051.5"/>
+            <point key="canvasLocation" x="4509" y="1051.5"/>
+        </scene>
+        <!--Event Map-->
+        <scene sceneID="hGc-xt-tK1">
+            <objects>
+                <viewController id="n8W-KX-IDe" customClass="EventMap" customModule="Find_My_Friends" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="J1b-8Z-JCt"/>
+                        <viewControllerLayoutGuide type="bottom" id="BIJ-TR-Al4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a5C-qj-JKs">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dlj-BT-BmZ">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dlj-BT-BmZ" firstAttribute="leading" secondItem="a5C-qj-JKs" secondAttribute="leadingMargin" constant="-16" id="PBP-GO-d8z"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dlj-BT-BmZ" secondAttribute="trailing" constant="-16" id="Wtl-ph-ncG"/>
+                            <constraint firstItem="dlj-BT-BmZ" firstAttribute="top" secondItem="J1b-8Z-JCt" secondAttribute="bottom" id="Y4t-CZ-XqJ"/>
+                            <constraint firstItem="BIJ-TR-Al4" firstAttribute="top" secondItem="dlj-BT-BmZ" secondAttribute="bottom" id="cNc-v7-8bA"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="dlj-BT-BmZ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="PBP-GO-d8z"/>
+                                <exclude reference="Wtl-ph-ncG"/>
+                                <exclude reference="Y4t-CZ-XqJ"/>
+                                <exclude reference="cNc-v7-8bA"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="dlj-BT-BmZ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="PBP-GO-d8z"/>
+                                <include reference="Wtl-ph-ncG"/>
+                                <include reference="Y4t-CZ-XqJ"/>
+                                <include reference="cNc-v7-8bA"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="dlj-BT-BmZ" id="vyG-zs-tf4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pQL-DD-YgJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5268" y="1144.5"/>
         </scene>
         <!--Event Detail Table View Controller-->
         <scene sceneID="8Fb-aD-ZGX">

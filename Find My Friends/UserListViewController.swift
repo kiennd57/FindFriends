@@ -31,8 +31,8 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
         nav.barTintColor = UIColor(red: 45/255, green: 130/255, blue: 184/255, alpha: 1)
         nav.titleTextAttributes = NSDictionary(objectsAndKeys: UIColor.whiteColor(), NSForegroundColorAttributeName,
             UIColor.whiteColor(), NSBackgroundColorAttributeName) as [NSObject : AnyObject]
-        self.view.backgroundColor = UIColor(red: 45/255, green: 130/255, blue: 184/255, alpha: 1)
-        friendTableView.backgroundColor = UIColor(red: 45/255, green: 130/255, blue: 184/255, alpha: 1)
+        self.view.backgroundColor = UIColor(red: 55/255, green: 140/255, blue: 195/255, alpha: 1)
+        friendTableView.backgroundColor = UIColor(red: 55/255, green: 140/255, blue: 195/255, alpha: 1)
         self.backBtn.hidden = true
         friendTableView.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0);
     }

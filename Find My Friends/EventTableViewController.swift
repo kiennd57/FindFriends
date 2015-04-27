@@ -31,6 +31,7 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
         self.navigationController?.navigationBar.titleTextAttributes = NSDictionary(objectsAndKeys: UIColor.whiteColor(), NSForegroundColorAttributeName,
             UIColor.whiteColor(), NSBackgroundColorAttributeName) as [NSObject : AnyObject]
         tableView.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0);
+        tableView.backgroundColor = UIColor(red: 0, green: 115/255, blue: 150/255, alpha: 1)
     }
     
     override func viewWillAppear(animated: Bool) {
