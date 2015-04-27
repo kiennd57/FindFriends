@@ -38,7 +38,7 @@ class EventImageController: UIViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         userDefaults.setObject(self.image[indexPath.row], forKey: "eventImage")
-//        println(userDefaults.objectForKey("eventImage"))
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

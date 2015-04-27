@@ -15,10 +15,15 @@
 @property (nonatomic, strong) NSArray *users;
 @property (nonatomic, readonly) NSDictionary *usersAsDictionary;
 @property (nonatomic, readonly) NSArray *checkins;
+@property (nonatomic, strong) NSArray *events;
+@property (nonatomic, strong) QBCOCustomObject *currentEvent;
 
 + (instancetype)sharedInstance;
 - (void)setUsers:(NSArray *)users;
 - (void)saveCheckins:(NSArray *)checkins;
 - (void)saveCurrentUser:(QBUUser *)user;
+- (void)setEvents:(NSArray *)events;
+- (void)saveEvents:(NSArray *)events;
+- (void)saveCurrentEvent:(QBCOCustomObject *)currentEvent;
 
 @end

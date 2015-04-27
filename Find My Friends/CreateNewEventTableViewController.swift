@@ -43,6 +43,9 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         println(__FUNCTION__)
+        
+        
+        println("NUmber of events: \(LocalStorageService.sharedInstance().events)")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -188,9 +191,16 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
             event.fields["latitude"] = eventAnnotation.coordinate.latitude
             
             QBRequest.createObject(event, successBlock: { (response: QBResponse!, object: QBCOCustomObject!) -> Void in
+                
+                
+                var oldEvents = LocalStorageService.sharedInstance().events as NSArray
+                var newEvents = oldEvents.arrayByAddingObject(object)
+                LocalStorageService.sharedInstance().events = newEvents
+                
                 let successAlert = UIAlertView(title: "SUCCESS!", message: "Your event was created and sent to your friend", delegate: self, cancelButtonTitle: "GOT IT")
                 successAlert.show()
                 hud.hide(true)
+                
                 }) { (response: QBResponse!) -> Void in
                     let failAlert = UIAlertView(title: "OOPS!", message: "Something happen! Try again later", delegate: self, cancelButtonTitle: "OK")
                     failAlert.show()

@@ -22,6 +22,11 @@
 	return instance;
 }
 
+- (void)setEvents:(NSArray *)events
+{
+    _events = events;
+}
+
 - (void)setUsers:(NSArray *)users
 {
     _users = users;
@@ -42,6 +47,15 @@
 - (void)saveCurrentUser:(QBUUser *)user
 {
     _currentUser = user;
+}
+
+- (void)saveEvents:(NSArray *)events
+{
+    _events = events;
+}
+
+- (void)saveCurrentEvent:(QBCOCustomObject *)currentEvent {
+    _currentEvent = currentEvent;
 }
 
 @end

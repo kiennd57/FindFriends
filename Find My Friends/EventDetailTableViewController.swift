@@ -30,13 +30,20 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
     var locationManager: CLLocationManager!
     
     var eventAnnotation: SSLMapPin!
+    
+    
+    var thisEvent: QBCOCustomObject!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         initialize()
         showAllInformation()
         calculateTimeRemaining()
         countDownTimeRemaining()
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("eventImage")
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,25 +73,28 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         eventMapLocation.showsPointsOfInterest = true
         eventMapLocation.showsBuildings = true
+        
+        
     }
     
     func showAllInformation() {
-        eventTitle.text = event.fields["eventName"] as? String
+        thisEvent = LocalStorageService.sharedInstance().currentEvent
+        eventTitle.text = thisEvent.fields["eventName"] as? String
         if event.fields["eventPlace"] != nil {
-            eventPlace.text = event.fields["eventPlace"] as? String
+            eventPlace.text = thisEvent.fields["eventPlace"] as? String
         }
         if event.fields["eventTime"] != nil {
-            eventTime.text = event.fields["eventTime"] as? String
+            eventTime.text = thisEvent.fields["eventTime"] as? String
         }
         if event.fields["eventDescription"] != nil {
-            eventDescription.text = event.fields["eventDescription"] as? String
+            eventDescription.text = thisEvent.fields["eventDescription"] as? String
         }
-        eventImage.image = UIImage(named: (event.fields["eventImage"] as? String)!)
+        eventImage.image = UIImage(named: (thisEvent.fields["eventImage"] as? String)!)
         
-        let longitude = event.fields["longitude"] as! NSString
+        let longitude = thisEvent.fields["longitude"] as! NSString
         let doubleLongitude = theDoubleValue(longitude)
         
-        let latitude = event.fields["latitude"] as! NSString
+        let latitude = thisEvent.fields["latitude"] as! NSString
         let doubleLatitude = theDoubleValue(latitude)
         
         println("Longitude is: \(doubleLongitude)")

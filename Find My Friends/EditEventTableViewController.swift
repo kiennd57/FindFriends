@@ -16,6 +16,8 @@ class EditEventTableViewController: StaticDataTableViewController, UITextFieldDe
     @IBOutlet weak var eventPlace: UITextField!
     @IBOutlet weak var eventDescription: UITextView!
     @IBOutlet weak var eventMapView: MKMapView!
+    var countUpdated = 0
+    
     var eventAnnotation: SSLMapPin!
     
     var datePicker: UIDatePicker!
@@ -30,6 +32,8 @@ class EditEventTableViewController: StaticDataTableViewController, UITextFieldDe
     var participant: NSMutableArray = NSMutableArray()
     var friendList: NSMutableArray = NSMutableArray()
     
+    var thisEvent: QBCOCustomObject!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,12 +41,17 @@ class EditEventTableViewController: StaticDataTableViewController, UITextFieldDe
         eventTime.delegate = self
         eventPlace.delegate = self
         eventDescription.delegate = self
-        
+        initialize()
+        showAllInformation()
     }
 
     override func viewWillAppear(animated: Bool) {
-        initialize()
-        showAllInformation()
+        updateEventInformation()
+        if userDefaults.objectForKey("participant") != nil {
+            participant = userDefaults.objectForKey("participant") as! NSMutableArray
+            self.tableView.reloadData()
+            userDefaults.removeObjectForKey("participant")
+        }
     }
 
     func initialize() {
@@ -74,11 +83,23 @@ class EditEventTableViewController: StaticDataTableViewController, UITextFieldDe
         eventMapView.showsPointsOfInterest = true
         eventMapView.showsBuildings = true
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: "gotoEventMap")
-        eventMapView.addGestureRecognizer(tapGesture)
+        let longitude = event.fields["longitude"] as! NSString
+        let doubleLongitude = theDoubleValue(longitude)
+        
+        let latitude = event.fields["latitude"] as! NSString
+        let doubleLatitude = theDoubleValue(latitude)
+        
+        println("Longitude is: \(doubleLongitude)")
+        eventAnnotation = SSLMapPin(coordinate: CLLocationCoordinate2D(latitude: doubleLatitude, longitude: doubleLongitude))
+        eventMapView.addAnnotation(eventAnnotation)
+        
+        var region = MKCoordinateRegionMakeWithDistance(eventAnnotation.coordinate, 800, 800)
+        eventMapView.setRegion(eventMapView.regionThatFits(region), animated: true)
     }
     
     func showAllInformation() {
+        thisEvent = LocalStorageService.sharedInstance().currentEvent
+        
         eventTitle.text = event.fields["eventName"] as? String
         if event.fields["eventPlace"] != nil {
             eventPlace.text = event.fields["eventPlace"] as? String
@@ -89,11 +110,21 @@ class EditEventTableViewController: StaticDataTableViewController, UITextFieldDe
         if event.fields["eventDescription"] != nil {
             eventDescription.text = event.fields["eventDescription"] as? String
         }
-        
-        if userDefaults.objectForKey("eventImage") != nil {
-            event.fields["eventImage"] = userDefaults.objectForKey("eventImage")
-        }
         eventImage.image = UIImage(named: (event.fields["eventImage"] as? String)!)
+        
+        if event.fields["eventParticipant"] != nil {
+            participant = event.fields["eventParticipant"] as! NSMutableArray
+            if participant.count > 0 {
+                self.tableView.reloadData()
+            }
+        }
+        
+    }
+    
+    func updateEventInformation() {
+        if userDefaults.objectForKey("eventImage") != nil {
+            eventImage.image = UIImage(named: userDefaults.objectForKey("eventImage") as! String)
+        }
     }
     
     func saveEditedEvent() {
@@ -104,7 +135,12 @@ class EditEventTableViewController: StaticDataTableViewController, UITextFieldDe
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func theDoubleValue(str: NSString!) -> Double {
+        
+        return str.doubleValue
+    }
+//
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         
         if annotation.isKindOfClass(MKUserLocation) {
@@ -112,32 +148,24 @@ class EditEventTableViewController: StaticDataTableViewController, UITextFieldDe
         }
         
         let AnnotationIdentifier = "eventAnnotation"
-        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(AnnotationIdentifier) as MKAnnotationView!
+        var theAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: AnnotationIdentifier)
         
-        if annotationView != nil {
-            return annotationView
-        } else {
-            var theAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: AnnotationIdentifier)
-            
-            var imageView = UIImageView()
-            imageView.image = UIImage(named: "e_default.png")
-            imageView.layer.borderWidth = 1;
-            imageView.layer.borderColor = UIColor.whiteColor().CGColor
-            imageView.backgroundColor = UIColor.redColor()
-            var f: CGRect = CGRectMake(5,5.5,45,45);
-            imageView.frame = f
-            imageView.layer.cornerRadius = 22.5;
-            imageView.layer.masksToBounds = true;
-            theAnnotationView.rightCalloutAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIView
-            
-            theAnnotationView.addSubview(imageView)
-            theAnnotationView.enabled = true;
-            theAnnotationView.canShowCallout = true;
-            theAnnotationView.image = UIImage(named: "pin.png")
-            theAnnotationView.draggable = true
-            theAnnotationView.userInteractionEnabled = true
-            return theAnnotationView
-        }
+        var imageView = UIImageView()
+        imageView.image = UIImage(named: (event.fields["eventImage"] as? String)!)
+        imageView.layer.borderWidth = 1;
+        imageView.layer.borderColor = UIColor.whiteColor().CGColor
+        imageView.backgroundColor = UIColor.redColor()
+        var f: CGRect = CGRectMake(5,5.5,45,45);
+        imageView.frame = f
+        imageView.layer.cornerRadius = 22.5;
+        imageView.layer.masksToBounds = true;
+        theAnnotationView.rightCalloutAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIView
+        
+        theAnnotationView.addSubview(imageView)
+        theAnnotationView.enabled = true;
+        theAnnotationView.image = UIImage(named: "pin.png")
+        theAnnotationView.draggable = true
+        return theAnnotationView
     }
     
     
@@ -146,6 +174,7 @@ class EditEventTableViewController: StaticDataTableViewController, UITextFieldDe
             println("Finish draging")
             println("The new latitude is: \(view.annotation.coordinate.latitude)")
             println("The new longitude is: \(view.annotation.coordinate.longitude)")
+            view.dragState = MKAnnotationViewDragState.None
         }
     }
     
@@ -168,21 +197,23 @@ class EditEventTableViewController: StaticDataTableViewController, UITextFieldDe
             self.view.bringSubviewToFront(hud)
             hud.show(true)
             
-            var updateEvent = QBCOCustomObject()
-            updateEvent.ID = self.event.ID
-            updateEvent.className = "Event"
+            var updateEvent = LocalStorageService.sharedInstance().currentEvent as QBCOCustomObject
             updateEvent.fields["eventName"] = self.eventTitle.text
             updateEvent.fields["eventDescription"] = self.eventDescription.text
             updateEvent.fields["eventPlace"] = self.eventPlace.text
             updateEvent.fields["eventTime"] = self.eventTime.text
-            updateEvent.fields["eventImage"] = userDefaults.objectForKey("eventImage")
+            if userDefaults.objectForKey("eventImage") != nil {
+                updateEvent.fields["eventImage"] = userDefaults.objectForKey("eventImage")
+            }
             updateEvent.fields["eventParticipant"] = participant
-            
+            updateEvent.fields["longitude"] = "\(eventAnnotation.coordinate.longitude)"
+            updateEvent.fields["latitude"] = "\(eventAnnotation.coordinate.latitude)"
             
             QBRequest.updateObject(updateEvent, successBlock: { (response: QBResponse!, object: QBCOCustomObject!) -> Void in
                 let successAlert = UIAlertView(title: "SUCCESS!", message: "Your event was updated!", delegate: self, cancelButtonTitle: "OK")
                 successAlert.show()
                 hud.hide(true)
+                LocalStorageService.sharedInstance().currentEvent = updateEvent
                 
                 }, errorBlock: { (response: QBResponse!) -> Void in
                     let failAlert = UIAlertView(title: "OOPS!", message: "Something happen! Try again later", delegate: self, cancelButtonTitle: "OK")

@@ -28,7 +28,6 @@ class RootViewController: UIViewController, MBProgressHUDDelegate, QBActionStatu
         let userName = self.userDefault.objectForKey("currentUserName") as! String!
         let password = self.userDefault.objectForKey("currentPassword") as! String!
         
-        
         if userName != nil && password != nil {
             createSession(userName, password: password)
         } else {

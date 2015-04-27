@@ -19,7 +19,7 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        retrieveAllEvents()
         // Menu Bar Button Action
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -37,7 +37,11 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        retrieveAllEvents()
+        
+        if LocalStorageService.sharedInstance().events != nil {
+            self.eventList = LocalStorageService.sharedInstance().events as NSArray
+            self.tableView.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -118,6 +122,9 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedRow = indexPath.row
+        
+        LocalStorageService.sharedInstance().currentEvent = self.eventList.objectAtIndex(indexPath.row) as! QBCOCustomObject
+        
         self.performSegueWithIdentifier("goto_eventDetail", sender: self)
     }
     
@@ -165,6 +172,7 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
         QBRequest.objectsWithClassName("Event", successBlock: { (response: QBResponse!, object: [AnyObject]!) -> Void in
             self.eventList = NSArray(array: object)
             self.eventList = self.sortEventTime(self.eventList)
+            LocalStorageService.sharedInstance().events = self.eventList as [AnyObject]
             self.tableView.reloadData()
             hud.hide(true)
             }) { (response: QBResponse!) -> Void in
@@ -197,6 +205,7 @@ class EventTableViewController: UITableViewController, MBProgressHUDDelegate {
                 }
             }
         }
+        
         return tmpList
     }
     
