@@ -108,28 +108,11 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
     }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-        
-//        if annotation.isKindOfClass(MKUserLocation) {
-//            return nil
-//        }
-//        
-//        
+
         let AnnotationIdentifier = "AnnotationIdentifier"
-//        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(AnnotationIdentifier) as MKAnnotationView!
-//        
-//        if annotationView != nil {
-//            return annotationView
-//        } else {
+
             var theAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: AnnotationIdentifier)
-            //            theAnnotationView.image = UIImage(named: "userIcon.png")
-            //            theAnnotationView.contentMode = UIViewContentMode.ScaleToFill
-            //
-            //            theAnnotationView.canShowCallout = true
-            //            theAnnotationView.draggable = true
-            //            return theAnnotationView
-            
-            
-            
+
             var imageView = UIImageView()
             imageView.image = UIImage(named: "userTest.png")
             imageView.layer.borderWidth = 1;
@@ -145,7 +128,7 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
             theAnnotationView.enabled = true;
             theAnnotationView.canShowCallout = true;
             theAnnotationView.image = UIImage(named: "pin.png")
-            
+            theAnnotationView.draggable = true
             return theAnnotationView
 //        }
     }
@@ -155,6 +138,8 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
             println("Finish draging")
             println("The new latitude is: \(view.annotation.coordinate.latitude)")
             println("The new longitude is: \(view.annotation.coordinate.longitude)")
+            
+            view.dragState = MKAnnotationViewDragState.None
         }
     }
     

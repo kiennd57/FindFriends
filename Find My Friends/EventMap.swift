@@ -12,8 +12,9 @@ class EventMap: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager!
     @IBOutlet weak var mapView: MKMapView!
-    var eventAnnotation: SSLMapPin!
-
+    var countUpdated = 0
+    var eventAnnotationView: SSLMapPin!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +28,7 @@ class EventMap: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
         mapView.showsPointsOfInterest = true
         mapView.showsBuildings = true
+//        mapView.showsUserLocation = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,13 +39,19 @@ class EventMap: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        var centerLocation = mapView.centerCoordinate
-        eventAnnotation = SSLMapPin(coordinate: centerLocation)
-        mapView.addAnnotation(eventAnnotation)
+
     }
 
-    
+    func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
+        if countUpdated == 0 {
+            locationManager.requestWhenInUseAuthorization()
+            var region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800)
+            mapView.setRegion(mapView.regionThatFits(region), animated: true)
+            eventAnnotationView = SSLMapPin(coordinate: userLocation.coordinate)
+            mapView.addAnnotation(eventAnnotationView)
+            countUpdated++
+        }
+    }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         
@@ -52,11 +60,6 @@ class EventMap: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         }
         
         let AnnotationIdentifier = "eventAnnotation"
-        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(AnnotationIdentifier) as MKAnnotationView!
-        
-        if annotationView != nil {
-            return annotationView
-        } else {
             var theAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: AnnotationIdentifier)
             
             var imageView = UIImageView()
@@ -72,12 +75,9 @@ class EventMap: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             
             theAnnotationView.addSubview(imageView)
             theAnnotationView.enabled = true;
-            theAnnotationView.canShowCallout = true;
             theAnnotationView.image = UIImage(named: "pin.png")
             theAnnotationView.draggable = true
-            theAnnotationView.userInteractionEnabled = true
             return theAnnotationView
-        }
     }
     
     
@@ -86,6 +86,9 @@ class EventMap: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             println("Finish draging")
             println("The new latitude is: \(view.annotation.coordinate.latitude)")
             println("The new longitude is: \(view.annotation.coordinate.longitude)")
+            view.dragState = MKAnnotationViewDragState.None
+        } else if newState == MKAnnotationViewDragState.Canceling {
+            view.dragState = MKAnnotationViewDragState.None
         }
     }
 }

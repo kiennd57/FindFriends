@@ -10,12 +10,15 @@ import UIKit
 
 class CreateNewEventTableViewController: StaticDataTableViewController, UITextFieldDelegate, UITextViewDelegate, MBProgressHUDDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     
+    let userDefault = NSUserDefaults.standardUserDefaults()
+    
     @IBOutlet weak var eventImage: UIImageView!
     @IBOutlet weak var eventTitle: UITextField!
     @IBOutlet weak var eventTime: UITextField!
     @IBOutlet weak var eventPlace: UITextField!
     @IBOutlet weak var eventDescription: UITextView!
     @IBOutlet weak var eventMapView: MKMapView!
+    var countUpdated = 0
     
     var eventAnnotation: SSLMapPin!
     
@@ -40,12 +43,6 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         println(__FUNCTION__)
-        var centerLocation = eventMapView.centerCoordinate
-        println("location: \(centerLocation.longitude) and \(centerLocation.latitude)")
-        
-        eventAnnotation = SSLMapPin(coordinate: centerLocation)
-
-        eventMapView.addAnnotation(eventAnnotation)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -86,8 +83,8 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
         eventMapView.showsPointsOfInterest = true
         eventMapView.showsBuildings = true
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: "gotoEventMap")
-        eventMapView.addGestureRecognizer(tapGesture)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: "gotoEventMap")
+//        eventMapView.addGestureRecognizer(tapGesture)
     }
     
     func gotoEventMap() {
@@ -96,6 +93,17 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
     
     /////////////////////////////////////////////////////////////
     
+    func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
+        if countUpdated == 0 {
+            locationManager.requestWhenInUseAuthorization()
+            var region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800)
+            mapView.setRegion(mapView.regionThatFits(region), animated: true)
+            eventAnnotation = SSLMapPin(coordinate: userLocation.coordinate)
+            mapView.addAnnotation(eventAnnotation)
+            countUpdated++
+        }
+    }
+    
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         
         if annotation.isKindOfClass(MKUserLocation) {
@@ -103,32 +111,24 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
         }
         
         let AnnotationIdentifier = "eventAnnotation"
-        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(AnnotationIdentifier) as MKAnnotationView!
+        var theAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: AnnotationIdentifier)
         
-        if annotationView != nil {
-            return annotationView
-        } else {
-            var theAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: AnnotationIdentifier)
-            
-            var imageView = UIImageView()
-            imageView.image = UIImage(named: "e_default.png")
-            imageView.layer.borderWidth = 1;
-            imageView.layer.borderColor = UIColor.whiteColor().CGColor
-            imageView.backgroundColor = UIColor.redColor()
-            var f: CGRect = CGRectMake(5,5.5,45,45);
-            imageView.frame = f
-            imageView.layer.cornerRadius = 22.5;
-            imageView.layer.masksToBounds = true;
-            theAnnotationView.rightCalloutAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIView
-            
-            theAnnotationView.addSubview(imageView)
-            theAnnotationView.enabled = true;
-            theAnnotationView.canShowCallout = true;
-            theAnnotationView.image = UIImage(named: "pin.png")
-            theAnnotationView.draggable = true
-            theAnnotationView.userInteractionEnabled = true
-            return theAnnotationView
-        }
+        var imageView = UIImageView()
+        imageView.image = UIImage(named: "e_default.png")
+        imageView.layer.borderWidth = 1;
+        imageView.layer.borderColor = UIColor.whiteColor().CGColor
+        imageView.backgroundColor = UIColor.redColor()
+        var f: CGRect = CGRectMake(5,5.5,45,45);
+        imageView.frame = f
+        imageView.layer.cornerRadius = 22.5;
+        imageView.layer.masksToBounds = true;
+        theAnnotationView.rightCalloutAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIView
+        
+        theAnnotationView.addSubview(imageView)
+        theAnnotationView.enabled = true;
+        theAnnotationView.image = UIImage(named: "pin.png")
+        theAnnotationView.draggable = true
+        return theAnnotationView
     }
     
     
@@ -137,6 +137,9 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
             println("Finish draging")
             println("The new latitude is: \(view.annotation.coordinate.latitude)")
             println("The new longitude is: \(view.annotation.coordinate.longitude)")
+            view.dragState = MKAnnotationViewDragState.None
+        } else if newState == MKAnnotationViewDragState.Canceling {
+            view.dragState = MKAnnotationViewDragState.None
         }
     }
     
@@ -159,6 +162,8 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
             self.view.bringSubviewToFront(hud)
             hud.show(true)
             
+            let owner = self.userDefault.objectForKey("currentUserName") as! String!
+                      
             let event = QBCOCustomObject()
             event.className = "Event"
             event.fields["eventName"] = self.eventTitle.text
@@ -167,6 +172,7 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
             event.fields["eventTime"] = self.eventTime.text
             event.fields["eventImage"] = userDefaults.objectForKey("eventImage")
             event.fields["eventParticipant"] = participant
+            event.fields["eventOwner"] = owner
             
             QBRequest.createObject(event, successBlock: { (response: QBResponse!, object: QBCOCustomObject!) -> Void in
                 let successAlert = UIAlertView(title: "SUCCESS!", message: "Your event was created and sent to your friend", delegate: self, cancelButtonTitle: "GOT IT")
