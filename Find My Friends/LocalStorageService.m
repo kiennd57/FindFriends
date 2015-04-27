@@ -58,4 +58,8 @@
     _currentEvent = currentEvent;
 }
 
+- (void)saveUserList:(NSArray *)userList {
+    _userList = userList;
+}
+
 @end

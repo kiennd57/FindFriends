@@ -17,6 +17,7 @@
 @property (nonatomic, readonly) NSArray *checkins;
 @property (nonatomic, strong) NSArray *events;
 @property (nonatomic, strong) QBCOCustomObject *currentEvent;
+@property (nonatomic, strong) NSArray *userList;
 
 + (instancetype)sharedInstance;
 - (void)setUsers:(NSArray *)users;
@@ -25,5 +26,6 @@
 - (void)setEvents:(NSArray *)events;
 - (void)saveEvents:(NSArray *)events;
 - (void)saveCurrentEvent:(QBCOCustomObject *)currentEvent;
+- (void)saveUserList: (NSArray *)userList;
 
 @end

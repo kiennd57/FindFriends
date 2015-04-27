@@ -22,6 +22,12 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
         super.viewDidLoad()
         
         initialize()
+        
+        QBRequest.usersForPage(QBGeneralResponsePage(currentPage: 0, perPage: 10, totalEntries: 100), successBlock: { (response: QBResponse!, responsePage: QBGeneralResponsePage!, users: [AnyObject]!) -> Void in
+            LocalStorageService.sharedInstance().userList = users
+            }) { (error: QBResponse!) -> Void in
+                
+        }
     }
 
     func initialize() {
@@ -140,6 +146,9 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
     
     /////////////////////quickbloxAPI
     func completedWithResult(result: QBResult!) {
+        
+
+        
         hud.hide(true)
         if result.success && result.isKindOfClass(QBDialogsPagedResult) {
             let pagedResult = result as! QBDialogsPagedResult
