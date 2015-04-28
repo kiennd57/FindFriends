@@ -72,7 +72,8 @@ class RootViewController: UIViewController, MBProgressHUDDelegate, QBActionStatu
             })
             
             }) { (response: QBResponse!) -> Void in
-                
+                let alert = UIAlertView(title: "Alert", message: "Your internet connection is poor", delegate: self, cancelButtonTitle: "OK")
+                alert.show()
         }
     }
     

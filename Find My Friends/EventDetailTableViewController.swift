@@ -45,6 +45,11 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
         countDownTimeRemaining()
         NSUserDefaults.standardUserDefaults().removeObjectForKey("eventImage")
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.getDirectionToEvent()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -68,6 +73,7 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
         locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
+        locationManager.startUpdatingLocation()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         eventMapLocation.showsPointsOfInterest = true
         eventMapLocation.showsBuildings = true
@@ -78,7 +84,7 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
     func showAllInformation() {
         thisEvent = LocalStorageService.sharedInstance().currentEvent
         var eventOwner = thisEvent.fields["eventOwner"] as! String
-        if LocalStorageService.sharedInstance().currentUser == eventOwner {
+        if LocalStorageService.sharedInstance().currentUser.login == eventOwner {
             let editBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "goToEditEvent")
             self.navigationItem.rightBarButtonItem = editBtn
         }
@@ -138,6 +144,33 @@ class EventDetailTableViewController: UITableViewController, UIAlertViewDelegate
         theAnnotationView.enabled = true;
         theAnnotationView.image = UIImage(named: "pin.png")
         return theAnnotationView
+    }
+    
+    func getDirectionToEvent() {
+        var request = MKDirectionsRequest()
+        request.setSource(MKMapItem.mapItemForCurrentLocation())
+        request.setDestination(MKMapItem(placemark: MKPlacemark(coordinate: eventAnnotation.coordinate, addressDictionary: nil)))
+        request.transportType = MKDirectionsTransportType.Any
+        request.requestsAlternateRoutes = true
+        
+        var directions = MKDirections(request: request)
+        directions.calculateDirectionsWithCompletionHandler { (response: MKDirectionsResponse!, error: NSError!) -> Void in
+            for var i = 0; i < response.routes.count; i++ {
+                let route = response.routes[i] as! MKRoute
+                self.eventMapLocation.addOverlay(route.polyline, level: MKOverlayLevel.AboveRoads)
+            }
+        }
+    }
+    
+    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        
+        if overlay.isKindOfClass(MKPolyline) {
+            var renderer = MKPolylineRenderer(overlay: overlay)
+            renderer.strokeColor = UIColor.blueColor()
+            renderer.lineWidth = 5.0
+            return renderer
+        }
+        return nil
     }
     
     /////////////////////////////////////////////////////////////////////////

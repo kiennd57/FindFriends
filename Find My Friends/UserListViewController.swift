@@ -44,9 +44,13 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func backToCreateEvent(sender: AnyObject) {
         println(__FUNCTION__)
         
-        let ownerName = LocalStorageService.sharedInstance().currentUser.login as String!
+        let ownerName = LocalStorageService.sharedInstance().currentUser.login
         
-        participantList.addObject(ownerName)
+        if participantList.containsObject(ownerName) {
+            
+        } else {
+            participantList.addObject(ownerName)
+        }
         
         userDefault.setObject(participantList, forKey: "participant")
         self.dismissViewControllerAnimated(true, completion: nil)
