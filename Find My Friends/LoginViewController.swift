@@ -62,29 +62,94 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
             
             var extendedRequest = QBSessionParameters()
             extendedRequest.userLogin = self.username.text
+            extendedRequest.userPassword = self.password.text
             
-            
-            
-//            var username = self.username.text
-//            var password = self.password.text
-//            
-//            QBRequest.logInWithUserLogin(username, password: password, successBlock: { (response: QBResponse!, user: QBUUser!) -> Void in
-//                hud.hide(true)
-//                var currentUser: QBUUser = QBUUser()
-//                currentUser = user
-//                //save to singeton
-//                LocalStorageService.sharedInstance().saveCurrentUser(currentUser)
-//                
-//                self.userDefault.setBool(true, forKey: self.util.KEY_AUTHORIZED)
-//                self.userDefault.setObject(user, forKey: kCurrentUser)
-//                
-//                
-//                self.dismissViewControllerAnimated(true, completion: nil)
-//                }, errorBlock: { (response: QBResponse!) -> Void in
-//                    hud.hide(true)
-//                    alert = UIAlertView(title: "LOGIN FAILT", message: "PLEASE CHECK YOUR ACCOUNT", delegate: self, cancelButtonTitle: "OK")
-//                    alert.show()
-//            })
+            QBRequest.createSessionWithExtendedParameters(extendedRequest, successBlock: { (response: QBResponse!, session: QBASession!) -> Void in
+                //set current user
+                QBRequest.userWithID(session.userID, successBlock: { (response: QBResponse!, user: QBUUser!) -> Void in
+                    self.userDefault.setObject(user.ID, forKey: kUserId)
+                    self.userDefault.setObject(user.login, forKey: kLogin)
+                    self.userDefault.setObject(self.password.text, forKey: kPassword)
+                    self.userDefault.setObject(user.fullName, forKey: kFullName)
+                    self.userDefault.setObject(user.email, forKey: kEmail)
+                    self.userDefault.setObject(user.phone, forKey: kPhone)
+                    self.userDefault.setBool(true, forKey: kAuthorized)
+                    user.password = self.password.text
+                    
+                    LocalStorageService.sharedInstance().currentUser = user
+                    
+                    
+                    //create userProfile for first login
+                    QBRequest.objectsWithClassName("UserProfile", successBlock: { (response: QBResponse!, profiles: [AnyObject]!) -> Void in
+                        if profiles != nil {
+                            
+                            LocalStorageService.sharedInstance().userProfiles = profiles
+                            var check = true
+                            for var i = 0; i < profiles.count; i++ {
+                                let profile = profiles[i] as! QBCOCustomObject
+                                if profile.userID == session.userID {
+                                    check = false
+                                    break;
+                                }
+                            }
+                            
+                            if check {
+                                var profileObject = QBCOCustomObject()
+                                profileObject.className = "UserProfile"
+                                QBRequest.createObject(profileObject, successBlock: { (response: QBResponse!, returnObj: QBCOCustomObject!) -> Void in
+                                    
+                                    }, errorBlock: { (response: QBResponse!) -> Void in
+                                    
+                                })
+                            }
+                            
+                        } else {
+                            var profileObject = QBCOCustomObject()
+                            profileObject.className = "UserProfile"
+                            QBRequest.createObject(profileObject, successBlock: { (response: QBResponse!, returnObj: QBCOCustomObject!) -> Void in
+                                
+                                }, errorBlock: { (response: QBResponse!) -> Void in
+                                    
+                            })
+                        }
+                        }, errorBlock: { (response: QBResponse!) -> Void in
+                        
+                    })
+                    
+                    //login to chat service
+                    ChatService.instance().loginWithUser(user, completionBlock: { () -> Void in
+                    })
+                    }, errorBlock: { (errorResponse: QBResponse!) -> Void in
+                    
+                })
+                
+                // register for remote notification
+                self.registerForRemoteNotifications()
+                
+                
+                // get check in list
+                var filter = QBLGeoDataFilter()
+                filter.lastOnly = true
+                filter.sortBy = GeoDataSortByKindLongitude
+                
+                QBRequest.geoDataWithFilter(filter, page: QBGeneralResponsePage(currentPage: 1, perPage: 6), successBlock: { (response: QBResponse!, objects: [AnyObject]!, responsePage: QBGeneralResponsePage!) -> Void in
+                    hud.hide(true)
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW,Int64(2*NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    })
+                    
+                    LocalStorageService.sharedInstance().saveCheckins(objects)
+                    println("CHECKIN LIST: \(LocalStorageService.sharedInstance().checkins)")
+                    hud.hide(true)
+                    }, errorBlock: { (response: QBResponse!) -> Void in
+                        
+                })
+
+                }, errorBlock: { (error: QBResponse!) -> Void in
+                    let alert = UIAlertView(title: "Alert", message: "Your internet connection is poor", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
+
+            })
         } else {
             alert = UIAlertView(title: "ERROR", message: "USERNAME/PASSWORD CAN NOT BE BLANK", delegate: self, cancelButtonTitle: "OK")
             alert.show()
@@ -152,5 +217,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
 //            resetView()
         }
         return true
+    }
+    
+    func registerForRemoteNotifications () {
+        if UIApplication.sharedApplication().respondsToSelector("registerUserNotificationSettings:") {
+            UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+            UIApplication.sharedApplication().registerForRemoteNotifications()
+        } else {
+            UIApplication.sharedApplication().registerForRemoteNotificationTypes(UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound)
+        }
     }
 }

@@ -14,11 +14,7 @@ class MenuViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "blue.jpg")!);)
-//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "blue.jpg")!)
         self.view.backgroundColor = UIColor(red: 45/255, green: 130/255, blue: 184/255, alpha: 1)
-//        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
-//        self.tableView.separatorColor = UIColor.whiteColor()
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,7 +46,8 @@ class MenuViewController: UITableViewController {
     
     @IBAction func doLogout(sender: AnyObject) {
         var userDefault = NSUserDefaults.standardUserDefaults()
-        userDefault.removeObjectForKey(util.KEY_AUTHORIZED)
+        userDefault.removeObjectForKey(kAuthorized)
+        ChatService.instance().logout()
     }
     
 }

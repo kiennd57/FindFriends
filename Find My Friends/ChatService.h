@@ -29,5 +29,6 @@
 - (void)leaveRoom:(QBChatRoom *)room;
 - (void)requestRoomsWithCompletionBlock:(void(^)(NSArray *))completionBlock;
 - (void)receiveRemoteNotification:(NSDictionary *)userInfo;
+- (void)logout;
 
 @end

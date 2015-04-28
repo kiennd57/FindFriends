@@ -27,7 +27,7 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         users = NSArray()
-        retrieveUsers()
+        
         // Menu Bar Button Action
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -54,7 +54,6 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
         checkinButton.layer.cornerRadius = 4.0
         checkinButton.layer.borderWidth = 0.1
         checkinButton.layer.borderColor = UIColor.greenColor().CGColor
-//        self.navigationController?.navigationBar.barTintColor = UIColor(patternImage: UIImage(named: "blue.jpg")!)
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 45/255, green: 130/255, blue: 184/255, alpha: 1)
         self.navigationController?.navigationBar.titleTextAttributes = NSDictionary(objectsAndKeys: UIColor.whiteColor(), NSForegroundColorAttributeName,
                                                                                                     UIColor.whiteColor(), NSBackgroundColorAttributeName) as [NSObject : AnyObject]
@@ -66,8 +65,8 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if userDefaults.boolForKey(util.KEY_AUTHORIZED) {
-            
+        if userDefaults.boolForKey(kAuthorized) {
+            retrieveUsers()
         } else {
             self.performSegueWithIdentifier("goto_login", sender: self)
         }
@@ -76,16 +75,16 @@ class ViewController: UIViewController, UIAlertViewDelegate, CLLocationManagerDe
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if self.mapView.annotations.count <= 1 {
-            for data in LocalStorageService.sharedInstance().checkins {
-                let geoData = data as! QBLGeoData
-                let cood = CLLocationCoordinate2D(latitude: geoData.latitude, longitude: geoData.longitude)
-                let pin = SSLMapPin(coordinate: cood)
-                pin.subtitle = geoData.status
-                pin.title = geoData.user.login
-                self.mapView.addAnnotation(pin)
-            }
-        }
+//        if self.mapView.annotations.count <= 1 {
+//            for data in LocalStorageService.sharedInstance().checkins {
+//                let geoData = data as! QBLGeoData
+//                let cood = CLLocationCoordinate2D(latitude: geoData.latitude, longitude: geoData.longitude)
+//                let pin = SSLMapPin(coordinate: cood)
+//                pin.subtitle = geoData.status
+//                pin.title = geoData.user.login
+//                self.mapView.addAnnotation(pin)
+//            }
+//        }
     }
     
     override func didReceiveMemoryWarning() {

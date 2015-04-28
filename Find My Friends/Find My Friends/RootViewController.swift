@@ -25,13 +25,18 @@ class RootViewController: UIViewController, MBProgressHUDDelegate, QBActionStatu
         hud.show(true)
         self.view.addSubview(hud)
         
-        let userName = self.userDefault.objectForKey("currentUserName") as! String!
-        let password = self.userDefault.objectForKey("currentPassword") as! String!
+        let userName = self.userDefault.objectForKey(kLogin) as! String!
+        let password = self.userDefault.objectForKey(kPassword) as! String!
         
         if userName != nil && password != nil {
             createSession(userName, password: password)
         } else {
-            createSession("embe", password: "12345678")
+//            createSession("embe", password: "12345678")
+            self.userDefault.setBool(false, forKey: kAuthorized)
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW,Int64(2*NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
+                let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                self.presentViewController(appdelegate.rootController, animated: true, completion: nil)
+            })
         }
     }
     
@@ -47,7 +52,7 @@ class RootViewController: UIViewController, MBProgressHUDDelegate, QBActionStatu
             currentUser.ID = session.userID
             currentUser.login = userName
             currentUser.password = password
-            self.userDefault.setBool(true, forKey: self.util.KEY_AUTHORIZED)
+            self.userDefault.setBool(true, forKey: kAuthorized)
             LocalStorageService.sharedInstance().currentUser = currentUser
             
             self.registerForRemoteNotifications()

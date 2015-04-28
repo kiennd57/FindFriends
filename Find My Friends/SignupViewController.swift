@@ -143,31 +143,19 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
         self.view.bringSubviewToFront(hud)
         hud.show(true)
         
-        let userProfile = QBCOCustomObject()
-        
-        userProfile.className = "UserProfile"
-        userProfile.fields["userName"] = user.login
-        userProfile.fields["fullName"] = user.fullName
-        userProfile.fields["passWord"] = user.password
-        userProfile.fields["email"] = user.email
-        
-        QBRequest.signUp(user, successBlock: { (response: QBResponse!, theUser: QBUUser!) -> Void in
-            
-            QBRequest.createObject(userProfile, successBlock: { (response: QBResponse!, object: QBCOCustomObject!) -> Void in
-                hud.hide(true)
+        QBRequest.createSessionWithSuccessBlock({ (response: QBResponse!, session: QBASession!) -> Void in
+            QBRequest.signUp(user, successBlock: { (response: QBResponse!, theUser: QBUUser!) -> Void in
+                
+                var alert = UIAlertView(title: "CONGRATULATION!", message: "SIGN UP SUCCESSFULLY. BACK TO LOGIN", delegate: self, cancelButtonTitle: "OK")
+                alert.tag = 1
+                alert.show()
                 }) { (response: QBResponse!) -> Void in
+                    println("\(response.error.description)")
                     hud.hide(true)
-                    let failAlert = UIAlertView(title: "OOPS!", message: "Your profile is not loaded", delegate: self, cancelButtonTitle: "OK")
-                    failAlert.show()
             }
+            }, errorBlock: { (response: QBResponse!) -> Void in
             
-            var alert = UIAlertView(title: "CONGRATULATION!", message: "SIGN UP SUCCESSFULLY. BACK TO LOGIN", delegate: self, cancelButtonTitle: "OK")
-            alert.tag = 1
-            alert.show()
-            }) { (response: QBResponse!) -> Void in
-                println("\(response.error.description)")
-        }
-        
+        })
         //To be added
         
     }

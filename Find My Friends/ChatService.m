@@ -150,6 +150,10 @@ typedef void(^CompletionBlockWithResult)(NSArray *);
 }
 
 
+- (void)logout {
+    [[QBChat instance] logout];
+}
+
 #pragma mark
 #pragma mark Additional
 

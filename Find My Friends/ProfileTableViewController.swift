@@ -22,6 +22,8 @@ class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MB
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var tfConfirmPass: UITextField!
     
+    var shouldUpdate = false
+    
     
     var imagePickerView: UIImagePickerController!
     
@@ -36,13 +38,12 @@ class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MB
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         initialize()
+        downloadImageProfile()
         getAllInformations()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        getDemo()
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,7 +86,6 @@ class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MB
         }
     }
     
-    
     /////////////////////////////////////////////////////////////////////////
     func changeProfileAction(sender: AnyObject) {
         imagePickerView = UIImagePickerController()
@@ -114,6 +114,7 @@ class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MB
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         let chosenImage = info[UIImagePickerControllerEditedImage] as! UIImage
         self.imageProfile.image = chosenImage;
+        shouldUpdate = true
         picker.dismissViewControllerAnimated(true, completion: nil)
         
         
@@ -133,29 +134,23 @@ class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MB
                 self.view.bringSubviewToFront(hud)
                 hud.show(true)
                 
-                currentUser.fullName = tfFullName.text
-                currentUser.phone = tfPhoneNumber.text
-                currentUser.password = tfPassword.text
+            
                 
-                var object = QBCOCustomObject()
-                object.className = "UserProfile"
-                object.fields["userName"] = currentUser.login
-//                object.fields["fullName"] = currentUser.fullName
-                object.fields["password"] = currentUser.password
-//                object.fields["email"] = currentUser.email
-//                object.fields["phoneNumber"] = currentUser.phone
-//                object.fields["avatar"] = UIImageJPEGRepresentation(self.imageProfile.image, 0.8)
+                var updateUser = LocalStorageService.sharedInstance().currentUser
+                updateUser.fullName = tfFullName.text
+                updateUser.password = tfPassword.text
+                updateUser.phone = tfPhoneNumber.text
                 
-                QBRequest.createObject(object, successBlock: { (response: QBResponse!, customObject: QBCOCustomObject!) -> Void in
-//                        let alert = UIAlertView(title: "SUCCESS", message: nil, delegate: self, cancelButtonTitle: "Cancel")
-//                        alert.show()
+                if shouldUpdate {
+                    LocalStorageService.sharedInstance().uploadFile(self.getDataImageUpload(self.imageProfile.image!), withObjectID: self.getProfileID())
+                }
+                
+                
+                QBRequest.updateUser(updateUser, successBlock: { (response: QBResponse!, user: QBUUser!) -> Void in
                     
-                    LocalStorageService.sharedInstance().uploadFile(self.getDataImageUpload(self.imageProfile.image!), withObjectID: customObject.ID)
                     hud.hide(true)
-                    }, errorBlock: { (error: QBResponse!) -> Void in
-                        let alert = UIAlertView(title: "FAIL", message: nil, delegate: self, cancelButtonTitle: "Cancel")
-                        alert.show()
-                        hud.hide(true)
+                    }, errorBlock: { (response: QBResponse!) -> Void in
+                    hud.hide(true)
                 })
             }
         } else {
@@ -219,15 +214,41 @@ class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MB
         return imageData
     }
     
+//    func getObjectID() -> String
+    
+    func getProfileID() -> String! {
+        if LocalStorageService.sharedInstance().userProfiles != nil {
+            var userId = LocalStorageService.sharedInstance().currentUser.ID
+            
+            let profiles = LocalStorageService.sharedInstance().userProfiles
+            
+            for var i = 0; i < profiles.count; i++ {
+                let profile = profiles[i] as! QBCOCustomObject
+                if profile.userID == userId {
+                    return profile.ID
+                }
+            }
+        }
+        return nil
+    }
+    
+    func downloadImageProfile() {
+        QBRequest.downloadFileFromClassName("UserProfile", objectID: getProfileID(), fileFieldName: "avatar", successBlock: { (response: QBResponse!, data: NSData!) -> Void in
+            if data != nil {
+                self.imageProfile.image = UIImage(data: data)
+            } else {
+                self.imageProfile.image = UIImage(named: "userIcon.png")
+            }
+            
+            }, statusBlock: { (request: QBRequest!, requestStatus: QBRequestStatus!) -> Void in
+                
+            }) { (response: QBResponse!) -> Void in
+        }
+
+    }
+    
     func getDemo() {
         
-//        QBRequest.downloadFileFromClassName("UserProfile", objectID: "553f17e1535c123ea50d21c3", fileFieldName: "avatar", successBlock: { (response: QBResponse!, data: NSData!) -> Void in
-//            self.imageProfile.image = UIImage(data: data)
-//            }, statusBlock: { (request: QBRequest!, requestStatus: QBRequestStatus!) -> Void in
-//            
-//            }) { (response: QBResponse!) -> Void in
-//            
-//        }
         
 //        LocalStorageService.sharedInstance().uploadFile(UIImagePNGRepresentation(self.imageProfile.image))
     }

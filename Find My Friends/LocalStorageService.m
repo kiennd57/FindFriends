@@ -79,4 +79,8 @@
     }];
 }
 
+- (void) saveUserProfiles:(NSArray *)userProfiles {
+    _userProfiles = userProfiles;
+}
+
 @end
