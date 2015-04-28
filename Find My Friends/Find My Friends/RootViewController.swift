@@ -36,6 +36,7 @@ class RootViewController: UIViewController, MBProgressHUDDelegate, QBActionStatu
     }
     
     func createSession(userName: String, password: String) {
+        
         var extendedAuthRequest = QBSessionParameters()
         extendedAuthRequest.userLogin = userName
         extendedAuthRequest.userPassword = password

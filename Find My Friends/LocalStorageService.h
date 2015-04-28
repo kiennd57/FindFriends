@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <Quickblox/Quickblox.h>
 
+
+#define kCurrentUser @"kCurrentUser"
+
 @interface LocalStorageService : NSObject
 
 @property (nonatomic, strong) QBUUser *currentUser;
@@ -27,5 +30,6 @@
 - (void)saveEvents:(NSArray *)events;
 - (void)saveCurrentEvent:(QBCOCustomObject *)currentEvent;
 - (void)saveUserList: (NSArray *)userList;
+- (void)uploadFile:(NSData *)data withObjectID:(NSString *)objID;
 
 @end

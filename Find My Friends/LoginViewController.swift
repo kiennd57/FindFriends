@@ -58,25 +58,33 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
             hud.labelText = "LOGGING IN"
             hud.show(true)
             
-            var username = self.username.text
-            var password = self.password.text
             
-            QBRequest.logInWithUserLogin(username, password: password, successBlock: { (response: QBResponse!, user: QBUUser!) -> Void in
-                hud.hide(true)
-                var currentUser: QBUUser = QBUUser()
-                currentUser = user
-                //save to singeton
-                LocalStorageService.sharedInstance().saveCurrentUser(currentUser)
-                
-                self.userDefault.setBool(true, forKey: self.util.KEY_AUTHORIZED)
-                self.userDefault.setObject(username, forKey: "currentUserName")
-                self.userDefault.setObject(password, forKey: "currentPassword")
-                self.dismissViewControllerAnimated(true, completion: nil)
-                }, errorBlock: { (response: QBResponse!) -> Void in
-                    hud.hide(true)
-                    alert = UIAlertView(title: "LOGIN FAILT", message: "PLEASE CHECK YOUR ACCOUNT", delegate: self, cancelButtonTitle: "OK")
-                    alert.show()
-            })
+            
+            var extendedRequest = QBSessionParameters()
+            extendedRequest.userLogin = self.username.text
+            
+            
+            
+//            var username = self.username.text
+//            var password = self.password.text
+//            
+//            QBRequest.logInWithUserLogin(username, password: password, successBlock: { (response: QBResponse!, user: QBUUser!) -> Void in
+//                hud.hide(true)
+//                var currentUser: QBUUser = QBUUser()
+//                currentUser = user
+//                //save to singeton
+//                LocalStorageService.sharedInstance().saveCurrentUser(currentUser)
+//                
+//                self.userDefault.setBool(true, forKey: self.util.KEY_AUTHORIZED)
+//                self.userDefault.setObject(user, forKey: kCurrentUser)
+//                
+//                
+//                self.dismissViewControllerAnimated(true, completion: nil)
+//                }, errorBlock: { (response: QBResponse!) -> Void in
+//                    hud.hide(true)
+//                    alert = UIAlertView(title: "LOGIN FAILT", message: "PLEASE CHECK YOUR ACCOUNT", delegate: self, cancelButtonTitle: "OK")
+//                    alert.show()
+//            })
         } else {
             alert = UIAlertView(title: "ERROR", message: "USERNAME/PASSWORD CAN NOT BE BLANK", delegate: self, cancelButtonTitle: "OK")
             alert.show()

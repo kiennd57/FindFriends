@@ -62,4 +62,21 @@
     _userList = userList;
 }
 
+- (void)uploadFile:(NSData *)data withObjectID:(NSString *)objID {
+    
+    
+    QBCOFile *file = [QBCOFile file];
+    file.name = @"avatar";
+    file.contentType = @"image/png";
+    file.data = data;
+
+    [QBRequest uploadFile:file className:@"UserProfile" objectID:objID fileFieldName:@"avatar" successBlock:^(QBResponse *response, QBCOFileUploadInfo *info) {
+        
+    } statusBlock:^(QBRequest *request, QBRequestStatus *status) {
+        
+    } errorBlock:^(QBResponse *response) {
+        
+    }];
+}
+
 @end

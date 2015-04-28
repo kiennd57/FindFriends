@@ -38,6 +38,12 @@ class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MB
         initialize()
         getAllInformations()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        getDemo()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -130,17 +136,6 @@ class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MB
                 currentUser.fullName = tfFullName.text
                 currentUser.phone = tfPhoneNumber.text
                 currentUser.password = tfPassword.text
-                QBRequest.updateUser(currentUser, successBlock: { (response: QBResponse!, user: QBUUser!) -> Void in
-                    let alert = UIAlertView(title: "Success", message: "Update informations success", delegate: self, cancelButtonTitle: "OK")
-                    alert.show()
-                    self.getAllInformations()
-                    hud.hide(true)
-                    }, errorBlock: { (response: QBResponse!) -> Void in
-                    let alert = UIAlertView(title: "ERROR!", message: "Fail to update informations", delegate: self, cancelButtonTitle: "OK")
-                    alert.show()
-                    hud.hide(true)
-                        println("ERROR: \(response.error)")
-                })
                 
                 var object = QBCOCustomObject()
                 object.className = "UserProfile"
@@ -149,15 +144,18 @@ class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MB
                 object.fields["password"] = currentUser.password
 //                object.fields["email"] = currentUser.email
 //                object.fields["phoneNumber"] = currentUser.phone
-                object.fields["avatar"] = UIImagePNGRepresentation(UIImage(named: "orange.png"))
-                
+//                object.fields["avatar"] = UIImageJPEGRepresentation(self.imageProfile.image, 0.8)
                 
                 QBRequest.createObject(object, successBlock: { (response: QBResponse!, customObject: QBCOCustomObject!) -> Void in
-                        let alert = UIAlertView(title: "SUCCESS", message: nil, delegate: self, cancelButtonTitle: "Cancel")
-                        alert.show()
+//                        let alert = UIAlertView(title: "SUCCESS", message: nil, delegate: self, cancelButtonTitle: "Cancel")
+//                        alert.show()
+                    
+                    LocalStorageService.sharedInstance().uploadFile(self.getDataImageUpload(self.imageProfile.image!), withObjectID: customObject.ID)
+                    hud.hide(true)
                     }, errorBlock: { (error: QBResponse!) -> Void in
                         let alert = UIAlertView(title: "FAIL", message: nil, delegate: self, cancelButtonTitle: "Cancel")
                         alert.show()
+                        hud.hide(true)
                 })
             }
         } else {
@@ -188,5 +186,49 @@ class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MB
         if tfPassword.text != tfConfirmPass.text {return false}
         if count(tfPassword.text) < 8 {return false}
         return true
+    }
+    
+    func scaleDownImageWith(image: UIImage, newSize: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(newSize, true, 0.0)
+        image.drawInRect(CGRectMake(0, 0, newSize.width, newSize.height))
+        var scaledImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return scaledImage
+    }
+    
+    func getDataImageUpload(image: UIImage) -> NSData{
+        var resulution = image.size.width * image.size.height
+        var img = UIImage()
+        
+        if resulution > 60 * 60 {
+            img = scaleDownImageWith(image, newSize: CGSizeMake(60, 60))
+        }
+        
+        //compress image
+        var compression = 0.8 as CGFloat
+        var maxCompression = 0.1 as CGFloat
+        
+        var imageData = UIImageJPEGRepresentation(img, compression)
+        //        while imageData.length > 500 && compression > maxCompression {
+        //            compression -= 0.1
+        //            imageData = UIImageJPEGRepresentation(img, compression)
+        //            println("Compress: \(imageData.length)")
+        //        }
+        
+        return imageData
+    }
+    
+    func getDemo() {
+        
+//        QBRequest.downloadFileFromClassName("UserProfile", objectID: "553f17e1535c123ea50d21c3", fileFieldName: "avatar", successBlock: { (response: QBResponse!, data: NSData!) -> Void in
+//            self.imageProfile.image = UIImage(data: data)
+//            }, statusBlock: { (request: QBRequest!, requestStatus: QBRequestStatus!) -> Void in
+//            
+//            }) { (response: QBResponse!) -> Void in
+//            
+//        }
+        
+//        LocalStorageService.sharedInstance().uploadFile(UIImagePNGRepresentation(self.imageProfile.image))
     }
 }
