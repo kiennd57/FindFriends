@@ -134,9 +134,10 @@ class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MB
                 self.view.bringSubviewToFront(hud)
                 hud.show(true)
                 
-            
-                
                 var updateUser = LocalStorageService.sharedInstance().currentUser
+                LocalStorageService.sharedInstance().currentUser.fullName = tfFullName.text
+                LocalStorageService.sharedInstance().currentUser.phone = tfPhoneNumber.text
+                    
                 updateUser.fullName = tfFullName.text
                 updateUser.password = tfPassword.text
                 updateUser.phone = tfPhoneNumber.text
@@ -149,6 +150,8 @@ class ProfileTableViewController: UITableViewController, UITextFieldDelegate, MB
                 QBRequest.updateUser(updateUser, successBlock: { (response: QBResponse!, user: QBUUser!) -> Void in
                     
                     hud.hide(true)
+                    let alert = UIAlertView(title: "SUCCESSFULLY", message: "Your changes is updated!", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
                     }, errorBlock: { (response: QBResponse!) -> Void in
                     hud.hide(true)
                 })

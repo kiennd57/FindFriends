@@ -9,7 +9,6 @@
 import UIKit
 
 class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate, MBProgressHUDDelegate {
-    
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var fullname: UITextField!
     @IBOutlet weak var username: UITextField!
@@ -154,7 +153,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
                     hud.hide(true)
             }
             }, errorBlock: { (response: QBResponse!) -> Void in
-            
+                var alert = UIAlertView(title: "SORRY!", message: "YOUR SIGNUP IS FAIL! PLZ TRY AGAIN", delegate: self, cancelButtonTitle: "OK")
+                alert.show()
+                
         })
         //To be added
         

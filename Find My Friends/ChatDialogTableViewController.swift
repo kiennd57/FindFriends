@@ -146,9 +146,6 @@ class ChatDialogTableViewController: UITableViewController, QBActionStatusDelega
     
     /////////////////////quickbloxAPI
     func completedWithResult(result: QBResult!) {
-        
-
-        
         hud.hide(true)
         if result.success && result.isKindOfClass(QBDialogsPagedResult) {
             let pagedResult = result as! QBDialogsPagedResult

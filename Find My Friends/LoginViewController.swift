@@ -45,6 +45,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
         imageView.image = util.blurImage(UIImage(named: "blue.jpg")!)
         util.setupTextField(username)
         util.setupTextField(password)
+        if(LocalStorageService.sharedInstance().currentUser != nil) {
+            username.text = LocalStorageService.sharedInstance().currentUser.login
+        }
+        else {
+            username.text = ""
+        }
+        password.text = ""
     }
         
     
@@ -57,8 +64,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
             self.view.addSubview(hud)
             hud.labelText = "LOGGING IN"
             hud.show(true)
-            
-            
             
             var extendedRequest = QBSessionParameters()
             extendedRequest.userLogin = self.username.text
@@ -146,9 +151,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
                 })
 
                 }, errorBlock: { (error: QBResponse!) -> Void in
-                    let alert = UIAlertView(title: "Alert", message: "Your internet connection is poor", delegate: self, cancelButtonTitle: "OK")
+                    let alert = UIAlertView(title: "Alert", message: "Username/Password is wrong!", delegate: self, cancelButtonTitle: "OK")
                     alert.show()
-
+                    hud.hide(true)
             })
         } else {
             alert = UIAlertView(title: "ERROR", message: "USERNAME/PASSWORD CAN NOT BE BLANK", delegate: self, cancelButtonTitle: "OK")

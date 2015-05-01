@@ -47,24 +47,69 @@ class RootViewController: UIViewController, MBProgressHUDDelegate, QBActionStatu
         extendedAuthRequest.userPassword = password
         
         QBRequest.createSessionWithExtendedParameters(extendedAuthRequest, successBlock: { (response: QBResponse!, session: QBASession!) -> Void in
-            //set current user
-            var currentUser = QBUUser()
-            currentUser.ID = session.userID
-            currentUser.login = userName
-            currentUser.password = password
-            self.userDefault.setBool(true, forKey: kAuthorized)
-            LocalStorageService.sharedInstance().currentUser = currentUser
+            QBRequest.userWithID(session.userID, successBlock: { (response: QBResponse!, user: QBUUser!) -> Void in
+                self.userDefault.setObject(user.ID, forKey: kUserId)
+                self.userDefault.setObject(user.login, forKey: kLogin)
+                self.userDefault.setObject(password, forKey: kPassword)
+                self.userDefault.setObject(user.fullName, forKey: kFullName)
+                self.userDefault.setObject(user.email, forKey: kEmail)
+                self.userDefault.setObject(user.phone, forKey: kPhone)
+                self.userDefault.setBool(true, forKey: kAuthorized)
+                user.password = password
+                
+                LocalStorageService.sharedInstance().currentUser = user
+                
+                
+                //create userProfile for first login
+                QBRequest.objectsWithClassName("UserProfile", successBlock: { (response: QBResponse!, profiles: [AnyObject]!) -> Void in
+                    if profiles != nil {
+                        
+                        LocalStorageService.sharedInstance().userProfiles = profiles
+                        var check = true
+                        for var i = 0; i < profiles.count; i++ {
+                            let profile = profiles[i] as! QBCOCustomObject
+                            if profile.userID == session.userID {
+                                check = false
+                                break;
+                            }
+                        }
+                        
+                        if check {
+                            var profileObject = QBCOCustomObject()
+                            profileObject.className = "UserProfile"
+                            QBRequest.createObject(profileObject, successBlock: { (response: QBResponse!, returnObj: QBCOCustomObject!) -> Void in
+                                
+                                }, errorBlock: { (response: QBResponse!) -> Void in
+                                    
+                            })
+                        }
+                        
+                    } else {
+                        var profileObject = QBCOCustomObject()
+                        profileObject.className = "UserProfile"
+                        QBRequest.createObject(profileObject, successBlock: { (response: QBResponse!, returnObj: QBCOCustomObject!) -> Void in
+                            
+                            }, errorBlock: { (response: QBResponse!) -> Void in
+                                
+                        })
+                    }
+                    }, errorBlock: { (response: QBResponse!) -> Void in
+                        
+                })
+                
+                //login to chat service
+                ChatService.instance().loginWithUser(user, completionBlock: { () -> Void in
+                })
+                }, errorBlock: { (errorResponse: QBResponse!) -> Void in
+                    
+            })
             
             self.registerForRemoteNotifications()
-            
-            ChatService.instance().loginWithUser(currentUser, completionBlock: { () -> Void in
-            })
             
             var filter = QBLGeoDataFilter()
             filter.lastOnly = true
             filter.sortBy = GeoDataSortByKindLatitude
             QBRequest.geoDataWithFilter(filter, page: QBGeneralResponsePage(currentPage: 1, perPage: 6), successBlock: { (response: QBResponse!, objects: [AnyObject]!, responsePage: QBGeneralResponsePage!) -> Void in
-                self.hud.hide(true)
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW,Int64(2*NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
                     let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                     self.presentViewController(appdelegate.rootController, animated: true, completion: nil)
@@ -72,15 +117,14 @@ class RootViewController: UIViewController, MBProgressHUDDelegate, QBActionStatu
                 
                 LocalStorageService.sharedInstance().saveCheckins(objects)
                 println("CHECKIN LIST: \(LocalStorageService.sharedInstance().checkins)")
-                self.hud.hide(true)
                 }, errorBlock: { (response: QBResponse!) -> Void in
                     
             })
             
-            }) { (response: QBResponse!) -> Void in
+            }, errorBlock: { (response: QBResponse!) -> Void in
                 let alert = UIAlertView(title: "Alert", message: "Your internet connection is poor", delegate: self, cancelButtonTitle: "OK")
                 alert.show()
-        }
+        })
     }
     
     func registerForRemoteNotifications () {
