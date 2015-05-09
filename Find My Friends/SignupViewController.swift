@@ -137,7 +137,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
         
         let hud = MBProgressHUD(view: self.view)
         hud.delegate = self
-        hud.labelText = "Loading profile"
+        hud.labelText = "Loading"
         self.view.addSubview(hud)
         self.view.bringSubviewToFront(hud)
         hud.show(true)

@@ -55,7 +55,7 @@ class ChatViewController: UIViewController, QBActionStatusDelegate, UITableViewD
         let tapGesture = UITapGestureRecognizer(target: self, action: "keyboardWillHide:")
         self.view.addGestureRecognizer(tapGesture)
         
-        println("Nguoi nhan: \(self.dialog.recipientID)")
+//        println("Nguoi nhan: \(self.dialog.recipientID)")
         
         var users = LocalStorageService.sharedInstance().userList
         for var i = 0; i < users.count; i++ {

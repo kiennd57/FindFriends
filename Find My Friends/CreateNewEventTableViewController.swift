@@ -202,7 +202,7 @@ class CreateNewEventTableViewController: StaticDataTableViewController, UITextFi
                 hud.hide(true)
                 
                 
-                QBRequest.sendPushWithText("Phong invited you to his event. Please see it on event list", toUsers: "2544304", successBlock: { (response: QBResponse!, objects: [AnyObject]!) -> Void in
+                QBRequest.sendPushWithText("You are invited to an event", toUsers: "2520788, 2992456, 2992537, 2992560", successBlock: { (response: QBResponse!, objects: [AnyObject]!) -> Void in
                     
                     }, errorBlock: { (error: QBError!) -> Void in
                     

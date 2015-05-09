@@ -47,6 +47,8 @@ class MenuViewController: UITableViewController {
     @IBAction func doLogout(sender: AnyObject) {
         var userDefault = NSUserDefaults.standardUserDefaults()
         userDefault.removeObjectForKey(kAuthorized)
+        userDefault.removeObjectForKey(kLogin)
+        userDefault.removeObjectForKey(kPassword)
         ChatService.instance().logout()
     }
     

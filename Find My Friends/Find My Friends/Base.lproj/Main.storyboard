@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="phh-ro-rwH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="phh-ro-rwH">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -214,92 +214,6 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="axK-9R-OEO" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="8Pr-xF-vvm"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="wEs-Q9-glr">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wEs-Q9-glr" id="7WN-SE-DZZ">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_notification.png" translatesAutoresizingMaskIntoConstraints="NO" id="Et0-Zd-xtv">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="PWl-aJ-kPN"/>
-                                                        <constraint firstAttribute="height" constant="40" id="xla-eZ-ScH"/>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="PWl-aJ-kPN"/>
-                                                            <exclude reference="xla-eZ-ScH"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="16" y="8" width="30" height="30"/>
-                                                        <mask key="constraints">
-                                                            <include reference="PWl-aJ-kPN"/>
-                                                            <include reference="xla-eZ-ScH"/>
-                                                        </mask>
-                                                    </variation>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JaV-2a-0aL">
-                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="hpc-f1-5nX"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="hpc-f1-5nX"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="54" y="8" width="338" height="30"/>
-                                                        <mask key="constraints">
-                                                            <include reference="hpc-f1-5nX"/>
-                                                        </mask>
-                                                    </variation>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="JaV-2a-0aL" firstAttribute="leading" secondItem="Et0-Zd-xtv" secondAttribute="trailing" constant="8" id="2He-bA-Ivc"/>
-                                                <constraint firstItem="Et0-Zd-xtv" firstAttribute="leading" secondItem="7WN-SE-DZZ" secondAttribute="leadingMargin" constant="8" id="FgL-Ez-QDB"/>
-                                                <constraint firstItem="JaV-2a-0aL" firstAttribute="trailing" secondItem="7WN-SE-DZZ" secondAttribute="trailingMargin" id="KS8-Dp-5Iy"/>
-                                                <constraint firstItem="JaV-2a-0aL" firstAttribute="centerY" secondItem="Et0-Zd-xtv" secondAttribute="centerY" id="tiJ-kH-Uj0"/>
-                                                <constraint firstAttribute="centerY" secondItem="Et0-Zd-xtv" secondAttribute="centerY" id="xZw-N1-Dgs"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="subviews">
-                                                    <exclude reference="Et0-Zd-xtv"/>
-                                                    <exclude reference="JaV-2a-0aL"/>
-                                                </mask>
-                                                <mask key="constraints">
-                                                    <exclude reference="2He-bA-Ivc"/>
-                                                    <exclude reference="KS8-Dp-5Iy"/>
-                                                    <exclude reference="tiJ-kH-Uj0"/>
-                                                    <exclude reference="FgL-Ez-QDB"/>
-                                                    <exclude reference="xZw-N1-Dgs"/>
-                                                </mask>
-                                            </variation>
-                                            <variation key="widthClass=compact">
-                                                <mask key="subviews">
-                                                    <include reference="Et0-Zd-xtv"/>
-                                                    <include reference="JaV-2a-0aL"/>
-                                                </mask>
-                                                <mask key="constraints">
-                                                    <include reference="2He-bA-Ivc"/>
-                                                    <include reference="KS8-Dp-5Iy"/>
-                                                    <include reference="tiJ-kH-Uj0"/>
-                                                    <include reference="FgL-Ez-QDB"/>
-                                                    <include reference="xZw-N1-Dgs"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="Qxp-un-dcy" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="1Ws-dq-shE"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="UsF-ZZ-yel">
@@ -1426,7 +1340,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WhN-8S-cZV">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WhN-8S-cZV">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="M0P-36-MmF"/>
@@ -5396,7 +5310,6 @@ Address: 	University of Engineering and                      Technology
         <image name="menu_home.png" width="128" height="128"/>
         <image name="menu_logout.png" width="128" height="128"/>
         <image name="menu_message.png" width="128" height="128"/>
-        <image name="menu_notification.png" width="128" height="128"/>
         <image name="menu_profile.png" width="128" height="128"/>
         <image name="menu_support.png" width="128" height="128"/>
         <image name="userIcon.png" width="128" height="128"/>
